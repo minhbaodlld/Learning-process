@@ -1,0 +1,57 @@
+https://en.wikiversity.org/wiki/Data_Structures_and_Algorithms
+
+- 5x5 matrix arrange into array and store into memory 
+
+1 2 3 4 5      	array1
+6 7 8 9 10	array2
+11 12 13 14 15	array3
+16 17 18 19 20	...
+21 22 23 24 25	...	
+
+
+1000 1 		1010 11		1020 21
+1001 2	 	1011 12 	1021 22
+1002 3	 	1012 13		1022 23 
+1003 4		1013 14		1023 24	 	
+1004 5		1014 15		1024 25
+1005 6		1015 16
+1006 7		1016 17
+1007 8		1017 18
+1008 9		1018 19
+1009 10		1019 20		
+
+
+-Struct: group of related variable bundle together
+struct can be arrange into array
+	a = j[0]
+	b = j[0].accountNumber
+	c = j[0].balance
+
+-Node: struct that store data and pointer to another node location in memory
+ -> linked list: can be re-ordered, trimmed, split, reversed by changing pointer
+
+-More complex data structure from linked list:
+	+Queue: FIFO(1st-in 1st-out) enqueueing and dequeuing
+	
+	+Stack: LIFO(last-in first out) data is pushed onto and popped from stack
+	
+	+Tree: node with 2 pointer, top most node is root, nodes hang from other nodes
+	is children nodes, parent if on top, node with no children is leaf node
+	
+	+Graph data: link arbitrarily and include loop
+
+	+red-black tree and heap:...?
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

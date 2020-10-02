@@ -1,0 +1,397 @@
+_WORDPRESS, CMS
+_BACK-END: C#, PYTHON, JAVA, PHP
+_SQL, MYSQL
+_FRAMEWORKS: MVC, SPA, PUSH VS PULL
+
+- Index.html: home page - first page of website
+
+
+
+GLOSSARY
+I. HTML TAG			VII. DIV AND SPAN
+II. LINK			VIII. INPUTS AND FORMS
+III. IMAGES			IX. IFRAMES
+IV. VIDEO AND YOUTUBE IFRAMES	X. META TAG
+V. LIST				XI. APPLIED ACCESSIBILITY
+VI. TABLE
+
+
+
+I. HTML TAG (define layout)
+- skeleton of HTML tag: give browser different info about file
+	E.g: <!DOCTYPE html>
+
+- container tag: 2 tag, starting and ending, contain content/ other tags
+	E.g: <html>
+		</html>
+- head tag: define data	about doc/ setting of doc - title, description, image
+	E.g: <head>
+		</head>
+- body tag: content of web page
+	E.g: <body>
+		</body>
+
+- title tag (<title></title>): official title of website
+
+- <meta> tag: define info about file/ meta data
+	E.g:	<meta charset = "UTF-8"> - character set
+
+- info of tag called property/ attributes
+	E.g: charset = "UTF-8"
+
+- navigation tag (<nav></nav>): links wrapper
+	+href=""
+
+- article tag (<article>): article/ blog post
+
+- section tag (<section>): split parts of website into many sections
+
+- aside tag (<aside>): side content, ad etc
+
+- select tag (<select>): create drop down list
+	<select>
+		<option disabled selected value></option> 
+
+* Special Character
+- use: &/ &# + chacracter code
+
+
+  *ATTRIBUTE
+- name: +reference element JS
+	+form element: reference data when submitted
+	+iframe element: target form submission
+	
+
+  *Font Awesome
+
+- Add following to use icon 
+	<head>
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>	
+- placae Font Awesome icon using fa prefix and icon name
+	<i class="fa fa-car" style= "font-size:60px;color:red;"></i>
+
+- inherit: "fas fa-car (fa-xs, etc)"
+	fa-xs	.75em	
+	fa-sm	.875em	
+	fa-lg	1.33em	Also applies vertical-align: -25%
+	fa-2x	2em	
+	fa-Nx	Nem (N = 1-10)  
+
+
+
+ +BODY
+- heading tag (<h1/2/...> </h1/2/...>: 1 - 6 size of header
+
+- header tag: wrap introductory info/ navigation links
+
+- paragraph tag (<p></p>): text in this tag go into a paragraph
+	E.g <p> this is a <b>paragraph</b></p> - <b></b> bold, i = italic
+
+- break tag (<br/>): break a space
+
+- horizontal tag (<hr/>): straight line across the page  - single tag
+
+- big/ small tag (<big/small></big/small> : make words bigger/ smaller 
+
+- supscript/ superscript (<sub/sup></sub/sup>)
+
+- i tag: +content in italic, define alternate voice/mood
+	 +indicate technical term/ foreign word/ ship name etc
+	 +used only other not appropriate
+		<em>(emphasized text)
+		<strong>(important text)
+		<mark>(marked/ highlighted text	
+		<cite>(cite of a work)
+		<dfn>(definition term)
+
+- footer tag: contains copyright info/ links
+
+- figure + figcaption tag: used together to wrap visual representation + caption
+
+
+* COMMENT (<!--  -->)
+
+* STYLE AND COLOR
+- E.g: <p style = "color: blue; background-color: red">
+
+* FORMATING/ LAYOUT
+  <head>
+  </head>
+  <body>
+	<header>
+		<nav>
+
+		</nav>
+	</header>
+	<main>
+	  <article>
+		<section>
+		   <h1>
+		     <h2>
+			<h3>
+		     <h2>
+		</section>
+		<sec	
+	  </article>
+	</main>
+	<footer>
+
+	</footer>   
+  </body>
+
+
+
+
+
+II. LINK
+- <link>: empty tag(doesn't create element on page)
+specify relationship with other documents, use in <head> section
+- <a>: anchor to create link internal and outside webpage
+- href = "link"
+	- #id = internal element
+	- #link = dead link
+	- #/ #top = top current page
+
+- rel (required) = relationship	between link and current document
+
+- <a href = "https://www.google.com" target = "_blank"><h1>Google's Homepage </a>
+		href: where we want to link to
+		target = "_blank": open links in new tab
+
+- <a href = "page2.html"> Page2 </a>
+	page2 if in the same directory
+
+- <a href = "dir1/page3.html"> Page3 </a>
+	dir1/page3.html if page3 in different directory
+
+- Accessing picture
+  <a href = "cat.jpeg> Cat </a>
+
+- Use brief descriptive text within a tags to provide meaning
+
+
+
+
+III. IMAGES + AUDIO
+- image tag: provide location of image (<img ?>
+	<img width = "100" height = "100" src = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpets.webmd.com%2Fcats%2Fcat-vaccines&psig=AOvVaw0P_X8rVuB7fBD1lxltZtb5&ust=1587806014125000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMioocbcgOkCFQAAAAAdAAAAABAD"
+		alt = " a really cute cat" />
+	
+	<img src = "cat.jpg" alt = "Another really cute cat"
+	
+	<a href = "https://www.google.com"
+		<img width = "100" src = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpets.webmd.com%2Fcats%2Fcat-vaccines&psig=AOvVaw0P_X8rVuB7fBD1lxltZtb5&ust=1587806014125000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMioocbcgOkCFQAAAAAdAAAAABAD"
+		alt = " a really cute cat" />
+	</a>
+		when click the image will link you to the link
+
+- alt attribute: if image source is deleted display alt instead
+
+- Alternative to images:	<img alt = "...">
+		leave blank if already explained in context
+
+
+- width/ height: attribute inside image tag, setting one of the two html will automatically adjust aspect ratio
+
+
+	+AUDIO
+- <audio></audio>: +alt: alternate similar to image
+	+controls: shows web browser default play, pause and other control	
+
+
+
+IV. VIDEO AND YOUTUBE IFRAME
+- <video> </video>
+	<video src = "tutorial.mp4" poster = "thumb.jpeg" loop autoplay controls width = "300"></video> 
+		control: give user control over video	
+		poster = "" : thumbnail of video
+		autoplay
+		loop
+	
+- embed youtube video:
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/pQN-pnXPaVg" frameborder="0" allow="
+	accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+
+
+
+V. LIST
+- unordered list (<ul></ul>) follow by any number of <li></li>
+	<ul>
+	    <li><a href = ""> Apples </a></li>
+	    <li>Oranges</li>
+		<li> item1</li>
+	    <li>Bananas</li>
+	
+-ordered list (<ol></ol>)
+	<ol type = "A"> type = different type of ordering 1,2,3 or a,b,c
+	 -> A: Apple
+	    B: Oranges
+	    C: Banana
+
+- description list (<dl></dl>): list and describe
+	<dl>
+	    <dt>Apples</dt>		-dt: description term
+	    <dd>- They are red</dd>	-dd: describe dt
+
+
+
+
+
+VI. TABLE
+- <table></table>
+- table row tag (<tr></tr>): 1 horizontal row
+- table data (<td></td): 1 column of table
+- table header (<th></th>): header of each column
+- caption tag (<caption></caption): overall header of table 
+- table head tag (<thead></thead>):
+- table body tag (<tbody></tbody>)
+- <td colspan = "2"> one </td>: number of column occupy 	
+
+
+
+
+
+VII. DIV AND SPANS
+-container
+- block element take up an entire width of a page
+	+ paragraph: <p></p>
+	+ Div tag <div></div>
+- in-line element: as much space as it need
+	+ link tag: <a></a>
+ 	+ Span tag <span></span>
+
+
+
+
+
+
+VIII. INPUT & FORM
+- input tag <input type = "text" >
+	+type:	= "text": text box
+		= "password": hide character
+		= "date": day picker shows up in input field
+		= "email"
+		= "range"
+		= "file"
+		= "checkbox": can check everybox
+				different value(0,1,2,...) in a same group to identify which was checked				
+		= "radio": can only check one button, wrap in <label></labe>
+			should have same "name" attribute to create group
+			different value(0,1,2,...) in a same group to identify which was checked
+		+checked attribute: set checkbox + radio button checked by default
+		
+
+	+placeholder: input element before user inputtted anything
+	+value: report inital value
+	+required attribute: can't submit if blank 
+	+disabled: unsuable and unclickable, value is not sent submitting
+	+max: maximum value 
+	+min: minimum value 
+	+pattern:  value pattern of	 an input element
+	+required: Specifies that the input field requires an element
+	+size: default = 20, visible width in characters
+	+maxlength: maximum # characters, does not provide feedback to alert user	
+	+multiple: allowed more than one value
+	+pattern: regular expression input value checked against, 
+		use <title> attribute to inform pattern
+		use RegExp(regular expression) from Javascript
+		E.g: pattern=	".{8,}" title="8 or more characters"
+					
+
+- label <label></label>: benefit screen reader users + users difficulty clicing
+small regions because click text within <label> toggle input
+	+for attribute: specifies form element label is bound to, for = id
+
+- button <button></button>:
+	 +type:	= "reset": reset form-data to initial value
+		= "button": clickable button
+		= "submit": submit button
+	
+	+value = "Enter your Username" : default value
+	
+
+- text area <textarea></textarea>: bigger text box
+	+rows = "10": no of rows
+	+cols = "30": no of cols
+
+- form tag <form></form>: wrapper for bunch of user inputs
+	Attribute
+	+action = "URL": specifies where to send the form-data when a form is submitted.
+
+
+
+
+
+IX. IFRAMES (display another website into your website)
+- tag <iframe src = "http://youtube.com" width= "1000" height = "800"> Sorry</iframe>
+- some website doesn't allow iframe
+
+
+
+
+
+
+X. META TAG
+- in <head>
+- <meta> : define info about particular webpage
+- <meta name = "description" content = "your description">
+	keep description brief 160 chars 
+- <meta name = "author" content= "Website">
+- <meta name = "keywords" content = "HTML, tutorial">
+- <meat name = "viewport" content = "width = divice-width, initial-scale = 1.0">
+
+
+
+
+
+
+XI. MouseEvent clientX
+- event.clientX: get horizontal coordinate
+- event.clientY: get vertical coordinate
+
+
+
+
+
+XII. CANVAS
+- <canvas id = "myCanvas" width="200" height ="100"></canvas>: 
+	+use to draw graphic, text, be animated, be interactive
+
+
+
+
+XIII. APPLIED ACCESSIBLITY
+- General concept:
+	+have well-organized code that uses appropriate markup
+	+ensure text alternatives exist for non-text and visual content
+	+create an easily-navigated page that's keyboard-friendly
+
+- <div> - groups content
+- <section> - groups related content
+- <article> - groups independent, self-contained content
+
+
+- figure + figcaption: boost accessibility, used for image, chart, diagram
+
+- label tag + for attribute: ties meaning to item makes form more readable
+for attribute associates label with form control and is used by screen reader
+
+- fieldset <fieldset></fieldset>: surrounds radio buttons group, 
+	legend <legend></legend>: provide description for grouping, read by screen reader
+
+- time tag + datetime attribute: wrap date/ time, datetime held value accessed by 
+assistive devices, avoid confusion
+
+- accesskey attribute: shortcut key to activate or bring focus to an element
+- tabindex: receive keyboard focus through tab 
+	+takes +/0/- integer -> determine behavior
+	+negative: element focusable not reachable by keyboard
+	+1, 2, 3,etc: order keyboard focus cycle through before moving back to default "0"
+	
+	
+
+

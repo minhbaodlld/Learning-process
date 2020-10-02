@@ -1,0 +1,91 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: White;
+}
+
+.cd-logo, .Eg-cake, .equipment, .preparation,
+.done-cake, .ingredients, .done-cake, .finished-cake {
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #642580;
+  background-size: cover;
+  min-height: 100%;
+
+  background-attachment: fixed; /*parralax scrolling*/
+ 
+}
+
+.cd-logo {
+  background-image: url("CoderDojo.png");
+  min-height: 100%;
+  background-size: auto;
+}
+
+.Eg-cake{
+  background-image: url("img_parallax.jpg");
+}
+
+.equipment {
+  background-image: url("utensils.JPG");
+  
+}
+
+.ingredients{
+  background-image: url("ingredients.jpg");
+    
+}
+
+.preparation{
+  background-image: url("mixer.jpg");
+  
+}
+
+.done-cake {
+  background-image: url("oven.jpg");
+
+}
+
+.finished-cake{
+  background-image: url("rosecake.jpg");
+  
+}
+
+.h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: white;
+  text-align:center
+}
+
+.textSection {
+  background-color:#642580;
+  padding:50px 500px;
+  font-size: 20px;
+}
+
+.caption{
+  position: absolute;
+  top: 47%;
+  width:100%;
+  text-align: center;
+
+}
+
+.border{
+  background-color: #41BAC1;
+  color:white;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+ /* Turn off parallax scrolling for tablet and phone as it is not supported */
+ @media only screen and (max-device-width: 1024px){
+  .cd-logo, .Eg-cake, .equipment, .preparation,
+  .done-cake, .ingredients, .done-cake, .finished-cake {
+    background-attachment: scroll;
+  } }

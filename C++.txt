@@ -1,0 +1,124 @@
+- cout <<"Hello World"<< endl;
+	print "Hellow World"
+	cout = console out
+	endl = end line
+
+- int main() = function
+- \n new line
+- %(modulouss operator): give remainder
+- return keyword: break out of function
+- &&: and operator
+- ||: or operator
+- !: negate condition2
+
+*DATA TYPE
+- character: 	char grade = 'A';
+- string: 	pharase = "Giraffe Academy";
+- interger:	int
+- decimal:	float
+		double(more decimal point)
+
+- boolean:	bool isMale = true/ false;
+
+*STRING
+- find("string", index parameter): give index position the "string" occur
+- substr(starting index, length): take a sub session of a string
+
+
+*MATH
+#include <cmath>
+- pow(number, power): 	power
+- sqrt(number, power): 	square root
+- round():		round up number
+- floor():		floor down
+- fmax/fmin():		comparison bigger/smaller no
+
+
+*GETTING USER INPUT
+- cin >>: char, int, double
+- getline(cin, variable): string input
+
+
+*ARRAY
+- int luckyNums[20] = {}; 20 limits numbers of elements
+
+*FUNCTION
+- E.g: void sayHi(data type arguemen, data type arguement,...){
+	command;
+	}
+
+
+*IF STATEMENT
+- if (condition){	}
+
+*SWITCH STATEMENT
+- Special if statement to compare different things	
+- switch(value compare to other ){
+	case 1: ...
+		break;
+	case 2: ...
+		break;
+	case n: ...
+		break;
+	default:
+}
+
+
+*WHILE STATEMENT
+- while(condition){}
+- do {}
+	while
+
+*FOR STATEMENT
+- for(initialise variable, looping guard, executed code after every loop ){}
+
+
+*2D ARRAY AND NESTED LOOP
+- int numberGrid [3(no of elements}][no of element inside each array element]=
+			 {
+			 {1,2},
+			 {3,4},
+			 {5,6}
+			}
+
+*COMMENT
+-//
+-/**/
+
+
+*POINTER
+-memory addresses
+- int age = 19
+- pointer = &age
+- store pointer in a variable:
+	int *pAge = &age;
+	+ * special char when used to make pointer variable
+	+ pVariable naming convention
+
+- d-referencing a pointer: grap value inside memory address
+   	cout<< *pAge;	
+
+
+*CLASSES AND OBJECTS
+-class: specification/ blueprint for new data type
+
+
+*CONSTRUCTOR FUNCTION
+-Constructor is a function going to be called whenever an object is created
+
+
+*OBJECT FUNCTION / INSTANT FUNCTION
+-function inside classes and object of that class can use it to add/ change info
+
+
+
+*GETTERS AND SETTERS
+- Control what info can be store
+- Public: any function can access and change class info
+- Private: only function in the same class can access info
+
+
+
+*INHERITANCE
+- inherite a class with another class functions
+

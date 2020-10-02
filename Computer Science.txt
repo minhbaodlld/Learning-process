@@ -1,0 +1,126 @@
+https://en.wikiversity.org/wiki/Basic_I/O
+
+*ALGORITHM
+- Step-by-step solutions to a certain problem
+- Pseudocode:
+	+Cooking/ Frying an egg, sunny-side up
+	1. Do you have egg?
+		a) If yes get an egg
+		b) if no, do you want to buy egg?
+			1. If yes, then go and buy
+			2. if no, terminate
+	2. Do you have oil?
+		a) If yes, continue
+		b) If no, do you want to buy oil?
+			1. If yes, then go out and buy
+			2. If no, terminate		
+	1. get frying pan
+	2. wash frying pan
+	3. Do you have enough gas?
+		a) If yes, turn on the stove
+		B) If no, buy gas then turn on the stove
+	4. Put frying pan on the on stove
+	5. Wait for ... minutes
+	6. Pour oil into frying pan
+	7. Wait for ...minutes
+	8. Crack the egg
+	9. Pour egg content into the pan
+	10. Wait for ... minutes
+	11.Turn off stove
+	12.Get a plate
+	13.Place the egg from the pan on to the plate
+	14.Serve
+
+
+*DYNAMIC MEMORY ALLOCATION
+- Allocatting memory as needed, 
+- Added complexity, programmers deal with memory allocation not language
+- Main source of "memory leaks": use then doesn't free up that portion of memory
+- Java, Python,... has "garbage collection" to prevent memory leaks, track what allocation 
+where and when it is out of scope, slight performance penalty.
+
+
+
+*PROCEDURES AND FUNCTIONS
+-Parameter(or formal parameter) is a characteristic of a function, exist in function
+without enclosing source code
+-Arguement(or actual parameter) is a characteristic of a function call, exist in
+running program when a function is called
+
+
+
+*LOGIC
+-2^n truth tables for n-tuple operator
+-Truth Table
+-AND: /\
+-OR: V
+-XOR: exclusive or 
+-Conditional(Next-to-last) Operator(antecedent -> consequent): only false if condition is true
+	+->: dyadic operator
+-Biconditional(<-> diadic operator): if and only if
+	p <-> q = TRUE: truth value of p and q are the same (T,T/ F,F)
+
+-Compound Condition: p V -q -> q 
+best to calculate statement truth value after individual operator
+	+solve -q
+	+p V -q
+	+p V -q ->q
+
+-Contrapositive (switching hypothesis and conclusion and negative both)
+of p -> q is -q -> -p, conditional is logically equivalent to its contrapositive
+if q did not occur, assume p also didn't occur
+
+-Inverse (inference): -p -> -q
+
+-Converse (reversing constitutent statement): q -> p
+-Converse and inverse are logically equivalent, they are one another's contrapositives
+
+-Tautology statement always true: p -> q <-> -q -> -ps
+
+- not-p V q is logically or not logically equivalent to p -> q
+p	 q	 not-p		not-p V q	p -> q
+T	T	   F 		T		T
+T	F	   F		F		F	
+F	T	   T 		T		T
+F	F	   T		F		T
+	-> logically equivalent
+
+-Prove conditional statement is logically equivalent to its contrapositive
+	p -> q
+	-q -> -p
+
+p	q	-p	-q	p -> q	-q -> -p	
+T	T	F	F	T	T
+T	F	F	T	F	F
+F	T	T	F	T	T
+F	F	T	T	T	T
+	-> they  are logically equivalent
+
+
+
+
+*ERROR/ DEBUGGING
+-3 type:+syntax
+	+runtime: check loops
+	+logic: condition
+		-print statement: find out where the code go wrong, use print before and between condition
+		-Breakpoint debugging: pause program where line breakpoint placed at is reach and wait for permission
+		to continue
+
+-Fixing bug: comment out bug 
+
+-Avoid bug: +save often, cloud backup: Github, subversion
+	+run frequently 
+
+
+
+
+
+*FUNCTION
+-take argument: return/ don' return value
+-don't take argument: return/ don't return value
+	+no arguments, return no values: usually use to condense large amount of code
+
+
+*RECURSION
+-practice using functions repeatedly call themselves <- instructions in the function call the same function

@@ -1,0 +1,1065 @@
+I. VARIABLE		VIII. CONDITION		XV. CANVAS
+II. MATH		IX. ERROR		XVI. TEST DRIVEN DEVELOPMENT (TDD)
+III. OBJECT		X. GLOBAL
+IV. METHOD  *ARRAY	XI. LOOP
+V. CLASS OBJECT		XII. TYPE
+VI. FUNCTION		XIII. EVENT
+VII. STRING		XIV. JAVASCRIPT DOM
+
+
+
+*OPERATOR
+-new operator: 	+ create an empty object
+		+ set "this" to point to that object
+		+ return object from function
+	
+
+- ?? (nullist coalescing operator): short syntax selecting "define" variable from list
+	E.g: a ?? b
+		value = a if a is not null/ undefined
+		value = b otherwise
+	let firstName = null;
+	let lastName = null;
+	let nickName = "Supercoder";
+	alert(firstName ?? lastName ?? nickName ?? "Anonymous"); // => Supercoder
+
+- ? (question mark operator): ternary operator
+
+
+COMMENT
+- // in-line comment
+- /* multi-line comment end with */
+
+CLEAN CODE
+-Indentation: consistent
+-Semicolons: do it
+-Line length: 80 characters, indent 2 lvl when breaking lines
+-Name Things: camelCase, single character in loop/ callback function
+-begin with: Noun for Variable
+	     Verb for function
+		
+
+
+* DATA TYPE
+- undefined	
+- null
+- boolean
+- string
+- symbol
+- number
+- object
+- parseInt(str, a) - to convert into integer, str: input, a is number e.g 2 = binary
+- toString(radix): convert number to string
+
+	
+I. VARIABLE
+- var ... = -use throughout program ('='  assign operator)
+- let ... = -its scope is limited to the block statement or expression that it was declared in
+	don't let you declare a variable twice 
+- const ...= -cannot be changed or READ ONLY, use CAPITAL LETTER for ease of recognition
+- define variable with no var automatically put it to global - meaning it can be use throught the program
+- if var is use in a function its scope is in that function
+- "use strict": indicate code should be executed in "strict mode"
+strict mode: cannot use undeclared variable, prevent typing error that create another variable
+- object.freeze(CONST VARIABLE) - to prevent const from being changed
+- const s = [5,7,2] - const array changeable using bracket notation
+	s[0] = 2;
+	s[1] = 5;
+	s[2] = 7; 
+- destruction assignment used to assign object to  
+
+
+
+II. MATH
+- % - remainder operator
+- ** - exponentiation
+- increment number means add 1
+	e.g: a= a+1; or a++;
+- decrement number
+	e.g: b = b-1; or b--;
+- compound assignment: a += 1
+- == convert both value to the same type
+- === strict equality operator don't convert	
+- && - and operator
+- || - or operator
+- Math.floor - round down	
+- Math.random - random number between 0 and 1 without 1
+
+- var r = Math.random();
+  +Function: Math.
+- random(): 	random number
+- round():	round to nearest integer
+- sqrt():	square root
+
+
+
+
+III. OBJECT
+- use name indexes
+- let name = 'Mosh' - assign variable
+
+- let person = { 		- {} object literal
+	name: 'Mosh',
+	age: 30
+	} 
++ Dot Notation
+- person.name = 'John';
+
++ Bracket Notation: 	+good for dynamically access a property name
+			+property names that are not valid name identifiers
+				- [] required when object property has space/ special characters
+- person['name'] = 'Mary'; - let selection = 'name';
+	person[selection] = 'Mary';
+- add property to object
+	person.shirt = 'T-shirt';
+	person['shoes'] = 'Nike;
+- delete property
+	delete person.shirt;
+
+*ARRAY
+- use numbered indexes
+- [] - Array literal = list
+- [['abc', 2], ['efg',1],...] - nested array or multi-dimensional array
+- Access multi-dimesional array with bracket notation
+	E.g: var myArray = [[],[],[],...]; var myData = myArray[0][0];
+
+- new operator can be used to create array
+	E.g: var cars = new Array('Saab', 'Volvo', 'BMW');
+
+- new/ ...Array() constructor: create array object
+	+new Array(element0, element1, ..., elementN): array is initialized with those elements
+	+new Array(arraylength): if arraylength = interger between 0 and (2^32)-1 return array with length
+	set to that number
+
+*Frequently used array nethod:
+- toString() + join(): join array elements into a string
+	join can specifies separatorq
+		e.g .join('*')
+- .push():append data to the end of an array and return new array length
+- .pop(): remove last item in an array and return that item
+- .shift(): remove first item in an array and return it, shift other elements to lower index
+- .unshift(item1, item2,..., itemN): add element to the beginning of the array and returns new length
+- .delete could be used to delete elements but leaves holes use pop/ shift instead
+- .length: # of elements
+	also can be use to append: fruits[fruits.length] = "Kiwi"
+- .splice(startIndex, deleteCount): change array content, remove/ replace (mutating) 
+	
+	+var planet = ['Mars', ' Saturn', 'Pluto', Earth']
+	+remove item: 	planet.splice(2,1)  //remove 2nd index item and 1 item
+	+add item:	planet.splice(1,0, 'Pluto', 'Uranus')  //add item if delete count = 0
+	+planet.splice(1) = ['Mars']
+
+- .concat(): merge arrays together
+	var A = ['a', 'b', 'c']
+	var B = ['d', 'e']
+	A.concat(B) -> A = ['a', 'b', 'c', 'd', 'e']
+
+- .slice(start, end): return selected elements in a new array object
+	+include start  but not end elements
+- .sort(compareFunction): sort elements alphabetically and ascending by default	
+	+incorrect when sorting number
+	+numeric sort: Ascending
+		var points = [40, 100, 1, 5, 25, 10];
+		points.sort(function(a, b){return a-b});		
+			-> 1, 5, 10, 25, 40, 100
+	+numeric sort: Descending
+		{return(b-a)}
+	+compare function: sort() function compares two values. sort values according to the returned (+/-/0) value
+		(-) a is sorted before b
+		(+) b is sorted before a
+		(0) no changes
+	+ Random sort order: {return 0.5 - Math.random()}
+- Math.max.apply on array to find highest number
+	function myArrayMax(arr){
+		return Math.max.apply(null, arr);
+- Math.min.apply to find the lowest number in an array
+	function myArrayMin(arr) {
+		return Math.min.apply(null, arr);
+	}
+- .split(separator, limit): split string into array of substring, return new arrays
+	sepearator: specify character/expression used for splitting if left empty entire
+			string returned( an array with 1 item), ("") used as separator, split between character
+	limit: interger specifies number of splits, items after limit not in array
+				
+IV. Method:
+
+- .constructor: returns constructor function for object
+	+arrays: return function Array(){[native code]}
+	+numbers: returns function Number(){[native code]}
+	+strings: returns function String(){[native code]}
+
+- .copyWithin(target, start, end): copies elements to another position, overwrite existing value
+				never add more items to array
+	+ target(required): index position to copy to
+	+ start: index position start copy from 
+	+ end: index position stop copy from
+
+- .entries(): returns array iterator object with key/value pairs
+	[0, "banana"]
+	[1, "orange"]
+	[2, "apple"]
+
+- .every(function(currentValue, index, arr), thisValue): checks if all elements in an array pass a test
+	return boolean		
+
+- .fill(value, start, end): fill specified elements with static value 	
+	fruits = ["banana", "orange", "apple", "mango"]
+	fruits.fill("Kiwi",2,4);
+
+- .filter(function(currentValue, index, arr), thisValue): creates array filled elements pass test
+	var ages = [32, 33, 16, 40];
+
+	function checkAdult(age) {
+  		return age >= 18;
+	}
+
+	function myFunction() {
+  	document.getElementById("demo").innerHTML = ages.filter(checkAdult);
+	}
+
+- .find(function(currentValue, index, arr), thisValue): returns value 1st element pass a test
+	E.G: filter
+
+- .findIndex(function(currentValue, index, arr), thisValue): execute function once each element
+	+if function returns True, return index element( and does not check remaining value)
+	+otherwise return -1
+
+- .forEach(function(currentValue, index, arr), thisValue): calls function each element in order
+		
+- .from(object, mapFuntion, thisValue): return array object from any object with lenghth property or iterable object
+	+Object: object to convert to array
+	+mapFunction: map function call each item
+	+thisValue: value use when execute mapFunction
+	
+	+ Array from set:
+	const set = new Set(['foo', 'bar', 'baz', 'foo']);
+	Array.from(set);
+	// [ "foo", "bar", "baz" ]
+	
+	
+	
+- .include(element, start): determines whether array contains specified element,
+	return true or false, case sensitive
+
+- .indexOf(item, start): find specified item returns its position 
+	+From start to end
+	+more than once, returns position of 1st occurence
+	+return -1 if not found
+
+- .join(separator): returns array as string
+	seperator: default comma (,)
+
+- .keys(): returns array iterator object with keys
+
+- .length: returns number of elements
+
+- .lastIndexOf(item, start): search for specified item, returns position
+	+Start at the end
+	+more than once returns last occurence
+	+returns -1 if not found
+
+- .map(function(currentValue, index, arr), thisValue): creates new array with results of calling function every elements
+	+calls function once for each element in order
+		var numbers = [4, 9, 16, 25];
+		var x = numbers.map(Math.sqrt
+		-> 2,3,4,5
+
+
+- .prototype: constructor allows new properties + method be added to Array() obejct
+	+Constructing property: all arrays given the property + its value as default
+	+Constructing method: all arrays have this method available
+		Array.prototype.myUcase = function() {
+  			for (i = 0; i < this.length; i++) {
+    				this[i] = this[i].toUpperCase();
+  			}
+		};
+
+
+
+- .reduce(function(total, currentValue, currentIndex, arr), initialValue): 
+	+reduce array to a single value 
+	+does not change original array
+	+execute function for array with values only, for each value left to right
+	  subtract numbers in the array from the beginning:
+		var numbers = [175, 50, 25];
+		document.getElementById("demo").innerHTML = numbers.reduce(myFunc);
+		function myFunc(total, num) {
+	  		return total - num;
+		}
+
+- reduceRight((function(total, currentValue, currentIndex, arr), initialValue):
+	+reduce array single value
+	+execute function from right to left
+	+return value as accumlator	 
+
+- .reverse(): reverse order elements
+
+
+
+
+- .some (function(currentValue, index, arr), thisValue): 
+	+check logic of elements, return true
+
+
+
+- .toString(): returns string with all array values, separated by commas
+
+
+
+- .valueOf(): returns array
+
+
+
+- .forEach (value, index, object): get array with values -> apply logic to them
+	calls callback function once each elements array decesnd order
+	E.g:	-itemArray.forEach (puppy zffd puppy + 2)	
+
+- .appendchild: append elements to an existing elements
+	const grid = document.querySelector('.grid')
+	var square = document.creatElement('DIV')
+
+	grid.appendchild (square)
+
+- .setInterval(function, milisecond, param1, param2,...)
+	function: that will be executed
+	milisecond: interval on how often to execute the code
+	param1, param2: additional parameter to pass function
+
+- apply(thisArg, [argsArray}): method takes array as argument
+- call(): method takes arguments sepatately
+	var person = {
+		fullName:function(city, country){
+			return this.firstName + " " + this.lastName + "," + city + "," + country;
+		}
+	var Person1 = {
+		firstName: "John",
+		lastName: "Doe"
+	}
++	person.fullname.apply(person1, ["Olso", "Norway"]
++	person.fullname.call(person1, "Olso", "Norway")
+
+- Application of apply
+	- Math.max.apply on array to find highest number
+		function myArrayMax(arr){
+			return Math.max.apply(null, arr);
+
+	- Math.min.apply to find the lowest number in an array
+		function myArrayMin(arr) {
+			return Math.min.apply(null, arr);
+	- first argument [null] doesn't matter
+		or	       Math.min.apply(Math, arr)
+		or 	       Math.min.apply(0, arr)
+		or	       Math.max.apply(" ", arr);
+
+
+- keys(): return Array Iterator object contains keys for each index in array
+
+V. CLASS OBJECT
+- class ...
+	constructor()
+	class Car {
+ 	  constructor(brand) {  // Constructor
+    	     this.carname = brand;
+  	  }
+	}
+	mycar = new Car("Ford");
+- extend: create child class of parent class
+
+	class Model extends Car {
+  	    constructor(brand, mod) {
+    		super(brand);
+    		this.model = mod;
+  	    }
+  	    show() {
+    		return this.present() + ', it is a ' + this.model;	
+	    }
+	}
+	mycar = new Model("Ford", "Mustang");
+	document.getElementById("demo").innerHTML = mycar.show();
+		
+	
+- static keyword: define static methods of classes, called directly class (car)
+without creating instance/object(mycar)
+
+- super keyword: refers to parents class, calls constructor of parent class to access 
+parent's properties and methods
+	
+- "new" keyword: instantiate / represent an object 
+- obtain value from object set a value of a property within an object
+
+
+- getter function return object private varible 
+	get: function(){
+		return ...;
+	}
+- setter function: set value for property 
+	set: function(value){
+	
+	}
+
+
+
+
+
+VI. FUNCTION
+- Funtion should be short only do one action according to its name, if that action is too big
+split it into smaller ones
+=> easier to test + debug
+
++Default parameter: - arguement/parameters is undefined
+-default can be changed:
+	function showMessage(text = "no text given"){
+	Or	if (text === undefined){
+		 text = 'empty message';
+	Or	text = text || 'empty'	
+	}
+	Or	
+
+*INFINITE ARGUMENT FUNCTION
+- Arguments object (ES5): arguments local JS object variable available all non-arrow functions
+array-like object accessible inside functions contains values of arguments passes to that function
+not array	
+	function add(){
+		console.log(arguements);
+		var sum = 0;
+		for (var i = 0; i<arguments.length; i++){
+			sum += arguments[i];
+		}
+		return sum;
+	}
+	console.log(add(3, 4, 7)); // 14
+	console.log(add(3, 4, 7, 10, 20); // 44
+
+- Rest operator (ES6):
+	function add(...args){
+		return args.reduce(function(acc, cur) {
+			return acc+cur;
+		})
+	}
+	console.log(add(3, 4, 7));  //14	
+	console.log(add(3, 4, 7, 4)); // 18
+
+
+
+*FUNCTION DECLARATION 
+- Function declaration: default usage, better readability. easy to look up
+	function a(){} - no semi colon at the end due to code blocks + syntax structures doesn't need 
+
+- Function Expression: conditional declaration
+	let a = function(){};
+   E.g:
+	let age = prompt("What is your age?", 18);
+
+	let welcome = (age < 18) ?
+	  function() { alert("Hello!"); } :
+	  function() { alert("Greetings!"); };
+
+	welcome();
+
+- Find Max in an array function:
+	function myArrayMax(arr){
+		var len = arr.length;
+		var max = -Infinity;
+		while(len--){
+			if(arr[len] > max)
+				max = arr[len];
+			}
+		}return Max;
+	}
+
+- Find min in an array function:
+	function myArrayMax(arr){
+		var len = arr.length;
+		var min = Infinity;
+		while(len--){
+			if(arr[len] < min)
+				min = arr[len];
+			}
+		}return min;
+	}
+
+
+*ARROW FUNCTION	
+- Arrow function: let func = (arg1, arg2, ... argN) => expression
+	  let sum = (a, b) => a + b;
+short for let sum = function(a, b){
+	    return a + b;
+	 };
+   E.g:
+	let age = prompt("What is your age?", 18);
+	
+	let welcome = (age < 18) ?
+	  () => alert('Hello') :
+	  () => alert("Greetings!");
+
+	welcome();
+Even shorter version than function expression
+
+- Multiline arrow function: when more complex action is needed, use {} + normal return
+
+	E.g:
+	let sum = (a, b) => {  // the curly brace opens a multiline function
+	  let result = a + b;
+	  return result; // if we use curly braces, then we need an explicit "return"
+	};
+ 
+
+
+
+- isNaN: test if value a number, true: not number, false: it's number 
+
+
+
+- var myConcat = function(arr1, arr2){  - Annonymous function doesn't have a name can be assign to variable
+	return arr1.concat(arr2);  	- annonymous function can be converted into arrow function
+  };
+	
+	var myConcat = (arr1, arr2)  arr1.concat(arr2) - arrow function used when a function takes another
+	console.log(myConcat([1,2], [3, 4, 5]));	 function as an arguement
+
+
+- const increment = (function(){
+	return function increment(number, value = 1) {  //if value isn't pass in it is 1 automatically
+	return number +value
+	};
+})();
+  console.log(increment(5,2)); increment = 7
+  console.log(increment(5));   increment = 6	
+
+- ... - rest operator allow function that take a variable amount of arguement
+- ... - spread operator: take an array and spread out into individual part 
+
+- =>: arrow function, shorter syntax, return value by default
+	hello = function(){			hello = (parameter) => 'hello world'
+		return "hello world";			
+	}
+
+
+
+
+
+VII. STRING
+- .length - return length of string
+- .indexOf() - return position of the 1st occurence of specific text in a string
+- .lastIndexOf() - return position of the last occurence of specific text in a string
+- .charAt("".length-1): to find last character of a string
+- index - return -1 if the text not found
+- The search() method cannot take a second start position argument.
+- The indexOf() method cannot take powerful search values (regular expressions).
+- \n new line
+- \t tap
+- \b backspace
+- \f form feed
+- concatenating string with + operator: "a" + "b"; or var str = 'a'; str += 'b';
+
++Template Literal - special type of string that make complex string easier
+- `...` : back tick
+- advantages: 	+ multi-line string
+		+ add single and double quotation mark without escaping
+		+ put variable into the string using ${}
+	
+- 
+
+
+VIII. CONDITION
+- if statement
+- Ternary operator: condition ? statement-if-true: statement-if-false;
+	return num > 0? "positive" : num < 0 ? "negative" : "zero" 
+
+
+
+
+
+
+*CONDITIONAL (TERNARY) OPERATOR
+	E.g:	var age = n;
+		var voteble = (age < 18) |?| "Too Young" |:| "Old enough"; **
+		alert(voteble);
+
+
+
+
+
+*SWITCH
+- E.g: SWITCH statement that will alert "hello" if fruits is "banana" and "welcome" if fruits is "apple", alert "neither" if fruits is neither "banana" nor "apple"
+	+ Switch(fruits) {
+		case "banana";
+		  alert("hello")
+		  break;
+		case "apple";
+		  alert("welcome");
+		  break;
+		default:
+		  alert("neither);
+	 }
+
+
+
+
+*DATE OUTPUT
+-new Date()
+-new Date(year, month, day, hours, minutes, second, miliseconds) (all numerical: Jan = 0, Dec = 11)
+-new Date(miliseconds)
+-new Date(date string)
+		
+
+
+
+IX. ERROR
+- name:	+SyntaxError: syntax error
+	+RangeError: a number 'out of range' has occured
+	+ReferenceError: illegal reference occured
+	+TypeError:
+	+URIError: error in encodeURI()
+
+- message: description of an error
+
+- try statement lets you test a block of code for errors.
+	try {
+  	  adddlert("Welcome guest!");
+	}
+	catch(err) {
+	  document.getElementById("demo").innerHTML = err.message;
+
+- catch statement lets you handle the error.
+
+- throw statement lets you create custom errors.
+	throw "Too big";    // throw a text
+	throw 500;          // throw a number
+	
+- finally statement lets you execute code, after try and catch, regardless of the result.
+
+	var message, x;
+  	message = document.getElementById("p01");
+  	message.innerHTML = "";
+  	x = document.getElementById("demo").value;
+  	try {
+    	   if(x == "") throw "is empty";
+    	   if(isNaN(x)) throw "is not a number";
+    	   x = Number(x);
+      	   if(x > 10) throw "is too high";
+    	   if(x < 5) throw "is too low";
+  	}
+  	catch(err) {
+    	   message.innerHTML = "Error: " + err + ".";
+  	}
+  	finally {
+    	   document.getElementById("demo").value = "";
+	
+
+
+
+
+X. GLOBAL
+- Number()	Converts an object's value to a number
+- parseFloat()	Parses a string and returns a floating point number
+- parseInt()	Parses a string and returns an integer 
+- String()	Converts an object's value to a string
+	
+
+
+
+
+XI. LOOP
+- Name a loop: used to target break or continue
+	+break out of targeted loop/ continue next iteration of nested loop
+	+labelName: loop
+- A single execution of the loop body is called an iteration.
+
+- Loop features: a loop usually has one/ more
+	+ Counter:initailized with value
+	+ Condition: true/ false test to continue/ stop loop
+	+ Iterator: increment counter small amount each successive loop -> condition = false
+- for (initializer; condition; final-expression) - loops through a block of code a number of times
+
+
+- break: exits/jump out switch statement or a loop and continue codes outside loop
+
+- continue: continue/jump over next iteration of loop 
+	+While loop, condition tested, true, loop excecuted again
+	+for loop, increment expression (i++) 1st evaluated, condition is tested,
+	find if another iteration should be done
+
+- for/in - loops through the properties of an object (don't use array index order important)
+	var person = {fname:"John", lname:"Doe", age:25};
+
+	var text = "";
+	var x;
+	for (x in person) {
+	  text += person[x] + " ";
+	}
+	-> John Doe 25
+
+- for/of - loops through the values of an iterable object
+	var cars = ['BMW', 'Volvo', 'Mini'];
+	var x;
+	
+	for (x of cars) {
+	  document.write(x + "<br >");
+	}
+	->BMW	
+	  Volvo
+	  Mini
+
+
+- while - loops through a block of code while a specified condition is true
+shorter way to write while (i != 0) is while (i):
+
+
+- do/while - loops through a block of code once, and then repeats the loop while a specified condition is true
+
+	
+- Postfix and Prefix: + Prefix (++i): first increments i then return new value
+	+Postfix (i++): increment i then returns old value
+
+	
+XII. TYPES	
+- Value(primitives): primitives are copied by their value
+	+Number
+	+String
+	+Boolean
+	+Symbol
+	+undefined
+	+null
+-Reference (objects): objects are copied by their reference
+	+Object
+	+Function
+	+Array
+
+
+
+
+XIII. EVENT
+- addEventListener() method:
+	+attaches event handler to specified element
+	+multiple event handler/ same type event handler can be attached without overwriting each other
+	+add to any DOM object not only HTML
+- .addEventListener(event, function): set ups function whenver event delivered to target
+- common target: element, document, window
+- removeEventListener() method: 
+
+- keyCode: return Unicode character code/key code of key triggers onkeypress/ onkeydown + onkeyup event
+
+- document.querySelector('.class'): look through html doc to find element with class name ...
+
+*HTML events
+- event = something browser/ user does
+- onclick: 
+	document.getElementById("myBtn").onclick = displayDate;
+
+- onload and on unload event: triggers when user enters/ leaves the page, used to deal with cookies
+onload used to check browser type and browser's version to load proper version
+	<body onload="checkCookies()">
+
+- onchange: used in combination w/ validation of input fields
+when enter value -> unfocus by pressing TAB/ RETURN
+	<input type="text" id="fname" onchange="upperCase()">
+	upperCase() function is called input fields's content changes
+
+- onmouseover and onmouseout: triggers mouse over/ out HTML element
+
+- onmousedown, onmouseup, onclick:
+- onfocus: 
+
+
+
+XIV. JAVASCRIPT DOM (Document Object Model)
+- DOM: W3C (World Wide Web Consortium) standard for accessing documents
+	3 different parts
+	+Core DOM - Standard model for all document type 
+	+XML DOM - 		"	   XML document
+	+HTML DOM -		"	   HTML document
+
+- Fundamental data type
+	+Document:
+	+Node: object within document, object can be element/text/attribute node
+	+Element: refer element/ node of type element
+	+NodeList: array of elements, accessed by index in list item()/ list()
+	+Attribute
+	+NamedNodeMap
+
+*HTML DOM
+- Object model + programming interface for HTML, 
+standard how to get, change, add/ delete HTML elements
+- defies:
+	+HTML element as object
+	+properties of all HTML element
+	+method to access   "
+	+events fot	    "
+
+- HTML DOM methods: action can perform
+- HTML DOM properties: values of HTML elements that you can set/ change
+- getElementById method: access HTML element through id of element
+- innerHTML property: get/ replace content of element
+
+
+
+*HTML DOM document (Document object represent web page)
+- Accessing document before accessing any elemnt in HTML page
+- document
+	+finding HTML Elements:
+		.getElementById(id)
+		.getElementByTagName(name)
+		.getElementByClassName(name)
+
+	+change style
+		.getElementById(id).style.property = new style
+
+	+Adding and Deleting Elements
+		.createElement(element)		
+		.removeChild(element)
+		.appendChild(element)
+		.replaceChild(element)
+		.write(text)
+
+	+Adding Events Handlers
+		.getElementById(id).onclick = function(){code} - add event handler code to an onclick event
+
+- element.
+	changing HTML elements
+		.innerHTML = new html content 
+		.attribute = new value
+		.style.property = new style 
+	(method).setAttribute(attribute, value)
+
+- animation using javascript (https://www.w3schools.com/js/tryit.asp?filename=tryjs_dom_animate_3)
+function myMove() {
+  var elem = document.getElementById("animate");
+  var pos = 0;
+  var id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++;
+      elem.style.top = pos + 'px';
+      elem.style.left = pos + 'px';
+    }
+  }
+}
+
+*DOM NAVIGATION
+<html>					<html> is the root node	
+					<html> has no parents
+  <head>				<html> is the parent of <head> and <body>
+    <title>DOM Tutorial</title>		<head> is the first child of <html>
+  </head>				<body> is the last child of <html>
+					
+  <body>				<head> has one child: <title>
+    <h1>DOM Lesson one</h1>		<title> has one child (a text node): "DOM Tutorial"
+    <p id="demo">Hello world!</p>	<body> has two children: <h1> and <p>
+  </body>				<h1> has one child: "DOM Lesson one"
+					<p> has one child: "Hello world!"
+</html>					<h1> and <p> are siblings
+
+- 3 diffrent ways to access an element value
+	var paragraph = document.getElementById("demo").innerHTML;
+	var paragraph = document.getElementById("demo").secondChild.nodeValue;
+	var paragraph = document.getElementById("demo").childNode[1].nodeValue;
+  		
+- navigation between nodes:
+	parentNode
+	childNodes[nodenumber]
+	firstChild
+	lastChild
+	nextSibling
+	previousSibling
+
+- DOM root nodes: 2 special properties to access full document
+	+document.body - body of the document
+	+document.documentElement - full document
+
+- nodeName proterty of element node = tag name
+		"      attribute node = attribute name
+	nodeName of text node = #text
+	nodeName of document node = #document
+
+- nodeValue: value of node
+- nodeType property: read only
+	+ELEMENT_NODE	type	1	+COMMENT_NODE		8
+	+ATTRIBUTE_NODE	 	2	+DOCUMENT_NODE		9
+	+TEXT_NODE	 	3	+DOCUMENT_TYPE_NODE	10
+	
+*DOM NODES
+- create new HTML elements (Nodes): add new element to HTML DOM must create the element
+then appen it to existing elemnet
+	E.g:	<div id="div1">
+		  <p id="p1">This is a paragraph.</p>
+		  <p id="p2">This is another paragraph.</p>
+		</div>
+
+		<script>
+		var para = document.createElement("p");
+		var node = document.createTextNode("This is new.");
+		para.appendChild(node);
+
+		var element = document.getElementById("div1");
+		element.appendChild(para);
+		</script>
+=> This is a paragraph
+   This is another paragraph
+   This is new
+
+		var child = document.getElementById("p1");
+		element.insertBefore(para, child);	
+=> This is new
+   This is a paragraph
+   This is another paragraph
+append add new element as last child while insertBefore can add in any position
+
+- remove() method: find element to removed
+does not work in older browsers
+- removeChild() method: find parent node to remove element 
+- replaceChild() method: replace an element to HTML DOM
+
++HTML COLLECTION
+- getElementByTagName() method returns an HTMLCollection object
+- HTMLCollection object is an array-like list
+- .length
+- HTMLCollection is not an array, can loop through list + refer elements with number 
+but can't use array methods like valueOf(), pop(), push(), join() on HTMLCollection
+- Collection of HTML elements
+
+
+* JAVASCRIPT HTML DOM NODE LIST
+- Nodelist: list/collection nodes extracted from document
+almost the same as HTMLCollection
+- querySelectorAll: collect all elements that match a specified CSS selector (https://www.w3schools.com/cssref/css_selectors.asp)
+return NodeList object from this method
+- childNodes property return NodeList object
++Difference between HTMLCollection and a NodeList
+- Both array-like list of objects
+- .length property define number of item in the list
+- Both provide index to access each item like arry
+
+		HTMLCollection					NodeList
+Collection of HTML elements				Collection of document nodes
+can be access by name, id, index number			can only be access by index number
+							can contain attribute node and text node
+
+
+
+querySelector: look through html doc to find an elements with a certain class name
+- document.
+	+.: look for class
+	+#: look for id
+- document.creatTextNode: creat text node
+	+HTML include text + element node
+	+use createElement to create element node
+	+use element.appendChild or element.insertBefore to append text node
+
+- Array.from: collect elements into an array
+
+- classList.add: add element to class list
+- classList.remove:
+- classList.toggle: add/ remove if element doesn't exist/ exist
+
+- innerHTML: sets/ returns HTML content of an element
+- defer: execute JS after HTML DOM element loaded
+
+
+XV. CANVAS
+- Canvas HTML element for graphics(drawing/ images etc) via scripting 
+- Step by step:
+1. Find canvas element
+	var canvas=document.getElementById("myCanvas");
+2. Create a drawing object
+- getcontex() method: return drawing context on canvas
+	var ctx = canvas.getContext(contextType);
+	var ctx = canvas.getContext(contestType, contextAttribute); 
+	+context Type: .2d: render  2 dimensions  opwn
+		.webgl(experiemental webgl): 3 dimentional rendering context webgl version 1
+		.webgl2: WebGL version 2
+		.bitmapprerenderer: replace canvas content with ImageBitmap
+3. Draw on canvas
+- rect(x, y, width, height): creates rectangle
+- fillRect(): filled rectangle
+- strokeRect(): no fill rectangle
+- clearRect(): clears specified pixels within rectangle
+	x,y starting position
+	rectangle width, height from starting point
+- fillStyle before creat canvas
+*Draw a line: 
+	moveTo(x,y): define starting point
+	lineTo(x,y): define end point
+*Draw a circile:
+	beginPath() - begin a path
+	arc(x,y,r startangle. endgmae): create arc/ curve
+		circle: startangle = 0, endangle = 2*Math.PI
+		x,y: x,y circle center coordinate
+		r: circle radius
+
+* Gradient: fill canvas with gradient
+	+createLinearGradient(x, y. x1. y1)
+	+createRadicalGradient(x, y, r, x1, y1, r1)
+- Add 2+ color stops
+	+addColorStop(position, color)
+		position = 0-1
+- set fillStyle or strokeStyle to gradient
+	ctx.fillStyle = grd;
+
+*Draw Text
+- .font:
+- .fillText(text, x, y): draws "filled" text 
+- .strokeText(text, x, y): draws text on a canvas
+- .fillStyle: for color
+
+*Draw images
+-drawImage(image, x, y)
+
+
+
+
+
+XVI. Javascript console
+- String Interpolated: replacing placeholders with values in a string literal (backticks ``: template literal)
+	const number = 42;
+	const message = `the number is ${number};
+	message; // `the number is 42`
+- %c: put at the start of string for styling in console, 2nd arguement is for styling
+	console.log('%c Hello World', 'font-sized: 20px; color: red; etc')
+- console.:	warn:
+		error: display error
+		info: 
+		assert (condition, action): check if things are true/ false, if false execute action
+		clear:
+		dir: view DOM element
+		count: count number of times an element is iterated
+
+- Grouping: group/ groupEnd to wrap element into group
+group could be change to groupCollapse for better transparency		
+	dogs.forEach(dog =>{
+		console.group(`${dog.name}`)	
+		console.log(`This is ${dog.nane}`);
+		console.log(`${dog.name} is ${dog.age} years old`);
+		console.log(`${dog.name} is $[dog.age * 7}dog years old`);
+
+		console.groupEnd(`${dog.name}`)		
+	})
+
+- timing: time how much time an action cost
+ 
+	console.time('fetching data`);		
+	fetch('https://api.github.com//users/wesbro')
+		.then(data => data.json())
+		.then(data => {
+			console.timeEnd('fetching data');
+			console.log(data);
+	})
+
+
+- table: take array of objects, assuming same property -> display them in a table
+
+
+
+
+
+
+XVI. TEST DRIVEN DEVELOPMENT (TDD)
+- The practice of writiing automated tests, describe how code work before writing code
+- require(): import code from javascript file
+- describe(): body of the test, run and test code to see if output is correct
+- it(): describe theoretical output in English, include expect() function
+- module.export: put in javascript file to export and imported by require()
+*Terminal
+- jasmine File/directory: run TDD

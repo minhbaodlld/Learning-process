@@ -1,0 +1,83 @@
+OBJECT-ORIENTED PROGRAMMING: Packing up functional units into nested object
+
+hide complexity by hiding low-level detail in higher-order components -> moving up new level abstraction 
+
+*API (Application programming interface): the way collaborating peogrammer interact across various parts of the code
+- Allow right people to access right function and data by public/ private function
+- only function inside the object can call private function
+- the ability to hide complexity and selectively reveal it is the essence of OOP, good for tackling large complex program	
+
+filing system for code, give programmer way to name -> building library
+
+package function into hierarchies pulling relatedd code into object
+	E.g: car.engine.cruiseControl.setCruiseControlSpeed(55)
+		.transmission..	.
+	too highly coupled, bad practices, code coupling 
+		
+
+- agnostic / data agnostic: software program does not know or care in what manner data was sent to it	
+
+- API: Application Programming Interface
+	+tool set, help create software
+	+good API clear, conscise command, can be used and reused
+
+- CLASS-BASED:  class: defined before hands, provide expected attributes of object 
+	 	object: instantiated/ represent based on class, object in the same class share common attribute
+
+- OBJECT-BASED: no class
+		prototype of a n object: is another object linked with previous object
+
+
+*ENCAPSULATION (reduce complexity)
+- ENCAPSULATION: bind data and function that manipulate that data 
+	-> prevent outside interference and misuse
+- Javascript:  OOP E.g
+	+let employee = {		
+		baseSalary: 30_000,
+		overtime : 10,
+		rate: 20,
+		getWage: function() {
+			return this.baseSalary + (this.overtime * this.rate);
+		}
+	};
+	employee.getwage()
+
++ Contrast to OOP:
+	let baseSalary = 30_000;
+	let overtime = 10;
+	let rate = 20;
+
+	function getWage(baseSalary, overtime, rate){
+		return baseSalary + (overtime * rate);
+	}
+
+-Function with fewer parameters is better
+
+
+
+*ABSTRACTION
+- hide method and property from outside 
+	+benefit: Simpler interface
+		  Reduce impact of change
+
+
+
+*INHERITANCE
+- eliminate redundance code
+
+
+
+
+*POLYMORPHISM
+- refactor ugly switch/ case statement
+- a single interface is applicable to a number of different types
+-Implementation:
+	+one function can take multiple types of parameters
+	+a function can be written to take in generic types
+	+a function can take in subtypes of a type.
+
+- POLYMORPHISM refers to a programming language's ability to process objects differently 
+	depending on their data type or class. 
+	More specifically, it is the ability to redefine methods for derived classes.
+	+ Superclass: same interface / share common characteristics 
+	+ subclasses: provide implementation

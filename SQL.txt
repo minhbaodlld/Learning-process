@@ -1,0 +1,138 @@
+- CRUD:	create, read, update, delete	
+	-create: accounts, customer, purchases 
+		+INSERT 
+	-read: data user logs i, load up name and info
+		+SELECT
+		+SELECT DISTINCT: select only different value
+	-update: e-mail address
+		+UPDATE
+	-delete: accounts
+		+DELETE 
+
+*DATA TYPE
+- INT: whole number
+- DECIMAL(M,N): decimal number - exact value (M: total digit stores, N: no digit stores after decimal point)
+- VARCHAR(L): string of text of length l
+- BLOB: binary large objec, stores large data
+- DATE: 'YYYY-MM-DD'
+- TIMESTAMP: 'YYY-MM-DD HH:MM:SS' - used for recording
+
+
+*CONSTRAIN
+- rule for data in table
+- NOT NULL: 
+- UNIQUE: value unique each row table/ rejected
+- DEFAULT:
+- AUTO_INCREMENT:
+
+
+*UPDATE AND DELETE
+-UPDATE tbl_name;
+	SET	 
+	WHERE	
+
+-DELETE FROM tbl_name;
+	WHERE
+
+
+
+
+
+
+*QUERIES
+- Block SQL ask system for info
+- SELECT: get info
+	+SELECT first_name AS forename, last_name AS surname
+	+SELECT DISTINCT: n.o distinct value from table
+	+SELECT COUNT:
+	+SELECT AVG()/SUM(): average/ sum
+- *: grab all data
+- ORDER BY: ...  ASC/ DESC = ascending/ descending
+- LIMIT: no of result
+- WHERE: condition
+	+ <, >, <=, >=, = , <>, AND, OR
+	+ IN (value): pick data within value
+
+
+*WILDCARDS
+- subtitute one/ more character in string
+- % = any #(number) characters
+- _ = one character
+- h[oa]t character within brackets {h[oa]t finds hot and hat, but not hit}
+- h[^oa]t character not brackets {h[^oa]t finds hit, but not hot and hat}
+- c[a-b] range of characters {c[a-b]t finds cat and cbt}
+
+
+
+*UNION
+-combine multiple SELECT statements
+ SELECT FROM
+ UNION
+ SELECT FROM
+ UNION
+ etc
+
+-Rules: +same # column
+	+same data type
+
+
+*JOIN
+- Combine rows 2/ more tables based on realted column
+- JOIN: inner join
+- LEFT JOIN: include all rows left table
+- RIGHT JOIN: include all rows right table
+- FULL OUTER JOIN: LEFT + RIGHT
+
+
+
+
+*NESTED QUERY
+- multiple SELECT
+
+
+
+*ON DELETE
+- ON DELETE SET NULL: value -> NULL, can't be used for PRIMARY KEY	
+- ON DELETE CASCADE: delete row entire db, used for PRIMARY KEY
+
+
+
+
+
+
+*TRIGGER
+- Must used on MySQL command line client due to changing DELIMITED 
+- Block SQL code defines certain action when certain operation performed on db
+- DELIMITER: change SQL delimiter(;)
+- NEW: row getting inserted
+- DROP: discard trigger 
+
+
+
+
+
+
+*ER(Entity Relationship) DIAGRAM
+- Entity: object model & store info about 	R: square
+- Attributes: specific pieces info of entity	R: oval
+- Primary key: attribute uniquely identify entry in db table	R: oval, underlined
+- Composite Attribute: attribute broken up -> sub-attributes	R: oval
+- Multi-valued Attribute: attribute have more than 1 value	R: double oval
+- Derived Attribute: derived other attributes			R: dotted oval
+- Multiple Entities	
+- Relationships: between 2 entities				R: diamond
+- Participation:+ single line: partial participation		R: single/double line
+		+ double line: total participation
+- Relationship Attribute: attribute about relationship
+- Relationship Cardinality: # instances entity associated with relation
+		+ M : N: many vs many 
+		+ 1 : 1: 1 vs 1
+		+ 1 : N: 1 vs many
+- Weak Entity: relies other entities to be identified		R: double square
+	+ has total participation in identifying relationship
+- Identifying relationship: serves uniquely identify weak entity | R:double diamond
+
++ER DESIGNING
+- 1:1 : PRIMARY KEY favor total participation
+- 1:N : 1 side PRIMARY KEY as FOREIGN KEY on N side 
+- M:N : New table with composite key

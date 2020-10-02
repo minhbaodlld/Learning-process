@@ -1,0 +1,200 @@
+https://stackoverflow.com/questions/2213815/what-do-i-need-to-know-about-databases
+
+- CRUD:	create, read, update, delete	
+	-create: accounts, customer, purchases 
+		+INSERT 
+	-read: data user logs i, load up name and info
+		+SELECT
+		+SELECT DISTINCT: select only different value
+	-update: e-mail address
+		+UPDATE
+	-delete: accounts
+		+DELETE 
+	
+
+*DATABASE-SQL
+- Way of storing + organizing data for easy access, management, update
+
+- Query: single action, a request: SELECT, INSERT, UPDATE, DELETE
+
+- Transaction: sequence of operations single encapsure unit of work performed against database
+	+ACID: properties of database transaction
+	+Most databases, transaction qualified if it's ACID
+		-Atomicity: unchangeable series of operations all occur or nothing
+		-Consistency: change affected data only allowed ways, data written valid all defined rules
+		-Isolation: how/when changes from operation visible to others
+		-Durability: transaction committed survive permanently even if system crash
+
+- Schema: skelaton/ tructure of databawse, logical bluebrint how database constructed and how things relate
+	+stactic (defined before program written) / dynamic (defined by program/ data)
+
+
+- Middleware: software connects app to database, facilitate access to DBMS via web server
+
+- Distributed database: multiple database files stores multiple physical locations, controlled by central DBMS
+	+ more complex, keep data up-to-date and avoid redundancy
+	+ parallelization (balances load between servers), preventing bottleneck 
+
+- Centralized database: 
+	+ data integrity easier to maintain, once data stored outdated/ inaccurate(stale) data no longer available
+	+ difficult to retrieve lost or overwritten data since lacks accessible copies
+
+- Scalability: capability handle growing amount of data
+	+Vertical scalability: adding capacity single machine, every database vertically scalable
+	+Horizontal scalability: adding capacity more machines, DBMS be able to partition, manage and maitain data across all machines
+
+- JOIN operations: mostly used in relational databases	
+	+ combine rows from multiple tables in one query
+
+https://www.sql-join.com/
+
+-Normalization: organizing relation, attributes -> reduce redundancy, improve integrity(accurate, consistentm up-to-date data)
+	
+
+-Denormalization: adding redundamt data -> speed up complex queries reduce no of JOIN operation
+
+-ORM (Object-Realtional Mapping): translating logical representation objexts -> atomized form able sorted in relational database
+
+
+*NON-RELATIONAL (NoSQL/ not just SQL) DATABASE
+- Organize data is anything but a traditional table
+	+ Key-values stores
+	+ Documents (JSON, XML,etc)
+	+ Graphs
+	+ Flexible tables
+- Non-relational database Management Systems (NRDBMS)
+	+help  users create and maintain a non=relational database
+		mongoDB, dynamoDb, Apache cassandra, firebase. etc...
+
+- Implementiation Specific
+	+Any non -relational database falls under this category, so theres no language standard
+	+Most NRDBMS will implement their own language for performing CRUD and administrative operations on the database
+
+ 
+
+-No relation + tuples + attributes
+- Advantage:
+	+ Easier to find/ add related datas
+- Disadvantage:
+	+ Harder to count amount especially with large number
+
+- Four categories:
+	+ Key-value stores/ hash
+		-Keys are mapped to values (strings, json, blob,etc...)
+		-treat data as single collection of item
+		-simplicity, key value-pair, stores fast scaldable flexible
+		-Dynamo,, MemcacheDB, Redis
+
+	+ Graph stores
+		-Using graph structure good dealing interconnected data - social media connection, family tree, food chain
+		-Item represented relationship by "nodes", "edges"
+		-Strength: traversing connection between items
+		-Weak: limited scalability 
+		-Allergo, OrientDB, Virtuoso
+
+	+ Column stores:
+		-Row-oriented database, describe single item as row, store data particular rows together
+		-Column store values particular column together
+		-Row-oriented: primary key: row id
+		-Column-oriented: primary key data mapping to row id
+		-Accumulo, Cassandra, HBase
+
+	+ Document stores
+		-treat info of an item single instance in database (each has own structure, attributes)
+		-"Document" generaly as set of key-value pairs
+		-Document can independent units -> performance, horizontal scalability better, unstructured data stored easily
+		-Apache CouchDB, MongoDB, Azure DocumentDB
+
+-OO database: data in form objects (with attributes + method)
+	+Used when data complex, many-to-many relationships
+	+Language dependence, difficult ad-hoc queries
+
+
+
+
+*RELATIONAL DATABASE (SQL)
+- Organize data into one or more tables
+	+ Each has columns and rows
+	+ A unique key identifies each row
+
+- RDBMS (relational database management system): collection of programs enables users access database, manipulate/ representation of data,
+control access to database by various users
+	mySQL, PostgreSQL, Oracle - DBMSs
+	+Hierarchical	
+	+Network
+	+Relational: data in table formats	https://medium.com/@rwilliams_bv/intro-to-databases-for-people-who-dont-know-a-whole-lot-about-them-a64ae9af712#:~:text=Google%20defines%20database%20as%20%E2%80%9Ca,accessed%2C%20managed%2C%20and%20updated.
+		+table keyword SQL define relation = set of tuples, set is not ordered, can't have same element in 1 set
+	+Object Oriented
+-
+
+*KEY VALUE
+- surrogate key: doesn't mean anything
+- natural key: has mapping to real world
+- foreign key: attribute stores table link another table
+- composite key: require 2 attributes
+
+
+*SQL
+- Hybrid langauage 4 language in 1:
+	+Data query language (DQL):
+	+Data definition language(DDL)
+	+Data control language (DCL):
+	+Data manipulation language (DML)
+- SQL:  Structured Query Language
+	+Standardized language for interacting with RDBMS
+	+Used to perform C.R.U.D operations, as well as other administrative tasks (user management,security, backup, etc)
+	+Used to define tables and structures
+	+SQL code used on one RDBMS is not always portable to another without modification
+
+
+
+
+
+
+
+
+https://en.wikiversity.org/wiki/Data_Structures_and_Algorithms
+
+- 5x5 matrix arrange into array and store into memory 
+
+1 2 3 4 5      	array1
+6 7 8 9 10	array2
+11 12 13 14 15	array3
+16 17 18 19 20	...
+21 22 23 24 25	...	
+
+
+1000 1 		1010 11		1020 21
+1001 2	 	1011 12 	1021 22
+1002 3	 	1012 13		1022 23 
+1003 4		1013 14		1023 24	 	
+1004 5		1014 15		1024 25
+1005 6		1015 16
+1006 7		1016 17
+1007 8		1017 18
+1008 9		1018 19
+1009 10		1019 20		
+
+
+-Struct: group of related variable bundle together
+struct can be arrange into array
+	a = j[0]
+	b = j[0].accountNumber
+	c = j[0].balance
+
+-Node: struct that store data and pointer to another node location in memory
+ -> linked list: can be re-ordered, trimmed, split, reversed by changing pointer
+
+-More complex data structure from linked list:
+	+Queue: FIFO(1st-in 1st-out) enqueueing and dequeuing
+	
+	+Stack: LIFO(last-in first out) data is pushed onto and popped from stack
+	
+	+Tree: node with 2 pointer, top most node is root, nodes hang from other nodes
+	is children nodes, parent if on top, node with no children is leaf node
+	
+	+Graph data: link arbitrarily and include loop
+
+	+red-black tree and heap:...?
+
+

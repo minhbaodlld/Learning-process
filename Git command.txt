@@ -1,0 +1,189 @@
+- $ command: $ enter following command into command line
+- ~: home directory
+- pwd: list "logical" current working directory, meaning treats symlinked paths as if actual paths
+	-P: actual physical + symlinked
+
+- mv: rename directoy or file
+	mv folder/old-file.txt folder/ new-file.txt
+
+- touch: create file
+
+* List
+- ls: list files and directories
+	-a: all files (visible + hidden)
+	-l: long form listing
+	-h: human readable sizes (lh)
+	-S: sorting by size (-lhS)
+	-t: sorting by last modified time (-lt)
+	-r: reverse sort (-lr)
+
+*Link (ln)
+- ln [source file] [target file]
+- hard link by default: link files
+	+ source file changed so is target file
+	+ only work in current file system
+	+ source deleted target file live as independent file 
+	+ doesn't work for directory	
+- $ ln
+ 	-f: to force the link
+	-s: symbolic links use to link directories + files
+
+
+*Editing text files with vi
+- vi /path/to/file
+- su is for editing system file
+- Command mode:
+	+x: delete character....
+	+dd: delete entire line
+	+v: press v move cursor to select text
+	then y to copy, x to cut
+	+p: position cursor p to paste
+- Insert mode: i 
+- Save and quitting: 	+ :wq write file and quit
+			+ :w write file
+			+ :q quit without saving
+			+ :q! ignore quitting warning 
+
+*Change directories (cd)
+- cd ~/Documents
+
+- ..: navigating back up directory
+- cd: back to home directory
+
+
+
+*Creating Directories (mkdir)
+- mkdir [name of directory]: creat directory
+	-p: nested directories
+	-v: verbose output, print result of mkdir
+
+
+*Copying Files (cp)
+- $ cp [source file] [target file/ directory]
+- can copy multiple files but must end with directory 
+- $ cp 
+	-v: verbose output	
+	-R: copying directories
+	-f: force overwriting of a file, when file belong to different users
+	-i: confirm overwriting of a file, copying multiple file, some already exists
+	 	
+
+
+
+*Deleting files (rm)
+- rm: support same flag as cp
+	-v -R -f -i
+
+
+*Moving file (mv)
+- $ mv: combine cp + rm, support same flag as cp
+	-v -R -f -i
+
+
+
+*Input/Output (|,>)
+- redirecting output(|, pipe): "pipe" output of a command as input for another one
+	$ ls -a ~| grep_:  pipe ls output to grep input to find all files with underscore '_'
+
+	+can chain any number of command 
+
+-Writing to a file(>): write output onto a file
+	$ ls -a ~| grep _ > underscore.txt: 
+
+-Reading from a file (<): read data from a file
+
+
+  	
+*GIT
+- git 
+	init: place a .git directory in current directory to track project 
+	status: 
+
+add ignore file:
+	- touch .gitignore: create gitignore file, open .gitignore text file 
+	add files for git to ignore
+	- wildcard: *.file extention - * all files with specific file extension
+
+add file to staging area:
+	add .[file name]: add file to staging area
+		-A: add everything
+
+commit to repository
+	commit: commit changes to repository
+		-m "": message other about changes made
+
+remove file from staging area
+	reset [file name]: remove file from staging area, default remove everything	
+	log: show log of activities
+
+clone	clone <url> <where to clone>: clone a remote repository to develop it
+		-.: means everything in current directory
+
+	E.g: git clone git@github.com:USER_NAME/REPOSITORY-NAME.git
+
+view info on remote directory:
+	remote -v: list info to repository
+	branch -a: list all branches in repository locally + remotely
+
+Pushing changes: 
+- change code
+- check changes
+- add to staging area
+- commit 
+- push changes to repository
+
+	diff: show changes made to code
+	push <name of repository> <name of branch>: push changes to master branch of remote repository 
+	pull <name of repository> <name of branch>: any changes been made since last time pull	
+
+Common workflow:
+   Create a branch for desired feature:
+	branch <name>:	create branch with name
+	branch: list all branch current directory
+		-*: current branch woeking on
+		-a: see all branches local + remote
+	checkout <name>: change currently working b ranch
+
+	
+  After commit push branch to remote:
+	 + push -u origin calc-divide: 
+		-u associate local branch with remote branch for shortcut
+		
+	 + git push/ pull: don't require name anymore
+
+- branch -a: check branch remote + local
+  	
+  Merge a branch
+	checkout master: change to local master branch
+	pull <repository> <branch>: pull newest update before commit to master
+	branch --merge: branch that merges so far  
+	merge <name of branch>: merge changes to master
+	push <repository> <branch name>:
+
+  Delete branch
+	branch --merged: check if merge successful
+	branch -d <name>: delete branch locally
+	branch -a: check branches locally and remotely
+	push <repository> --delete <name of branch>: delete branch remotely
+
+
+
+-Git has three stages:
+	+working directory: stage fixes -> Staging area
+	+Staging area: place organise what to commit -> .git directory
+	+.git directory(Repository): check out project -> working directory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

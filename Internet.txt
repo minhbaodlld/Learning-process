@@ -1,0 +1,59 @@
+https://en.wikiversity.org/wiki/Internet_Fundamentals/Introduction
+
+Internet is a design philosophy expressed in a set of protocols
+URL: uniform resource locator
+	www.facebokk.com
+	+www: subdomain
+	+com: top-level domain
+	
+VPN: virtual private network
+	-uses Internet Protocol Security Architecture(IPSEC)
+
+HTML: Hypertext Markup Language
+
+-HTTP: Hypertext Transfer Protocol
+
+-Search engine: crawler
+
+
+*TRANSPORT LAYER
+-DNS: associate domain name with IP address for easy finding
+	+each major domain .org,.com,.net,... has a responsible DNS server
+
+-UDP(User Datagram Protocol): get the package to right program (port)
+	+checksum: allow data be checked correct by sum of data	
+	+UDP doesn't fix data/ request new one if wrong, package is discarded by received program
+
+-TCP(Transmission Control Protocol): 
+	+package are numbered for reordering if scramble
+	+package receive send ACK to acknowledge, if not send duplicate package
+	+can send multiple package instead of waiting for ACK
+	+can adjust transmission rate based on congestion
+
+
+-IP(internet protocol): Ip get package to right computer
+data is send by package not 1 file, follow IP standard
+
+
+*LAYERS OF THE OSI MODEL
+1.APPLICATION LAYER
+2.PRESENTATION LAYER
+3.SESSION LAYER
+4.TRANSPORT LAYER
+5.NETWORK LAYER
+6.DATA LINK LAYER
+7.PHYSICAL LAYER
+
+
+
+
+*SECURITY
+-Protect"
+	+Secrecy: only authorised people can access
+	+integrity:		"	     use/ modify 		 
+	+availability		"	     always have access 
+of computer data and system against threat
+
+-Threat model: how secured is based on who's the threat
+
+

@@ -1,0 +1,179 @@
+- Variable:name of a piece of data
+- Object {}: bunch of pieces of data  all organised together
+	E.g: 		var dummy = {
+		id: 12884002,
+    		age: 28,
+    		name: 'Bob',
+    		favorite_song: 'Photograph, by Nickelback'
+		}
+	dummy.id etc = Property
+- Array []: list of similar pieces of data
+	E.g:	var dumb_tweets = ['a,b,c,d']
+		dumb_tweets[0],[1] etc
+- API (purpose-build pieces of code): bundled-up set of property and methods
+- Argument: piece of data given to a Function
+- Function: piece of code that does something and (usually) has a name
+- If: statement
+- While: loop	
+- Float: number with fractional part
+- 'method': when function belong to something else or specific to an object (string, list,...)
+
++Arithmetic OPERATIONS
+	 
+	=== (three equals signs) compares the values on either side to see if they are exactly equal. If they are equal, the result is true. 6 === 6 would be true.
+	!== compares the values on either side to see if they are not exactly equal. If they are not equal, the result is true. 6 !== 3 would be true.
+	> checks to see if the value on the left side is bigger than the value on the right side. 6 > 3 would be true.
+	< checks to see if the value on the right side is bigger than the value on the left side. 3 < 6 would be true.
+	>= checks to see if the value on the left side is bigger than, or equal to, the value on the right side. 6 >= 6 and 6 >= 5 are both true.
+	<= checks to see if the value on the right side is bigger than, or equal to, the value on the left side. 6 <= 6 and 6 <= 7 are both true.
+	% get remainder of division 17 % 3 = 2
+	// get integer value
+	** calculate power
+	j/J Imaginary part
+	+/-/*/...= augmented/ enhance assignment operator
+- method:
+	round:
+	abs:
+- math module: contain reusable functiion for mathematical calculation
+		import math
+		math. ...
+
++STRING:
+	\ escape quote	E.g: 'doesn\'t' -> "doesn't"
+	\n newline (print)
+	print(r) raw strings
+	+ glue string together, * repeat strings
+
+- formated string: useful in create dynamicly text with variable
+	a = f'{variable 1} {variable 2} + ...'
+- ''' - multi-line string
+- End of lines are automatically included in the string, but it’s possible to prevent this by adding a \ at the end of the line. The following example:
+	E.g: print("""\
+
+- word = 'Python'
+			 +---+---+---+---+---+---+
+			 | P | y | t | h | o | n |
+			 +---+---+---+---+---+---+
+		 	 0   1   2   3   4   5   6
+			-6  -5  -4  -3  -2  -1
+	word[:2] beginning -> 2 / [4:] 4 inlcuded -> end (Slice)
+
+- 'len()' return length of string
+- 'end' can be used to avoid the newline after the output, or end the output with a different string
+- method:
+	variable.upper/lower (case)/ title/find/replace
+	"abc" in variable -> True/False
+
+
++LISTS (a=[1,2,3,..])
+-reverse list: rvs=wrd[::-1]
+ *LIST COMPREHENSION
+ -  years_of_birth = [1990, 1991, 1990, 1990, 1992, 1991]
+ -  ages = [2014 - year for year in years_of_birth]
+
+ *TUPLE (a=(1,2,3,...))
+
+ - similar to list but immutaple
+ - Unpacking
+     coordinate= (1,2,3)
+      x,y,z= cordinate - x=1, y=2, z=3
+
+ *METHOD
+ - .append - add new item at the end
+ - .insert - add new item at the start
+ - .remove
+ - .clear
+ - .pop - remove last item in the list
+ - .index / ([number] in list) - check for exsitent of an item in a list
+ - .count
+ - .sort - ascending
+ - .reverse - sort descending order
+ - .copy	
+- mutable-changeable content
+- cube = [a,b,c]	
+		cube.append(d)= [a,b,c,d] - .append Add new item at the end 
+- 	 >>> a = ['a', 'b', 'c']
+ 	 >>> n = [1, 2, 3]
+	 >>> x = [a, n]
+	 >>> x
+	[['a', 'b', 'c'], [1, 2, 3]]
+	 >>> x[0]
+	['a', 'b', 'c']
+	 >>> x[0][1]
+	'b'
+
++LOOP
+ 
+- "for" loop iterates over the items of any sequence (a list or a string), in the order that they appear in the sequence
+- "while"
+ *If STATEMENT
+- function: if... elif... elif(else if) (add another condition) ... else
+
+- When used with a loop, the else clause has more in common with the else clause of a try statement 
+than it does with that of if statements: a try statement’s else clause runs when no exception occurs, 
+and a loop’s else clause runs when no break occurs
+
+- The continue statement, also borrowed from C, continues with the next iteration of the loop 
+
+- "def"= definde function
+- "break" statement breaks out of innermost enclosing "for" and "while" loop
+- "continue" statement continue the next iteration of the loop
+- "pass" statement does nothing, place-holder
+- "isinstance()" to check an instance’s type: isinstance(obj, int) will be True only if obj.__class__ is int or some class derived from int
+- expression is a piece of code that create a value
+ *NESTED LOOP
+
++FUNCTION
+- "input" wait user to input info
+- "inter, float, bool ()" convert data into interger, float, boolean(True/False) 
+
++OPERATORS
+ *LOGICAL
+	AND
+	OR
+	NOT
+ *COMPARISON
+	<,>,==,...
+
++DICTIONARY (customer = {"name": "a", "age":30, "male":True})
+ -customer.get - get key
+ 
++EXCEPTION(used to anticipate error)
+Try:
+	age = int(input('Age: ')
+	print(age)
+Except	ValueError:
+	print('invalid value')
+
++CLASS (define new type)
+ *CONSTRUCTOR (a function that get called at the time of creating an object)
+-class ExampleClass:
+	*def _init_(self,x,y): -constructor
+		self.x = x
+		self.y = y
+	def move(self):
+		print("move")
+	def draw(self):
+		print("draw")
+ *Inheritance (dry/ don't repeat function for different classes)
+class Mammal:
+	def walk(self):
+		print('walk')
+
+
+class Dog(Mammal)
+	pass
+
+class Cat(Mammal)
+	pass
+
++MODULES (python file with some code used to import function from another program)
++PACKAGE (directory with multiple modules)
+
+*FILES AND DIRECTORIES ( work with files and directories)
+-Absolute path: start from root of hardrive
+-Relative path: start current directories then somewhere else
+
+*PyPI (python package index)
+someone else package
+-pycharm -> terminal -> type command -> pip install ...

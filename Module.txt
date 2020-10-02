@@ -1,0 +1,48 @@
+- Pillow:	image manupulation
+
+- NumPy :	Mathematical algorithms
+
+- Oracle, SQLite, PostgreSQL, MySQL
+
+- dice.com: coding job search website
+
+- java virtual machine
+
+- java: good for enterprises, big corporate
+
+- C: light, fast, easy to read but with no way to catagorize library
+
+- Python: glue different language together
+
+- Jython: python on java
+
+- ironpython: Microsoft .NET
+
+- C#(c sharp): Microsoft .NET framework
+
+- C++: OOP version of C
+
+- Lisp - Clojure: modern version of Lisp -
+	+Clojure adapt JVM and can be widely use on every thing
+	+Clojurescript: Clojure compiles/ transpiles to Javascript to run on web
+
+- javascript turn website into software
+	=jQuery: javascript libraries
+
+- Node.js: javascript but outside of browsers
+
+- npmjs.com
+
+- API: application programming interface(sets of classes and objects) serves data to customers
+
+- Xcode: Apple IDE(integrated development environment) bring language and library together in lively
+	and dynamic way
+	+SDK software development kit
+- Django web framework on Python
+- Stackoverflow: go for debug help
+- git: version control
+- Slack: chat service, provide shorterm institutional memory
+
+- tuple: finite ordered list of elements
+
+- Modular programming
