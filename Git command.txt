@@ -174,16 +174,3 @@ Common workflow:
 	+.git directory(Repository): check out project -> working directory
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-

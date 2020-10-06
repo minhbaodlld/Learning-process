@@ -1,11 +1,27 @@
+
 I. VARIABLE		VIII. CONDITION		XV. CANVAS
+			  *TERNARY OPERATOR
+			  *SWITCH
 II. MATH		IX. ERROR		XVI. TEST DRIVEN DEVELOPMENT (TDD)
+  *FUNCTION
+  *ROUND NUMBER
 III. OBJECT		X. GLOBAL
-IV. METHOD  *ARRAY	XI. LOOP
+  *ARRAY
+  *FREQUENT METHOD
+IV. METHOD		XI. LOOP  
+  *ARRAY	
 V. CLASS OBJECT		XII. TYPE
 VI. FUNCTION		XIII. EVENT
+  *INFINITE ARGUEMENT 	  *HTML EVENTS
+  *FUNC DECLARATION
+  *ARROW FUNCTION
 VII. STRING		XIV. JAVASCRIPT DOM
-
+			  *HTML DOM
+			  *DOM METHOD
+			  *DOM DOCUMENT
+			  *DOM NAVIGATION
+			  *DOM NODES
+			  *NODELIST
 
 
 *OPERATOR
@@ -51,6 +67,12 @@ CLEAN CODE
 - parseInt(str, a) - to convert into integer, str: input, a is number e.g 2 = binary
 - toString(radix): convert number to string
 
+*DATE OUTPUT
+-new Date()
+-new Date(year, month, day, hours, minutes, second, miliseconds) (all numerical: Jan = 0, Dec = 11)
+-new Date(miliseconds)
+-new Date(date string)
+		
 	
 I. VARIABLE
 - var ... = -use throughout program ('='  assign operator)
@@ -73,6 +95,7 @@ strict mode: cannot use undeclared variable, prevent typing error that create an
 II. MATH
 - % - remainder operator
 - ** - exponentiation
+
 - increment number means add 1
 	e.g: a= a+1; or a++;
 - decrement number
@@ -82,14 +105,32 @@ II. MATH
 - === strict equality operator don't convert	
 - && - and operator
 - || - or operator
-- Math.floor - round down	
-- Math.random - random number between 0 and 1 without 1
 
+
+								
 - var r = Math.random();
-  +Function: Math.
-- random(): 	random number
-- round():	round to nearest integer
-- sqrt():	square root
+
+*FUNCTION: MATH							Pickup 
+- .random(): 	random number between 0 and 1 without 1
+- .round():	round to nearest integer
+- .sqrt():	square root
+- .abs(): 	abosolute
+- .floor():	round down to nearest integer	
+- .ceil():	round up to nearest integer
+- .min():	
+- .max():
+- .pow(x,y):	return x to power of y
+
+*ROUND NUMBER TO SPECIFIC DECIMAL
+- Math.round(num * 10)/10;
+- number.toFixed(n): converts number -> string, rounding to specified n number of decimals
+	+ use .parseFloat(number.tofixed(n)): to convert back to number
+- Rounding with precision function:
+	function round(value, precision){
+		var multiplier = Math.pow(10, precision || 0);
+		return Math.round(value * multiplier) / multipler;
+	}
+
 
 
 
@@ -130,6 +171,8 @@ III. OBJECT
 	+new Array(element0, element1, ..., elementN): array is initialized with those elements
 	+new Array(arraylength): if arraylength = interger between 0 and (2^32)-1 return array with length
 	set to that number
+
+- Array.from() or ... (spread operator): convert element into array
 
 *Frequently used array nethod:
 - toString() + join(): join array elements into a string
@@ -596,13 +639,6 @@ VIII. CONDITION
 
 
 
-*DATE OUTPUT
--new Date()
--new Date(year, month, day, hours, minutes, second, miliseconds) (all numerical: Jan = 0, Dec = 11)
--new Date(miliseconds)
--new Date(date string)
-		
-
 
 
 IX. ERROR
@@ -764,6 +800,7 @@ when enter value -> unfocus by pressing TAB/ RETURN
 
 
 XIV. JAVASCRIPT DOM (Document Object Model)
+- DOM: tree like representation contents on webpage/ document
 - DOM: W3C (World Wide Web Consortium) standard for accessing documents
 	3 different parts
 	+Core DOM - Standard model for all document type 
@@ -773,10 +810,19 @@ XIV. JAVASCRIPT DOM (Document Object Model)
 - Fundamental data type
 	+Document:
 	+Node: object within document, object can be element/text/attribute node
-	+Element: refer element/ node of type element
+	+Element: refer element/ node of type element; one specific node
 	+NodeList: array of elements, accessed by index in list item()/ list()
 	+Attribute
 	+NamedNodeMap
+
+
+
+- JavaScript manipulate DOM/ changes what browser renders
+- JavaScript run whenever <script> tag is encountered in HTML, if include at the top, DOM manipulation wil not work
+because JS code being run before nodes are created in DOM.
+==>Include JavaScript at the bottom of HTML file after DOM nodes are parsed and created
+   OR use defer: execute JS after HTML DOM element loaded
+
 
 *HTML DOM
 - Object model + programming interface for HTML, 
@@ -785,7 +831,7 @@ standard how to get, change, add/ delete HTML elements
 	+HTML element as object
 	+properties of all HTML element
 	+method to access   "
-	+events fot	    "
+	+events for	    "
 
 - HTML DOM methods: action can perform
 - HTML DOM properties: values of HTML elements that you can set/ change
@@ -794,33 +840,63 @@ standard how to get, change, add/ delete HTML elements
 
 
 
-*HTML DOM document (Document object represent web page)
+*DOM METHOD
 - Accessing document before accessing any elemnt in HTML page
 - document
 	+finding HTML Elements:
 		.getElementById(id)
 		.getElementByTagName(name)
 		.getElementByClassName(name)
+	+query selector:
+		.querySelector: look through html doc to find an elements with a certain class name/ ID
+			.: look for class
+			#: look for id
+		.querySelectorAll: collect all elements that match a specified CSS selector (https://www.w3schools.com/cssref/css_selectors.asp)
+		return NodeList object from this method
+		if problem arise, convert Nodelist into array using Array.from(): collect elements into an array
 
 	+change style
 		.getElementById(id).style.property = new style
 
-	+Adding and Deleting Elements
-		.createElement(element)		
-		.removeChild(element)
-		.appendChild(element)
-		.replaceChild(element)
-		.write(text)
-
 	+Adding Events Handlers
 		.getElementById(id).onclick = function(){code} - add event handler code to an onclick event
 
-- element.
-	changing HTML elements
-		.innerHTML = new html content 
-		.attribute = new value
-		.style.property = new style 
-	(method).setAttribute(attribute, value)
+- Changing HTML elements
+	         /.innerHTML = new html content inside {element}	//use sparringly due to security risk
+		| .attribute = new value
+		| .style.property = new style 	
+		| .textContent = 'Hello World';		//create text node containning 'Hello world' and insert it into {element} 
+	       /  
+    {element}.<	
+	       \	Editting attribute
+		| .setAttribute(attribute, value) 	//if {attribute} exist updated it to {value} else create new {attribute} with {value}
+		| .getAtrribute('id');  	//return value of specified attribute
+		\ .removeAttribute('id'); 	//remove specified attribute
+	
+
+- Working with classes
+	+div.classList.add('new)	//add class 'new' to new div
+	+div.classList.remove:		//remove class 'new' from div
+	+div.classList.toggle: 		//add/ remove if element doesn't exist/ exist
+
+- Adding and Deleting Elements
+	document.createElement(element)		//create new element in memory for manipulation on styles/ attribute before placing on page	
+      		.appendChild(element)		//places elements into DOM
+		.insertBefore(newNod, referenceNode)	//add newNode before referenceNode
+      parentNode.removeChild(element)	
+		.replaceChild(element)
+		.write(text)
+
+- Adding innline style:
+	div.style.color = 'blue';
+	div.style.cssText = 'color: blue; background: white';
+	div.setAttribute('style', 'color: blue; background: white');
+- if accessing kebab-case Css rule from JS, either use camelCase/ bracket notation instead of dot notation
+	div.style.background-color	//doesn't work - attempt to subtract color from background 
+	div.style.backgroundColor	//accesses divs background-color style	
+	div.style['background-color']	//also works
+	div.style.cssText = "background-color: white"	//ok in string
+
 
 - animation using javascript (https://www.w3schools.com/js/tryit.asp?filename=tryjs_dom_animate_3)
 function myMove() {
@@ -837,6 +913,7 @@ function myMove() {
     }
   }
 }
+
 
 *DOM NAVIGATION
 <html>					<html> is the root node	
@@ -882,7 +959,7 @@ function myMove() {
 	
 *DOM NODES
 - create new HTML elements (Nodes): add new element to HTML DOM must create the element
-then appen it to existing elemnet
+then append it to existing elemnet
 	E.g:	<div id="div1">
 		  <p id="p1">This is a paragraph.</p>
 		  <p id="p2">This is another paragraph.</p>
@@ -912,7 +989,7 @@ does not work in older browsers
 - removeChild() method: find parent node to remove element 
 - replaceChild() method: replace an element to HTML DOM
 
-+HTML COLLECTION
++ HTML COLLECTION
 - getElementByTagName() method returns an HTMLCollection object
 - HTMLCollection object is an array-like list
 - .length
@@ -921,16 +998,16 @@ but can't use array methods like valueOf(), pop(), push(), join() on HTMLCollect
 - Collection of HTML elements
 
 
-* JAVASCRIPT HTML DOM NODE LIST
+* DOM NODELIST
 - Nodelist: list/collection nodes extracted from document
 almost the same as HTMLCollection
-- querySelectorAll: collect all elements that match a specified CSS selector (https://www.w3schools.com/cssref/css_selectors.asp)
-return NodeList object from this method
 - childNodes property return NodeList object
+
 +Difference between HTMLCollection and a NodeList
+	Similarities
 - Both array-like list of objects
 - .length property define number of item in the list
-- Both provide index to access each item like arry
+- Both provide index to access each item like array
 
 		HTMLCollection					NodeList
 Collection of HTML elements				Collection of document nodes
@@ -939,23 +1016,15 @@ can be access by name, id, index number			can only be access by index number
 
 
 
-querySelector: look through html doc to find an elements with a certain class name
-- document.
-	+.: look for class
-	+#: look for id
+
+
 - document.creatTextNode: creat text node
 	+HTML include text + element node
 	+use createElement to create element node
 	+use element.appendChild or element.insertBefore to append text node
 
-- Array.from: collect elements into an array
-
-- classList.add: add element to class list
-- classList.remove:
-- classList.toggle: add/ remove if element doesn't exist/ exist
-
 - innerHTML: sets/ returns HTML content of an element
-- defer: execute JS after HTML DOM element loaded
+
 
 
 XV. CANVAS
