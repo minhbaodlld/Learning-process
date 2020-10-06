@@ -140,7 +140,7 @@ Common workflow:
    Create a branch for desired feature:
 	branch <name>:	create branch with name
 	branch: list all branch current directory
-		-*: current branch woeking on
+		-*: current branch working on
 		-a: see all branches local + remote
 	checkout <name>: change currently working b ranch
 
