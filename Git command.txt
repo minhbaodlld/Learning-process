@@ -140,7 +140,7 @@ Common workflow:
    Create a branch for desired feature:
 	branch <name>:	create branch with name
 	branch: list all branch current directory
-		-*: current branch woeking on
+		-*: current branch working on
 		-a: see all branches local + remote
 	checkout <name>: change currently working b ranch
 
@@ -172,18 +172,5 @@ Common workflow:
 	+working directory: stage fixes -> Staging area
 	+Staging area: place organise what to commit -> .git directory
 	+.git directory(Repository): check out project -> working directory
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
