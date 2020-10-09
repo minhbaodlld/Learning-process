@@ -767,7 +767,7 @@ XII. TYPES
 
 XIII. EVENT
 - addEventListener() method:
-	+attaches event handler to specified element
+,	+attaches event handler to specified element
 	+multiple event handler/ same type event handler can be attached without overwriting each other
 	+add to any DOM object not only HTML
 - .addEventListener(event, function): set ups function whenver event delivered to target
@@ -797,6 +797,52 @@ when enter value -> unfocus by pressing TAB/ RETURN
 - onmousedown, onmouseup, onclick:
 - onfocus: 
 
+- don't direct call function, use call back
+document.getElementById().addEventListener('click', function(){call back function()});
+
+*3 WAYS TO ADD EVENTS
+- method 1:
+<button onclick="alert('Hello World')">Click Me</button>
+ +less ideal, cluttering HTML, 1 "onclick" event per element
+
+- method 2:
+<!-- html file-->
+<button id ="btn">Click Me</button>
+
+//JavaScript file
+const btn = document.querySelector('#btn');
+btn.onclick = () => alert("Hello World");
+ +DOM element can only have 1 "onclick" property
+
+- method 3:
+<!-- html file-->
+<button id ="btn">Click Me Too</button>
+
+//the Javascript file
+const btn = document.querySelector('btn');
+btn.addEventListener('click',() => {
+  alert("Hello World");
+});(
+
+ +most flexible and powerful
+
+- All 3 methods can be used with name functions:
+<!-- html file -->
+<!-- method 1 -->
+<button onclick = "alertFunction> Click me baby</button>
+
+//JavaScript file
+function alertFunction(){
+  alert("YAY! YOU DID IT!");
+}
+
+//method 2
+btn.onclick = alertFunction;
+
+//method 3
+btn.addEventListener('click', alertFunction);
+
+ +Name function clean up code, good for repeat function
 
 
 XIV. JAVASCRIPT DOM (Document Object Model)
@@ -872,7 +918,24 @@ standard how to get, change, add/ delete HTML elements
 		| .setAttribute(attribute, value) 	//if {attribute} exist updated it to {value} else create new {attribute} with {value}
 		| .getAtrribute('id');  	//return value of specified attribute
 		\ .removeAttribute('id'); 	//remove specified attribute
+
 	
+- Method for working with text:
+	docment	.createTextNode: method creates Text node with specified text
++createElement -> createTextNode -> append/insertBefore createTextNode into new element
++useful when new element needed
+
+		.innerHtml: return HTML content of an element
+	       	.textContent: property sets/ returns text content of all elements in  specified node + all its descendants
++useful working existing element 
+		.innerText: returns content of all elements except <script> and <style> elements
+
+		.nodeValue: property return node value specified node, element node return null
++return null: document/ element node
++return value of attribute: attribute node
++return: content: text nodes/ comment nodes
+		
+
 
 - Working with classes
 	+div.classList.add('new)	//add class 'new' to new div
@@ -891,6 +954,7 @@ standard how to get, change, add/ delete HTML elements
 	div.style.color = 'blue';
 	div.style.cssText = 'color: blue; background: white';
 	div.setAttribute('style', 'color: blue; background: white');
+
 - if accessing kebab-case Css rule from JS, either use camelCase/ bracket notation instead of dot notation
 	div.style.background-color	//doesn't work - attempt to subtract color from background 
 	div.style.backgroundColor	//accesses divs background-color style	

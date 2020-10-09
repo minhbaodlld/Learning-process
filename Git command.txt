@@ -133,8 +133,8 @@ Pushing changes:
 - push changes to repository
 
 	diff: show changes made to code
-	push <name of repository> <name of branch>: push changes to master branch of remote repository 
-	pull <name of repository> <name of branch>: any changes been made since last time pull	
+	push <remotename> <name of local branch>: push changes to master branch of remote repository 
+	pull <remotename> <name of local branch>: any changes been made since last time pull	
 
 Common workflow:
    Create a branch for desired feature:

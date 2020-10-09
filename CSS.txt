@@ -1,9 +1,9 @@
 GLOSSARY
-I. STYLING IN HTML
+I. STYLING IN HTML			IX. FLEX BOX
 	
-II. COLOR
+II. COLOR				X. GRID
 
-III. CSS VARIABLE
+III. CSS VARIABLE			XI. PSEUDO-CLASSES
 
 IV. MEDIA QUERY
 
@@ -43,13 +43,44 @@ I. STYLING IN HTML
 	+font-weight:
 	+line-height: vertical space between each line
 	+background: linear-gradient(gradient_direction, color 1, color 2, color 3,...)
-		+url("")
+		
+		-color:
+		-image: 	url("")
++(repeat)linear/radical-gradient()
+
+		-position:(value1, value2) 
++left/right/top/bottom/center; 1 value provided, 2nd value default to center
++unit: px, em, %, etc, 1 value provided, 2nd value = 50%
+
+		-size:	set width + height
++cover: cover entire container
++contain: resize bg => fully visible
+
+		-repeat: how to repeat bg (default: repeat both x+y +clipping)
++repeat-x/y: repeat only horizontally/ vertically
++no-repeat:
++space: repeat as much as possible without clipping
++round: repeated + squished + stretched to fill space (no-gaps)
+
+		-origin: 	origin position/ positioning area of bg images
++padding-box(default): start upper left corner padding edge
++border-box: upper left corner border
++content-box: upper left corner content
+		-clip: 		defines how far bg should extend
++border-box(default): extend behind border
++padding-box: extend inside edge of border
++content-box: extends edge of content box
+		-attachment: 	bg images fixed/ scroll with page
++scroll(default): scroll with page
++fixed: 
++local: scroll with content
+
 	+transform: function: scale(); change scale of elements
 		.move():
 		.rotate():
 		.skewX(): skews selected element along its X(horizontal) axis
 		.skewY(): skews selected element along its Y(vertical) axis
-
+		
 
 	
 - .: class
@@ -97,6 +128,18 @@ use: #id <element>, #id <element>, etc to style sub element within that id
 	</style>
 
 - Selector [attribute = value]: [type = 'radio']
+
+- css [attribute] selector: select element with specified attribute /* drum key javascript30 */
+	+[data-key]: 		select all elements with data-key attribute
+	+[type = 'button']:	select all elements with type = 'button
+	+[title~= flower]: 	select all element with title attribute containing the word 'flower'
+	+[lang|= en]:		select all elements with lang attribute value starting with "en"
+value has to be whole word, either alone "en" or followed by hyphen(-) "en-lang"
+	+a[href^="https"]	select every <a> element whose href attribute begins with "https"
+	+a[href $= ".pdf"]		''		''		''    ends with ".pdf"		
+	+a[href *= "w3schools"]		''		''		''    contains substring "w3schools"
+last 3 selectors: value does not have to be whole word
+
 
 
 +TEXTBOX
@@ -305,7 +348,7 @@ position relative till offset is met in viewport -> stick in place(like fixed)
 	
 	
 - left/right/top/bottom: +auto
-			 +unit, %
+			 +unit, %left
 			 +initial/ inherit
 
 - Float: removed from flow, pushed left/ right of containing parent, wrap element around
@@ -313,7 +356,7 @@ use width specify horizontal space float element requires
 work well with 2 column layout
 
 - z-index: specify order how elements are stacked, higher number higher priority
-can be negative
+can be negative	
 
 - margin: auto = center block element horizontally
 
@@ -480,7 +523,7 @@ align flex items along cross axis
 
 
 
-IX. GRID
+X. GRID
 - display: grid: turn HTML element -> grid container
 - float, display: inline-block, display: table-cell, vertical-align and column
 properties have no effect on a grid item.
@@ -558,7 +601,7 @@ short for: grid-column-start + end
 		keep inserting 60px columns and stretching them until another one can be insert
 	if container can't fit all items 1 row, move to new one			
 
-	+ minmax function: limit item size when container changes size
+	+ minmax function: limit item 30 when container changes size
 		grid-template-columns: 100px minmax(50px, 200px);		
 		
 	+ auto-fit: similar to auto-fill except if container's size exceed size of all items
@@ -606,8 +649,57 @@ turn direct descendants -> grid -> grid within grid
 
 		
 	
+XI. PSEUDO-CLASSES
+- Used to define an element special state 
+	+style element when mouse over
+	+style visited/ unvisited link differently
+	+style element when it gets focused
+	+etc
+- Syntax:
+	selector: pseudo-class{
+		property: value;
+	}
 
+- Anchor Pseuodo-classes: style link 
+	/* unvisited link */
+	a:link {
+	  color: #FF0000;
+	}
+	
+	/* visited link */
+	a:visited {
+	  color: #00FF00;
+	}
+	
+	/* mouse over link */
+	a:hover {
+	  color: #FF00FF;
+	}
 
+	/* selected link */
+	a:active {
+	  color: #0000FF;
+	}
+:a:hover MUST come after a:link and a:visited in the CSS definition in order to be effective! 
+a:active MUST come after a:hover in the CSS definition in order to be effective! 
+Pseudo-class names are not case-sensitive.
+
+- Pseudo-classes:
+	:hover
+	:first-child: matches 1st child element 
+	p:first-child <tag>: all <tag> element in first child p element
+	:lang: define special rules different languages
+
+- CSS Pseudo Elements:
+	p::after - insert content after every <p> element
+	p::before - 	''	  before	''
+	p::first-letter - select 1st letter of every <p> element
+		+font/color/background/margin/padding/border properties
+		+text-decoration/ vertical-align (if float is none)
+		+text-transform, line-height, float, clear
+	p::first-line - selects 1st line 	''	pos
+	p::selection - selects portion of element selected by user
+		+color, background, cursor, outline
 
 
 

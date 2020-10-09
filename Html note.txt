@@ -60,7 +60,22 @@ I. HTML TAG (define layout)
 - name: +reference element JS
 	+form element: reference data when submitted
 	+iframe element: target form submission
-	
+
+- data- attribute: used to store custom data private to page/ application
+allow the ability to embed custom data attributes on to all HTML elements	
+stored data then can be used in JavaScript for more engaging user experience
+consist 2 parts:
+	+attribute name no uppercase letters. at least 1 character long after 'data-' prefix
+	+attribute value can be any string
+
+	E.g: 
+	<div class="keys">
+    		<div data-key="65" class="key">
+      		<kbd>A</kbd>
+      		<span class="sound">clap</span>
+    	</div>
+	<audio data-key="65" src="sounds/clap.wav"></audio>
+	<!-- Assosicate data-key = "65" to audio play when that key is pressed -->
 
   *Font Awesome
 
@@ -393,5 +408,10 @@ assistive devices, avoid confusion
 	+1, 2, 3,etc: order keyboard focus cycle through before moving back to default "0"
 	
 	
+XIV. HTML FILE PATH
+<img src="picture.jpg">		The "picture.jpg" file is located in the same folder as the current page
+<img src="images/picture.jpg">	The "picture.jpg" file is located in the images folder in the current folder
+<img src="/images/picture.jpg">	The "picture.jpg" file is located in the images folder at the root of the current web
+<img src="../picture.jpg">	The "picture.jpg" file is located in the folder one level up from the current folder
 
 
