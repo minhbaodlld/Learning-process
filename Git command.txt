@@ -7,6 +7,8 @@
 	mv folder/old-file.txt folder/ new-file.txt
 
 - touch: create file
+- abort: CTRL+C/ SHIFT+Q/ type q
+
 
 * List
 - ls: list files and directories
@@ -99,31 +101,95 @@
 	init: place a .git directory in current directory to track project 
 	status: 
 
+
 add ignore file:
 	- touch .gitignore: create gitignore file, open .gitignore text file 
 	add files for git to ignore
 	- wildcard: *.file extention - * all files with specific file extension
 
+
 add file to staging area:
 	add .[file name]: add file to staging area
 		-A: add everything
+
 
 commit to repository
 	commit: commit changes to repository
 		-m "": message other about changes made
 
+
 remove file from staging area
 	reset [file name]: remove file from staging area, default remove everything	
 	log: show log of activities
+
 
 clone	clone <url> <where to clone>: clone a remote repository to develop it
 		-.: means everything in current directory
 
 	E.g: git clone git@github.com:USER_NAME/REPOSITORY-NAME.git
 
+
 view info on remote directory:
 	remote -v: list info to repository
 	branch -a: list all branches in repository locally + remotely
+
+
+check wrong commit and revert: gitk
+
+
+review differences: git log HEAD..origin/master
+
+
+update remote repository: git remote update
+	update all branches to track remote one. not merge changes
+git fetch: can update only branch you're on, not merge changes
+git pull: update + merge remote changes of present branch you're on
+
+
+Compare local vs remote: diff <local-branch_path> <remote-branch_path>
+
+
+Merge: merge branch/ repository
+	E.g: git merge origin/master
+	merge origin/master into your work
+
+	... o ---- o ---- A ---- B  origin/master (upstream work)
+	                   \      \
+        	            C ---- M  master (your work)
+	graph of history using merge, M history become non-linear
+
+	New merge commit M has two parents. each representing one path that led to the content stored
+	in that commit
+
+
+Rebase: rebase commit C(your work) as if you based it on commit B instead of A
+Git adds explicit separation between commit and rebase steps
+
+	E.g: git rebase origin/master
+	OR   git pull --rebase
+
+	.. o ---- o ---- A ---- B  origin/master (upstream work)
+            	              	\
+                       		 C'  master (your work)
+graph of history using rebase, C` history is still linear
+
+	Commit C` new commit created by rebase different than C in 2 ways:
+		1. It has different history B instead of A
+		2. Its content accounts for changes in both B and C, it is the same as M from merge
+	pushing C` work if no one push while you're rebasing
+
+
+Update:
+	+1st time set up
+		sudo add-apt-repository -y "deb https://packages.microsoft.com/repos/vscode stable main"
+		sudo apt update
+		sudo apt -y install code
+
+	+After 1st time
+		sudo apt-get update
+		sudo apt-get dist-upgrade
+	or	sudo apt-get full-upgrade
+	
 
 Pushing changes: 
 - change code
@@ -132,6 +198,7 @@ Pushing changes:
 - commit 
 - push changes to repository
 
+	fetch: fetch remote repository 
 	diff: show changes made to code
 	push <remotename> <name of local branch>: push changes to master branch of remote repository 
 	pull <remotename> <name of local branch>: any changes been made since last time pull	

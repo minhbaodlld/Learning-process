@@ -77,6 +77,12 @@ consist 2 parts:
 	<audio data-key="65" src="sounds/clap.wav"></audio>
 	<!-- Assosicate data-key = "65" to audio play when that key is pressed -->
 
+- Class attribute: elements can belong to more than 1 class
+to define multiple classes names with space
+	<div class="city main"></div>
+	this <div> element will receive CSS style from both city + main
+	
+
   *Font Awesome
 
 - Add following to use icon 
@@ -293,10 +299,17 @@ VIII. INPUT & FORM
 		= "range"
 		= "file"
 		= "checkbox": can check everybox
-				different value(0,1,2,...) in a same group to identify which was checked				
-		= "radio": can only check one button, wrap in <label></labe>
+				different value(0,1,2,...) in a same group to identify which was checked
+				
+		= "radio": can only check one button, wrap in <label></label>
 			should have same "name" attribute to create group
 			different value(0,1,2,...) in a same group to identify which was checked
+
+		= "range": slider go along with min + max attribute 
+			<input type="range" min="0" max="200"></input>
+
+		="color": color picker
+
 		+checked attribute: set checkbox + radio button checked by default
 		
 

@@ -39,14 +39,19 @@ I. STYLING IN HTML
 		E.g: border: 5px solid red
 	+width:
 	+height
-	+background-color:
 	+font-weight:
 	+line-height: vertical space between each line
-	+background: linear-gradient(gradient_direction, color 1, color 2, color 3,...)
+	+background: 
 		
 		-color:
+
 		-image: 	url("")
-+(repeat)linear/radical-gradient()
++(repeating-)linear/radical-gradient()
+	E.g: linear-gradient(gradient_direction, color 1, color 2, color 3,...)
+		gradient_direction: +top to bottom(default): just add color
+		+left to right: to right, etc
+		+diagonal: to bottom right, etc
+		+angle: 190deg, etc
 
 		-position:(value1, value2) 
 +left/right/top/bottom/center; 1 value provided, 2nd value default to center
@@ -66,21 +71,41 @@ I. STYLING IN HTML
 +padding-box(default): start upper left corner padding edge
 +border-box: upper left corner border
 +content-box: upper left corner content
+
 		-clip: 		defines how far bg should extend
 +border-box(default): extend behind border
 +padding-box: extend inside edge of border
 +content-box: extends edge of content box
+
 		-attachment: 	bg images fixed/ scroll with page
 +scroll(default): scroll with page
 +fixed: 
 +local: scroll with content
 
-	+transform: function: scale(); change scale of elements
-		.move():
-		.rotate():
-		.skewX(): skews selected element along its X(horizontal) axis
-		.skewY(): skews selected element along its Y(vertical) axis
-		
+	+transform: 
+		.scale(x,y): change scale of elements
+			.scale3d(x,y,z):
+			.scaleX/Y/Z(x):
+
+		.rotate(angle):
+			.rotate3d(x,y,angle): 3D rotation
+			.rotateX/Y/Z(angle) : X/Y/Z-axis rotation
+
+		.skew(x-angle, y-angle): 2d skew transformation 
+			.skewX(angle): 	skews selected element along its X(horizontal) axis
+			.skewY(angle): 	skews selected element along its Y(vertical) axis
+
+		.matrix(6*n): 2D transformation, using matrix of 6 values
+			.matrix3d(16*n): using 4x4 matrix of 16 values
+
+		.translate(x,y): move element from current position
+			.translate3d(x,y,z)
+			.translateX/Y/Z(x/y/z)
+
+		.perspective(n): defines perspective view
+
+	+transform-origin(default 50%): rotate along horizontal axis, 50% = in the middle
+of the element, 100% = at the end to the right of the element
 
 	
 - .: class
@@ -139,7 +164,6 @@ value has to be whole word, either alone "en" or followed by hyphen(-) "en-lang"
 	+a[href $= ".pdf"]		''		''		''    ends with ".pdf"		
 	+a[href *= "w3schools"]		''		''		''    contains substring "w3schools"
 last 3 selectors: value does not have to be whole word
-
 
 
 +TEXTBOX
@@ -312,11 +336,12 @@ allow underline styling
 - hr tag <hr>: horizontal line through page
 
 - Box-Shadow style:( 
-	offset-x: how far to push shadow horizontally from element
-	offset-y: how far to push shadow vertically from element
-	blur-radius;
-	color:
-	)
+	offset-h:	how far to push shadow horizontally from element
+	offset-v: 	how far to push shadow vertically from element
+	blur:		blur radius, higher number = more blur
+	color:		
+	spread:		changes shadow from outer to inner shadow		
+)
   multiple box shadow can be created separated by comma
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
@@ -385,16 +410,17 @@ VI. INTERACTIVITY
 	E.g:	p:hover{
 		transform: scale(2.1);
 	     }
-	+transition: -delay
+	+transition: -property: specifies name css property transition effect is for
+		     -delay
 		     -duration
-		     -property
-		     -timing-function: 	. ease: starts slow, speeds up middle, slows down in the end
+		     -timing-function:	Specifies the speed curve of transition effect
+					. ease: starts slow, speeds up middle, slows down in the end
 					. ease-out: quick beginning -> slow down
 					. ease-in: slow beginning -> speed up
 					. linear: constant speed throughout
 					. cubic-bezier: function consists 4 main points p0-3, 1 by 1 grid
 						p0(0,0), p3(1,1) constant. 
-						cubic-bezier(x1, y1, x2, y2) )(x = 0-1, y >1)
+						cubic-bezier(x1, y1, x2, y2) )(x = 0-1, y can >1)
 	
 
 
@@ -501,7 +527,7 @@ align flex items along cross axis
 	+wrap-reverse: right-to-left or bottom-to-top
 
 * Flex Item
--flex: shorcut for item properties
+-flex property: shorcut for item properties
 	flex: 1 0 10px = flex-grow: 1, flex-shrink: 0, flex-basis: 10px
 	- flex-shrink(property of flex items): item shrink if flex container too small
 		+1,2,3, etc:  higher = smaller

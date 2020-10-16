@@ -8,8 +8,8 @@ II. MATH		IX. ERROR		XVI. TEST DRIVEN DEVELOPMENT (TDD)
 III. OBJECT		X. GLOBAL
   *ARRAY
   *FREQUENT METHOD
-IV. METHOD		XI. LOOP  
-  *ARRAY	
+IV. METHOD		XI. LOOP  	
+*AUDIO/VIDEO METHOD
 V. CLASS OBJECT		XII. TYPE
 VI. FUNCTION		XIII. EVENT
   *INFINITE ARGUEMENT 	  *HTML EVENTS
@@ -40,13 +40,17 @@ VII. STRING		XIV. JAVASCRIPT DOM
 	alert(firstName ?? lastName ?? nickName ?? "Anonymous"); // => Supercoder
 
 - ? (question mark operator): ternary operator
+- Dataset: object contain data attribute from specific element
+	<HTML>	<p id="p" data-name ="paragraph" data-usage ="text"></p>
+	<JavaScript> p = document.getElementById('p')
+		     console.log(p.dataset)
 
 
 COMMENT
 - // in-line comment
 - /* multi-line comment end with */
 
-CLEAN CODE
+CLEAN CODE`
 -Indentation: consistent
 -Semicolons: do it
 -Line length: 80 characters, indent 2 lvl when breaking lines
@@ -72,8 +76,36 @@ CLEAN CODE
 -new Date(year, month, day, hours, minutes, second, miliseconds) (all numerical: Jan = 0, Dec = 11)
 -new Date(miliseconds)
 -new Date(date string)
-		
-	
+
+-getDate():	returns day of month(1-31)
+-getDay():	returns day of week (0-6)
+-getFullYeaar():returns year
+-getHours():	returns hour (0-23)
+-getMilliseconds():
+-getMinutes():	returns minutes(0-59)
+-getMonth():	returns month (0-11)
+-getSeconds():	returns seconds(0-59)
+-getTime(): 
+-getTimezoneOffset()
+-getUTC Date/Day/FullYear/Houts/Milliseconds/Minutes/Month/Seconds()
+-set ... similar to get
+
+*CAPTURE PROPAGTION AND BUBBLING
+- When you click an element:
++CAPTURE: click ripple from top element down capture all events
++BUBBLING: triggering event from bottom up
++Option object:	
+	E.g: divs.forEach(div => div.addEventListener('click', logText, {
+		capture: true/false
+	}	
+	capture: true - run function on the way down
+default capture: false - 
+	once: true 	-listen to click then unbind its self
+
+- e.stopPropagation(): stop bubbling event up.
+
+
+
 I. VARIABLE
 - var ... = -use throughout program ('='  assign operator)
 - let ... = -its scope is limited to the block statement or expression that it was declared in
@@ -199,6 +231,7 @@ III. OBJECT
 
 - .slice(start, end): return selected elements in a new array object
 	+include start  but not end elements
+
 - .sort(compareFunction): sort elements alphabetically and ascending by default	
 	+incorrect when sorting number
 	+numeric sort: Ascending
@@ -208,10 +241,11 @@ III. OBJECT
 	+numeric sort: Descending
 		{return(b-a)}
 	+compare function: sort() function compares two values. sort values according to the returned (+/-/0) value
-		(-) a is sorted before b
-		(+) b is sorted before a
+	negative(-) a is sorted before b
+	positive(+) b is sorted before a
 		(0) no changes
 	+ Random sort order: {return 0.5 - Math.random()}
+
 - Math.max.apply on array to find highest number
 	function myArrayMax(arr){
 		return Math.max.apply(null, arr);
@@ -224,8 +258,7 @@ III. OBJECT
 			string returned( an array with 1 item), ("") used as separator, split between character
 	limit: interger specifies number of splits, items after limit not in array
 				
-IV. Method:
-
+IV. Method
 - .constructor: returns constructor function for object
 	+arrays: return function Array(){[native code]}
 	+numbers: returns function Number(){[native code]}
@@ -250,15 +283,20 @@ IV. Method:
 	fruits.fill("Kiwi",2,4);
 
 - .filter(function(currentValue, index, arr), thisValue): creates array filled elements pass test
-	var ages = [32, 33, 16, 40];
-
-	function checkAdult(age) {
+  E.g:	var ages = [32, 33, 16, 40];
+ 	function checkAdult(age) {
   		return age >= 18;
 	}
-
 	function myFunction() {
   	document.getElementById("demo").innerHTML = ages.filter(checkAdult);
 	}
+
+	//JavaScript30 Array
+	const fifteen = inventors.filter(function(inventors){
+	if (invetors.year >= 1500 && inventors.year <= 1600){
+		return true;
+	}});
+	
 
 - .find(function(currentValue, index, arr), thisValue): returns value 1st element pass a test
 	E.G: filter
@@ -301,10 +339,11 @@ IV. Method:
 	+more than once returns last occurence
 	+returns -1 if not found
 
-- .map(function(currentValue, index, arr), thisValue): creates new array with results of calling function every elements
+- .map(function(currentValue, index, arr), thisValue): creates new array with results 
+		of calling function every elements
 	+calls function once for each element in order
 		var numbers = [4, 9, 16, 25];
-		var x = numbers.map(Math.sqrt
+		var x = numbers.map(Math.sqrt)
 		-> 2,3,4,5
 
 
@@ -320,6 +359,8 @@ IV. Method:
 
 
 - .reduce(function(total, currentValue, currentIndex, arr), initialValue): 
+total: required				currentIndex: optional
+currentValue: required			arr: optional array object current element belongs to
 	+reduce array to a single value 
 	+does not change original array
 	+execute function for array with values only, for each value left to right
@@ -329,6 +370,8 @@ IV. Method:
 		function myFunc(total, num) {
 	  		return total - num;
 		}
+		=>Subtract numbers in array, starting from left
+		100
 
 - reduceRight((function(total, currentValue, currentIndex, arr), initialValue):
 	+reduce array single value
@@ -397,6 +440,17 @@ IV. Method:
 
 - keys(): return Array Iterator object contains keys for each index in array
 
+
+*AUDIO/VIDEO METHOD
+- addTextTrack():	Adds a new text track to the audio/video
+- canPlayType() 	Checks if the browser can play specific audio/video type
+- load()		re-loads the audio/video element
+- play() 		starts playing the audio/video
+- pause()		pauses currently playing audio/video
+
+
+
+
 V. CLASS OBJECT
 - class ...
 	constructor()
@@ -453,10 +507,12 @@ split it into smaller ones
 -default can be changed:
 	function showMessage(text = "no text given"){
 	Or	if (text === undefined){
-		 text = 'empty message';
+		 
 	Or	text = text || 'empty'	
-	}
-	Or	
+	
+	Or	text = 'empty message';
+
+- e/evt/event parameter: represent element affected by event handler
 
 *INFINITE ARGUMENT FUNCTION
 - Arguments object (ES5): arguments local JS object variable available all non-arrow functions
@@ -538,6 +594,10 @@ short for let sum = function(a, b){
 	welcome();
 Even shorter version than function expression
 
+	//JavaScript30 Array
+	const fifteen = inventors.filter(inventors => invetors.year >= 1500 && inventors.year <= 1600);
+
+
 - Multiline arrow function: when more complex action is needed, use {} + normal return
 
 	E.g:
@@ -557,7 +617,7 @@ Even shorter version than function expression
 	return arr1.concat(arr2);  	- annonymous function can be converted into arrow function
   };
 	
-	var myConcat = (arr1, arr2)  arr1.concat(arr2) - arrow function used when a function takes another
+	var myConcat = (arr1, arr2) =>  arr1.concat(arr2) - arrow function used when a function takes another
 	console.log(myConcat([1,2], [3, 4, 5]));	 function as an arguement
 
 
@@ -917,6 +977,7 @@ standard how to get, change, add/ delete HTML elements
 	       \	Editting attribute
 		| .setAttribute(attribute, value) 	//if {attribute} exist updated it to {value} else create new {attribute} with {value}
 		| .getAtrribute('id');  	//return value of specified attribute
+		| .hasAttribute(name)		//check for existence
 		\ .removeAttribute('id'); 	//remove specified attribute
 
 	
@@ -938,7 +999,7 @@ standard how to get, change, add/ delete HTML elements
 
 
 - Working with classes
-	+div.classList.add('new)	//add class 'new' to new div
+	+div.classList.add('new')	//add class 'new' to new div
 	+div.classList.remove:		//remove class 'new' from div
 	+div.classList.toggle: 		//add/ remove if element doesn't exist/ exist
 
@@ -961,6 +1022,12 @@ standard how to get, change, add/ delete HTML elements
 	div.style['background-color']	//also works
 	div.style.cssText = "background-color: white"	//ok in string
 
+
+- stopPropagation method: on event object, prevent handlers further up receiving event
+	E.g: button inside clickable element, don't want click on button activate elements click
+
+- Document.documentElement: return root element of document.
+	E.g: HTML file root element would be <html>
 
 - animation using javascript (https://www.w3schools.com/js/tryit.asp?filename=tryjs_dom_animate_3)
 function myMove() {
@@ -1021,6 +1088,7 @@ function myMove() {
 	+ATTRIBUTE_NODE	 	2	+DOCUMENT_NODE		9
 	+TEXT_NODE	 	3	+DOCUMENT_TYPE_NODE	10
 	
+
 *DOM NODES
 - create new HTML elements (Nodes): add new element to HTML DOM must create the element
 then append it to existing elemnet
