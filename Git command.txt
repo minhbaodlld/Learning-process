@@ -95,6 +95,18 @@
 -Reading from a file (<): read data from a file
 
 
+-Update
+	+1st time set up
+		sudo add-apt-repository -y "deb https://packages.microsoft.com/repos/vscode stable main"
+		sudo apt update
+		sudo apt -y install code
+
+	+After 1st time
+		sudo apt-get update
+		sudo apt-get dist-upgrade
+	or	sudo apt-get full-upgrade
+
+
   	
 *GIT
 - git 
@@ -178,17 +190,6 @@ graph of history using rebase, C` history is still linear
 		2. Its content accounts for changes in both B and C, it is the same as M from merge
 	pushing C` work if no one push while you're rebasing
 
-
-Update:
-	+1st time set up
-		sudo add-apt-repository -y "deb https://packages.microsoft.com/repos/vscode stable main"
-		sudo apt update
-		sudo apt -y install code
-
-	+After 1st time
-		sudo apt-get update
-		sudo apt-get dist-upgrade
-	or	sudo apt-get full-upgrade
 	
 
 Pushing changes: 
