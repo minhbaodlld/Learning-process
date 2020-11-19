@@ -9,6 +9,8 @@ _FRAMEWORKS: MVC, SPA, PUSH VS PULL
 
 GLOSSARY
 I. HTML TAG			VII. DIV AND SPAN
+*ATTRIBUTE
+*FONT AWESOME
 II. LINK			VIII. INPUTS AND FORMS
 III. IMAGES			IX. IFRAMES
 IV. VIDEO AND YOUTUBE IFRAMES	X. META TAG
@@ -88,6 +90,7 @@ to define multiple classes names with space
 - Add following to use icon 
 	<head>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+OR FA5:	  <script src="https://kit.fontawesome.com/18b5f1b2fb.js"></script>
 	</head>	
 - placae Font Awesome icon using fa prefix and icon name
 	<i class="fa fa-car" style= "font-size:60px;color:red;"></i>

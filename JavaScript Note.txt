@@ -1,27 +1,31 @@
 
 I. VARIABLE		VIII. CONDITION		XV. CANVAS
-			  *TERNARY OPERATOR
+						  *TERNARY OPERATOR
 			  *SWITCH
 II. MATH		IX. ERROR		XVI. TEST DRIVEN DEVELOPMENT (TDD)
   *FUNCTION
   *ROUND NUMBER
-III. OBJECT		X. GLOBAL
+III. OBJECT		X. GLOBAL		XVII. REGULAR EXPRESSION
   *ARRAY
+  *DESTRUCTURING
+ASSIGNMENT
   *FREQUENT METHOD
+  
 IV. METHOD		XI. LOOP  	
-*AUDIO/VIDEO METHOD
+*AUDIO/VIDEO METHOD	*RECURSION
 V. CLASS OBJECT		XII. TYPE
 VI. FUNCTION		XIII. EVENT
   *INFINITE ARGUEMENT 	  *HTML EVENTS
-  *FUNC DECLARATION
+  *FUNC DECLARATION	  *KEYCODE
   *ARROW FUNCTION
 VII. STRING		XIV. JAVASCRIPT DOM
 			  *HTML DOM
 			  *DOM METHOD
 			  *DOM DOCUMENT
-			  *DOM NAVIGATION
+			  *DOM NAVIGATIONz
 			  *DOM NODES
 			  *NODELIST
+			  *DOM WINDOWS
 
 
 *OPERATOR
@@ -44,13 +48,14 @@ VII. STRING		XIV. JAVASCRIPT DOM
 	<HTML>	<p id="p" data-name ="paragraph" data-usage ="text"></p>
 	<JavaScript> p = document.getElementById('p')
 		     console.log(p.dataset)
+- ! not operator: !variable: check if undefined/null - return false otherwise return true
 
 
 COMMENT
 - // in-line comment
 - /* multi-line comment end with */
 
-CLEAN CODE`
+CLEAN CODE
 -Indentation: consistent
 -Semicolons: do it
 -Line length: 80 characters, indent 2 lvl when breaking lines
@@ -77,24 +82,25 @@ CLEAN CODE`
 -new Date(miliseconds)
 -new Date(date string)
 
--getDate():	returns day of month(1-31)
--getDay():	returns day of week (0-6)
--getFullYeaar():returns year
--getHours():	returns hour (0-23)
--getMilliseconds():
--getMinutes():	returns minutes(0-59)
--getMonth():	returns month (0-11)
--getSeconds():	returns seconds(0-59)
--getTime(): 
--getTimezoneOffset()
--getUTC Date/Day/FullYear/Houts/Milliseconds/Minutes/Month/Seconds()
--set ... similar to get
+new Date()
+.getDate():	returns day of month(1-31)
+.getDay():	returns day of week (0-6)
+.getFullYeaar():returns year
+.getHours():	returns hour (0-23)
+.getMilliseconds():
+.getMinutes():	returns minutes(0-59)
+.getMonth():	returns month (0-11)
+.getSeconds():	returns seconds(0-59)
+.getTime(): 
+.getTimezoneOffset()
+.getUTC Date/Day/FullYear/Houts/Milliseconds/Minutes/Month/Seconds()
+.set ... similar to get
 
 *CAPTURE PROPAGTION AND BUBBLING
 - When you click an element:
 +CAPTURE: click ripple from top element down capture all events
 +BUBBLING: triggering event from bottom up
-+Option object:	
++Option  objec :	
 	E.g: divs.forEach(div => div.addEventListener('click', logText, {
 		capture: true/false
 	}	
@@ -103,6 +109,20 @@ default capture: false -
 	once: true 	-listen to click then unbind its self
 
 - e.stopPropagation(): stop bubbling event up.
+
+
+
+*ATTRIBUTE SELECTOR
+- CSS attribute selector matches elements based on presence or value of given attribute
+	+a[title]: <a> element with a 'title' attribute
+	+a[href="https://..."]: <a> element with href matching "https://..." 
+	+a[attr~=value]: "value" in list of words separated by space
+	+a[attr|=value]: exact "value" / begin "value" followed by hypher used for
+language subcode matches
+	+a[attr^=value]: atribute value begin with "value"
+	+a[arre*=value]: contain one occurrence of "value"
+	+a[... i]: i before bracket ends, value case insensitive
+	+a[... s]: s before bracket ends, value case sensitive
 
 
 
@@ -168,26 +188,98 @@ II. MATH
 
 
 III. OBJECT
+- a data type, store complex entities + collection of various data types
+- created using figure brackets {...} with list of properties
+- A property = "key:value"	key/property name = string	value = anything
+				
 - use name indexes
 - let name = 'Mosh' - assign variable
 
 - let person = { 		- {} object literal
 	name: 'Mosh',
-	age: 30
-	} 
+	age: 30,
+	"likes birds": true,	//"like birds" multiword srting must be quoted
+	} 			/*last property can end with comma = trailing/ hanging comma
+				make it easier to add/remove/move properties, all line alike */
+- const user = {		/*object declare by const can be modified
+	name: "John"		const fixes value of user not its cocntent.
+};				error if user = ...*/
+user.name = "Pete"; 
+alert(user.name); 	=>Pete
+
 + Dot Notation
 - person.name = 'John';
 
 + Bracket Notation: 	+good for dynamically access a property name
 			+property names that are not valid name identifiers
-				- [] required when object property has space/ special characters
+			- [] required when object property has space/ special characters
+
+- Computed properties: square bracket in object literal when creating object
+	E.g:	let fruit = promt("which fruit to buy?", "apple")
+		let bag ={
+			[fruit]:5, // the name taken from fruit variable
+		};
+		alert(bag.apple); // 5 if fruit ="apple"
+	more complex expression inside square bracket:
+		let fruit = 'apple';
+		let bag ={
+			[fruit + "Computers"]:5 //bag.appleComputers = 5
+		};
+
+- Property value shorthand:
+	function makeUser(name,age){
+		return{
+			name, 	//same as name:name
+			age,	//same as age:age
+			//...other properties
+	}};
+- property name can be anything even language-reserved words like "for", "let",etc
+- Other type: converted to string when using as property name
+	let obj = {
+		0: "test" // same as "0": "test"
+	};
+- __proto__: special property, can't set it to non-object value
+	let obj ={};
+	obj.__proto__= 5; // assign a number
+	alert(obj.__proto__); //[object Object] - the value is an object
+
+- "in" operator: used test whether property exists, if no return "undefined"
+left side of "in" must be property name to be tested, variable must be property name
+"in" work well with property that store "undefined"
+
+	let user = {name: "John", age: 30, "test": undefined);
+	let key = "age";
+	alert("age" in user); 		//true, user.age exists
+	alert("blable" in user); 	//false, user.blabla doesn't exist
+	alert(key in user); 		//true, age exist
+
+- "for...in" loop: to iterate all keys of object
+	let user = {
+		name: "John",
+		age: 30,
+		isAdmin: true,
+	};
+
+	for (let key in user){
+		//keys
+		alert(key); // name, age, isAdmin
+		//values for keys
+		alert(user[key]); // John, 30, true		
+ 
+- Object is "ordered in a special fashion": interger properties are sorted, 
+other appear in creation order. for integer appear in creation folder add special character
+
+
 - person['name'] = 'Mary'; - let selection = 'name';
 	person[selection] = 'Mary';
+
 - add property to object
 	person.shirt = 'T-shirt';
 	person['shoes'] = 'Nike;
 - delete property
 	delete person.shirt;
+
+
 
 *ARRAY
 - use numbered indexes
@@ -206,17 +298,140 @@ III. OBJECT
 
 - Array.from() or ... (spread operator): convert element into array
 
-*Frequently used array nethod:
+*DESTRUCTURING ASSIGNMENT
+- make it possible unpack values arrays/ object properties -> distinct variables
+- E.g:
+	let a,b;
+	[a,b[ = [1,2];
+	console.log(a);	// 1
+	console.log(b); // 2
+- Default value
+	let a,b;
+	[a=5, b=7] = [1];
+	console.log(a); // 1
+	console.log(b); // 7
+- Swapping variables:
+	const arr = [1,2,3];
+	[arr[2], arr[1]] = [arr[1], arr[2]];
+	console.log(arr); // [1,3,2]
+- Parsing an array returned from a function, ignoring some returned values
+
+	function f() {
+	  return [1, 2, 3];
+	}
+	let a, b;
+	[a, , b] = f();
+	
+	[,,] = f(); 	//ignore all returned values
+	console.log(a); // 1
+	console.log(b); // 3
+
+- Assign the rest of array to a variable
+	let [a, ...b] = [1, 2, 3];
+	console.log(a); // 1
+	console.log(b); // [2, 3];
+
+- Unpacking values from a regular expression match(search when needed);
+
+- Object destructuring:
+	const user = {
+		id: 42,
+		is_verified: true
+	};
+	const (id, is_verified) = user
+
++assign new variable names + default value
+	const (id: p = 30, name: q = false) = user;
+	console.log(p); // 30
+	console.log(q); // false
+	
++unpacking fields from objects passed as a function parameter
+	const user = {
+	  id: 42,
+	  displayName: 'jdoe',
+	  fullName: {
+		firstName: 'John',
+		lastName: 'Doe'
+	  }
+	};
+	function userId({id}) {
+	  return id;
+	}
+	
+	function whoIs({displayName, fullName: {firstName: name}}){
+	  return `${displayName} is ${name}`;
+	
+	console.log(userId(user)); //42
+	console.log(whoIs(user));  //'jdoe is John'
+
++setting a function parameter's default value
+	funtion drawChart ({size = 'big', coords = {x: 0, y: 0}, radius = 25} = {}){
+	  console.log(size, coords, radius);
+	  //do some chart drawing
+	}
+	drawChart({
+	  coords: {x: 18, y:30},
+	  radius: 30
+	});
+	
++Nested object and array destructuring
+	const metadata = {
+	  title: 'Scratchpad',
+	  translations: [
+     	    {
+		title: 'JavaScript-Umgebund'
+	    }
+	  ]};
+
+	let {
+	  title: englishTitle, // rename
+	  translation: [
+	    {
+		title: localeTitle, 	//rename
+	    },
+	  ]} = metadata;
+
+	console.log(englishTitle);	//'Scratchpad'
+	console.log(localeTitle);	//'JavaScript-Umgebung'
+
++For of iteration and destructuring
++computed object property names and destructuring
+	let key = 'z';
+	let {[key]: foo} = {z:'bar'};
+	console.log( foo); // "bar"
++Rest in object destructuring
+	let {a,b, ...rest} = {a:10, b:20, c:30, d:40}
+	a; // 10
+	b; // 20
+	rest; //{c:30, d:40}
++Combined Array and Object destructuring
+	const props = [
+	  {id: 1, name: 'Fizz'},
+	  {id: 2, name: 'Buzz'},
+	  {id: 3, name: 'FizzBuzz'}
+	];
+	const [,,{ name }] = props;
+	console.log(name); //"FizzBuzz"
+
+
+
+*FREQUENTLY USED ARRAY METHOD:
 - toString() + join(): join array elements into a string
 	join can specifies separatorq
 		e.g .join('*')
 - .push():append data to the end of an array and return new array length
+
 - .pop(): remove last item in an array and return that item
+
 - .shift(): remove first item in an array and return it, shift other elements to lower index
+
 - .unshift(item1, item2,..., itemN): add element to the beginning of the array and returns new length
+
 - .delete could be used to delete elements but leaves holes use pop/ shift instead
+
 - .length: # of elements
 	also can be use to append: fruits[fruits.length] = "Kiwi"
+
 - .splice(startIndex, deleteCount): change array content, remove/ replace (mutating) 
 	
 	+var planet = ['Mars', ' Saturn', 'Pluto', Earth']
@@ -240,7 +455,8 @@ III. OBJECT
 			-> 1, 5, 10, 25, 40, 100
 	+numeric sort: Descending
 		{return(b-a)}
-	+compare function: sort() function compares two values. sort values according to the returned (+/-/0) value
+	+compare function: sort() function compares two values. sort values 
+			according to the returned (+/-/0) value
 	negative(-) a is sorted before b
 	positive(+) b is sorted before a
 		(0) no changes
@@ -249,15 +465,19 @@ III. OBJECT
 - Math.max.apply on array to find highest number
 	function myArrayMax(arr){
 		return Math.max.apply(null, arr);
+
 - Math.min.apply to find the lowest number in an array
 	function myArrayMin(arr) {
 		return Math.min.apply(null, arr);
 	}
+
 - .split(separator, limit): split string into array of substring, return new arrays
 	sepearator: specify character/expression used for splitting if left empty entire
 			string returned( an array with 1 item), ("") used as separator, split between character
 	limit: interger specifies number of splits, items after limit not in array
-				
+		E.g: const 
+		
+			
 IV. Method
 - .constructor: returns constructor function for object
 	+arrays: return function Array(){[native code]}
@@ -282,7 +502,8 @@ IV. Method
 	fruits = ["banana", "orange", "apple", "mango"]
 	fruits.fill("Kiwi",2,4);
 
-- .filter(function(currentValue, index, arr), thisValue): creates array filled elements pass test
+- .filter(function(currentValue[, index, arr]]), thisValue): creates array filled elements pass test
+
   E.g:	var ages = [32, 33, 16, 40];
  	function checkAdult(age) {
   		return age >= 18;
@@ -299,7 +520,11 @@ IV. Method
 	
 
 - .find(function(currentValue, index, arr), thisValue): returns value 1st element pass a test
-	E.G: filter
+	E.G: 
+	array1 = [5, 12, 8, 130, 44];
+	const found = array1.find(element => element >10);
+	console.log(found);
+	
 
 - .findIndex(function(currentValue, index, arr), thisValue): execute function once each element
 	+if function returns True, return index element( and does not check remaining value)
@@ -319,7 +544,7 @@ IV. Method
 	
 	
 	
-- .include(element, start): determines whether array contains specified element,
+- .includes(element, start): determines whether array contains specified element,
 	return true or false, case sensitive
 
 - .indexOf(item, start): find specified item returns its position 
@@ -340,7 +565,7 @@ IV. Method
 	+returns -1 if not found
 
 - .map(function(currentValue, index, arr), thisValue): creates new array with results 
-		of calling function every elements
+after executing function
 	+calls function once for each element in order
 		var numbers = [4, 9, 16, 25];
 		var x = numbers.map(Math.sqrt)
@@ -358,20 +583,87 @@ IV. Method
 
 
 
-- .reduce(function(total, currentValue, currentIndex, arr), initialValue): 
-total: required				currentIndex: optional
-currentValue: required			arr: optional array object current element belongs to
+- .reduce( function (total, currentValue[ currentIndex[, arr]]){
+	//return result from executing something for accumulator or currentValue	
+	}, initialValue): 
++ total(required): initial value/ previously return value of function
++ currentValue(required): value of current element
++ currentIndex(optional): array index of current elements
++ arr(optional): array object current element belongs to
++ initialValue(optional): if not provided, total = 1st array element, 
+currentValue = second element
+
 	+reduce array to a single value 
 	+does not change original array
 	+execute function for array with values only, for each value left to right
-	  subtract numbers in the array from the beginning:
-		var numbers = [175, 50, 25];
-		document.getElementById("demo").innerHTML = numbers.reduce(myFunc);
-		function myFunc(total, num) {
-	  		return total - num;
+		
+		const array1 = [1, 2, 3, 4];
+		const reducer = (accumulator, currentValue) => accumulator + currentValue
+		console.log(array1.reduce(reducer));
+		//expected output: 10
+	
+	+Sum up instances of array elements(Javascript30)  
+		const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 
+		'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck']
+		const transportation = data.reduce(function(obj, item) {
+			if(!obj[item[){
+			  obj[item] = 0;
+			}
+			obj[item]++;
+		}, {});
+		
+	+sum of values in an object array
+		sum = [{x:1}, {x:2},{x:3}].reduce(
+		(total, current) =>total + current.x
+		, 0
+		)
+		console.log(sum) // 6
+	+flatten array of arrays
+		let flattened = [[0,1], [2,3], [4,5]].reduce(
+		  (sum, value) => sum.concat(value)}
+		, []
+		)
+		//flattened is [0, 1, 2, 3, 4, 5]
+	+Counting instances of values in an object
+		let names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice']
+		let countedNames = names.reduce(function(allNames, name){
+		  if (name in allNames){
+			allNames[name]++;
+		  }else{
+			allNames[name] = 1;
+		  }
+		  return allNames
+		}, {})
+		//countedNames is {'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1)
+
+	+Grouping objects by property
+		let people = [
+		  {name: 'Alice', age: 21},
+		  {name: 'Max', age: 20},
+		  {name: 'Jane', age: 20}
+		];
+
+		function groupBy(objectArray, property){
+		  return objectArray.reduce(function(acc, obj){
+			let key = obj[property]
+			if (!acc[key]) {
+			  acc[key] = [];
+			}
+			acc[key].push(obj)
+			return acc
+		}, {})
+		let groupedPeople = groupby(people, 'age')
+		// groupPeople is 
+		{
+		  20: [
+			{name: 'Max', age: 20},
+			{nameL 'Jame', age: 20)
+		  ]
+		  21: [{name: 'Alice', age: 21}]
 		}
-		=>Subtract numbers in array, starting from left
-		100
+	+remove duplicate from array
+	+replace .filter().map() with .reduce()
+	+write map using reduce
 
 - reduceRight((function(total, currentValue, currentIndex, arr), initialValue):
 	+reduce array single value
@@ -383,9 +675,14 @@ currentValue: required			arr: optional array object current element belongs to
 
 
 
-- .some (function(currentValue, index, arr), thisValue): 
+- .some (function(currentValue[, index, [arr]]), thisValue): 
 	+check logic of elements, return true
+	+used on [] => false
+	E.g: const array = [1, 2, 3, 4, 5];
+	     const even = (element) => element % 2 ===0;
 
+	     console.log(array.some(even));
+		=> true. 
 
 
 - .toString(): returns string with all array values, separated by commas
@@ -398,7 +695,7 @@ currentValue: required			arr: optional array object current element belongs to
 
 - .forEach (value, index, object): get array with values -> apply logic to them
 	calls callback function once each elements array decesnd order
-	E.g:	-itemArray.forEach (puppy zffd puppy + 2)	
+	E.g:	-itemArray.forEach (puppy => puppy + 2)	
 
 - .appendchild: append elements to an existing elements
 	const grid = document.querySelector('.grid')
@@ -439,6 +736,7 @@ currentValue: required			arr: optional array object current element belongs to
 
 
 - keys(): return Array Iterator object contains keys for each index in array
+
 
 
 *AUDIO/VIDEO METHOD
@@ -655,6 +953,13 @@ VII. STRING
 - \f form feed
 - concatenating string with + operator: "a" + "b"; or var str = 'a'; str += 'b';
 
+- str.charCodeAt(index): return interger between 0-65535 representing 
+UTF-16 code unit
+
+- fromCharCode(num1[, ...[, numN]]): return strings created from specified 
+sequence UTF-16 code units
+- charAt(index): 
+
 +Template Literal - special type of string that make complex string easier
 - `...` : back tick
 - advantages: 	+ multi-line string
@@ -808,7 +1113,26 @@ shorter way to write while (i != 0) is while (i):
 - Postfix and Prefix: + Prefix (++i): first increments i then return new value
 	+Postfix (i++): increment i then returns old value
 
+
+*RECURSION
+- When function calls itself until it stops
+- Can be used in place of loop
+- Base case: condition stops recursion
+- Loop usess extra state variables tracking + counting while recursion uses provided 
+parameters.
+- E.g:
+	function CountDownFrom(number){
+		if (number === 0) {
+		  return;
+		}
+		console.log(nuber);
+		counDownFrom(number - 1);
+	}
 	
+
+
+
+
 XII. TYPES	
 - Value(primitives): primitives are copied by their value
 	+Number
@@ -834,8 +1158,6 @@ XIII. EVENT
 - common target: element, document, window
 - removeEventListener() method: 
 
-- keyCode: return Unicode character code/key code of key triggers onkeypress/ onkeydown + onkeyup event
-
 - document.querySelector('.class'): look through html doc to find element with class name ...
 
 *HTML events
@@ -856,6 +1178,12 @@ when enter value -> unfocus by pressing TAB/ RETURN
 
 - onmousedown, onmouseup, onclick:
 - onfocus: 
+- When use with JavaSript EventListener remove 'on'
+
+- onkeypress, onkeydown, onkeyup: press key on keyboard
+	onkeypress: not fired for (ALT, CTRL, SHIFT, ESC, etc)
+	onkeydown: detect any key pressed
+
 
 - don't direct call function, use call back
 document.getElementById().addEventListener('click', function(){call back function()});
@@ -905,6 +1233,21 @@ btn.addEventListener('click', alertFunction);
  +Name function clean up code, good for repeat function
 
 
+*KEYCODE
+- event.keycode / event.which: cross browser
+- keycode() property: returns Unicode characters code 
+	+character codes: ASCII character
+	+Key codes: key number on keyboard
+- Printable key (a-z, 1-9) use 'onkeypress' event
+- Function key ("F1", "CAPS LOCK" or "Home" etc) use "onkeydown"/ "onkeyup"
+- altKey, ctrlKey, metaKey, shiftKey: whether "ALT", "CONTROL", "META" or "SHIFT"
+key was pressed
+
+- fromCharCode() method: convert Unicode into character, return character
+- charCode() /keyCode(): returns Unicode character code
+- "string".charCodeAt(index): return unicode at specified index in a string
+
+
 XIV. JAVASCRIPT DOM (Document Object Model)
 - DOM: tree like representation contents on webpage/ document
 - DOM: W3C (World Wide Web Consortium) standard for accessing documents
@@ -927,7 +1270,10 @@ XIV. JAVASCRIPT DOM (Document Object Model)
 - JavaScript run whenever <script> tag is encountered in HTML, if include at the top, DOM manipulation wil not work
 because JS code being run before nodes are created in DOM.
 ==>Include JavaScript at the bottom of HTML file after DOM nodes are parsed and created
-   OR use defer: execute JS after HTML DOM element loaded
+   
+	OR use defer in script tag: execute JS after HTML DOM element loaded
+
+	OR Use: document.addEventListener('DOMContentLoaded', () => {function}
 
 
 *HTML DOM
@@ -945,9 +1291,11 @@ standard how to get, change, add/ delete HTML elements
 - innerHTML property: get/ replace content of element
 
 
-
 *DOM METHOD
 - Accessing document before accessing any elemnt in HTML page
+
+- click(): simulate click event on HTML element
+
 - document
 	+finding HTML Elements:
 		.getElementById(id)
@@ -961,16 +1309,17 @@ standard how to get, change, add/ delete HTML elements
 		return NodeList object from this method
 		if problem arise, convert Nodelist into array using Array.from(): collect elements into an array
 
-	+change style
-		.getElementById(id).style.property = new style
+	+change style with
+		.getElementById(id).style.property = "new style"
 
 	+Adding Events Handlers
 		.getElementById(id).onclick = function(){code} - add event handler code to an onclick event
 
+
 - Changing HTML elements
 	         /.innerHTML = new html content inside {element}	//use sparringly due to security risk
 		| .attribute = new value
-		| .style.property = new style 	
+		| .style.property = "new style" 	
 		| .textContent = 'Hello World';		//create text node containning 'Hello world' and insert it into {element} 
 	       /  
     {element}.<	
@@ -980,8 +1329,27 @@ standard how to get, change, add/ delete HTML elements
 		| .hasAttribute(name)		//check for existence
 		\ .removeAttribute('id'); 	//remove specified attribute
 
-	
-- Method for working with text:
+
+- CSS Style Declaration: object represent collection CSS property-value pairs
+	Properties: 	+cssText: sets/ return textual representation CSS declaration block
+	E.g: element.style.cssText: return property
+	     element.style.cssText = style: set property
+			+length: return number of style declaration  	   '' 
+			+parentRule: return CSS rule that is parent style block
+	Mehod:
+	+getPropertyPriority(): return if specified CSS property has "important!" priority set
+		object.getPropertyPriority("propertyName");
+	+getPropertyValue(): 	return value specified CSS property
+
+	+item():		returns CSS property name from CSS declaration block, by index
+		style.item(index);
+	+removeProperty():	removes CSS property from CSS declaration block
+	+setProperty():		sets new/ modifies existing CSS property CSS declaration block
+		object.setProperty(propertyName, value, priority);
+		object.setProperty("color", "blue", "important")		
+
+
+- Method for working with text:text
 	docment	.createTextNode: method creates Text node with specified text
 +createElement -> createTextNode -> append/insertBefore createTextNode into new element
 +useful when new element needed
@@ -995,13 +1363,14 @@ standard how to get, change, add/ delete HTML elements
 +return null: document/ element node
 +return value of attribute: attribute node
 +return: content: text nodes/ comment nodes
-		
+
 
 
 - Working with classes
 	+div.classList.add('new')	//add class 'new' to new div
 	+div.classList.remove:		//remove class 'new' from div
 	+div.classList.toggle: 		//add/ remove if element doesn't exist/ exist
+
 
 - Adding and Deleting Elements
 	document.createElement(element)		//create new element in memory for manipulation on styles/ attribute before placing on page	
@@ -1011,10 +1380,17 @@ standard how to get, change, add/ delete HTML elements
 		.replaceChild(element)
 		.write(text)
 
+
 - Adding innline style:
 	div.style.color = 'blue';
-	div.style.cssText = 'color: blue; background: white';
+	div.style.cssText = 'color: blue; background: white'; 
+cssText: overwrite rules define in CSS
 	div.setAttribute('style', 'color: blue; background: white');
+
+	+style using CSS variable
+	document.documentElement.style.cssText = "--cssVariable: red";
+	document.documentElement.style.setProperty('--cssVariable', 'pink');
+	document.documentElement.style.setAttribute("style", "--cssVariable: green");
 
 - if accessing kebab-case Css rule from JS, either use camelCase/ bracket notation instead of dot notation
 	div.style.background-color	//doesn't work - attempt to subtract color from background 
@@ -1023,11 +1399,14 @@ standard how to get, change, add/ delete HTML elements
 	div.style.cssText = "background-color: white"	//ok in string
 
 
+
 - stopPropagation method: on event object, prevent handlers further up receiving event
 	E.g: button inside clickable element, don't want click on button activate elements click
 
+
 - Document.documentElement: return root element of document.
 	E.g: HTML file root element would be <html>
+
 
 - animation using javascript (https://www.w3schools.com/js/tryit.asp?filename=tryjs_dom_animate_3)
 function myMove() {
@@ -1131,7 +1510,7 @@ but can't use array methods like valueOf(), pop(), push(), join() on HTMLCollect
 
 
 * DOM NODELIST
-- Nodelist: list/collection nodes extracted from document
+- Nodelist: list/collection nodes extracted from document using querySelector
 almost the same as HTMLCollection
 - childNodes property return NodeList object
 
@@ -1141,12 +1520,14 @@ almost the same as HTMLCollection
 - .length property define number of item in the list
 - Both provide index to access each item like array
 
-		HTMLCollection					NodeList
-Collection of HTML elements				Collection of document nodes
-can be access by name, id, index number			can only be access by index number
-							can contain attribute node and text node
+		HTMLCollection				NodeList
+-Collection of HTML elements			-Collection of document nodes
+-can be access by name, id, index number		-can only be access by index number
+						-can contain attribute node and text node
 
-
+-live, changes in DOM automatically 		-static, changes in DOM does not affect content
+updated		
+						
 
 
 
@@ -1156,6 +1537,14 @@ can be access by name, id, index number			can only be access by index number
 	+use element.appendChild or element.insertBefore to append text node
 
 - innerHTML: sets/ returns HTML content of an element
+
+
+
+*DOM WINDOWS
+- prompt('text', 'default text'): prompt input box take user input
+
+
+
 
 
 
@@ -1264,3 +1653,107 @@ XVI. TEST DRIVEN DEVELOPMENT (TDD)
 - module.export: put in javascript file to export and imported by require()
 *Terminal
 - jasmine File/directory: run TDD
+
+
+
+	
+XVII. REGULAR EXPRESSION
+- Allow checking series of characters for 'matches'
+a.k.a check form field to try and match valid email address
+	must have '@' symbol or end with extension like .com, .org, .uk etc
+
+- Creating regular expression: 
+	+Using regexp literal (/.../)
+	E.g: 	let re = /ab+c/;
+	+Using constructor function of RegExp object:
+	      	let re = new RegExp('ab+c');
+
+- simple pattern: direct match
+	/abc/ would match with "slabcraft" (abc) not "grab crab" (ab c)
+
+- using special/meta characters: 
+	Meta
+	+\d: any digit character = [0-9]
+	+\w: any word character = a-z, A-Z, 0-9 and '_''s(underscroe)
+	+\s: white space character (spaces/ tabs etc)
+	+\t: tab character only
+
+	Special characters:
+	+ (+): one or more quantifier
+	+ \: escape character, escape default behaviour for special character
+	+ [^]: negate symbol in charactor sect (caret char)
+	+ []: character set
+	+ '?': zero or one quantifier ( makes preceding char optional)
+	+ '.': any char except newline char
+	+ '*': 0-or-more quantifer (a bit like + but instead of one it's zero) 
+	+ '|': or	
+	+ (...): treat inside as seperate entity	
+		E.g: (p|t)yre
+		=> pyre, tyre - match	
+	+ ?!: negative lookahead assertion
+		E.g: /\d+(?!\.)/
+		match number only if not followed by decimal 
+	
+- Unlimited repeat (+): E.g: [0-9]+
+- Limited repeat({number}): 
+	+E,g [0-9]{11} - 11 number
+	+range of limited repeat: {acd, b}
+		E.g: [a-z]{5, 8}
+	+At least 5 repeats:
+		E.g: [a-z] {5,}		
+
+- Character set [...]: matches different characters in the same position in a word
+	e.g: [ng]inja
+		ninja -match, ginja - match, nginja -only 'ginja' match
+		
+	+exclude a chacracter: [^...]
+		[^p]000: exclude any p in starting position	
+		+a000, b000, 2000	- match
+		-p000			- no match
+	+range [...-...]: add hyphen in between
+		[a-zA-Z]: match range a-z and A-Z
+
+- Starting and ending patterns: ^...$
+	E.g: ^[a-z]{5}$
+	=> asdf - match
+	=> asdfdag - no match has to be at beginning + end
+
+- Flags:-i : case insensitive
+	-g: global
+	-m: multi-line search
+	-s: allows . to match newline characters
+	-u: "unicode"; treat a pattern as a sequence of unicode code points
+	-y: perform a "sticky" search, matches starting at current position in target string
+
+	re = /pattern/flags;
+or	re = new RegExp('pattern', 'flags');
+
+- email: 4 part:
+	    1		2	    test3		4
+	(yourName) @ (domain) . (extension) (.again)
+1: any letters, numbers, dots +/ hyphens
+2: any letters, numbers +/ hyphens
+3: any letters
+4: (.)dot then any letters
+
+
+*RegExp METHOD
+RegExp
+- .exec(str): Execute search for match in string. Return array of info / null
+- .test(str): Test match in string. Return true/false
+- .match(regexp): Returns array containing all matches, capturing group/ null if no match
+- .matchAll(regexp): Returns iterator containing all matches + capture groups
+- .search(regexp): Test match in string. Returns index of match/ -1 if fails
+- .replace(substr | regexp, newSubstr | function): Execute search match in string. Replace matched substring with replacement
+if substr = string: only 1 instances
+- .replaceAll(): Execute search all matches in string, replaces matched replacement substrings
+- .split([seperator[, limit]]): Uses RexEx/ fixed string break string -> array substrings
+	E.g: const myString = 'Hello 1 word. Sentence number 2."
+	const: splits = myString.split(/(\d)/)
+	console.log(splits);
+	=> ['Hello ', '1', ' word . Sentence number ', '2', '.']
+	\d any digits in 0-9 -> split at any number 
+
+
+
+

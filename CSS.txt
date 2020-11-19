@@ -146,6 +146,12 @@ use: #id <element>, #id <element>, etc to style sub element within that id
 	+negative margin: grow larger
 	+top, right, bottom left (clockwise notation)
 
+- overflow: specifies clipping/ adding scrollbars if element too big fit area
+	:visible - default
+	:hidden  - 
+	:scroll - overflow clipped, scrollbar added to see rest of content
+	:auto - similar to scroll, only needed
+
 
 - CSS class: create css class, other tag can use class attribute to change style
 	<style>
@@ -229,7 +235,7 @@ globally
 
 	<style>
 		:root{
-
+: 
 		}
 	</style>
 
@@ -723,9 +729,15 @@ Pseudo-class names are not case-sensitive.
 		+font/color/background/margin/padding/border properties
 		+text-decoration/ vertical-align (if float is none)
 		+text-transform, line-height, float, clear
-	p::first-line - selects 1st line 	''	pos
+	p::first-line - selects 1st lines 	''	pos
 	p::selection - selects portion of element selected by user
 		+color, background, cursor, outline
+
+
+
+
+
+
 
 
 

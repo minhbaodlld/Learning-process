@@ -9,6 +9,10 @@
 - touch: create file
 - abort: CTRL+C/ SHIFT+Q/ type q
 
+- file with space: file\ <space> name
+- List of keyboar	d shorcuts:
+xfconf-query -c xfce4-keyboard-shortcuts -l -v
+
 
 * List
 - ls: list files and directories
@@ -107,6 +111,7 @@
 	or	sudo apt-get full-upgrade
 
 
+-Jasmine: jasmine <.spec file path>
   	
 *GIT
 - git 
@@ -191,6 +196,19 @@ graph of history using rebase, C` history is still linear
 	pushing C` work if no one push while you're rebasing
 
 	
+Connect local repo with remote repo
+		git remote add origin <remote_repo_url>
+		git push --all or -u --all --sign
+	+Set all branches to automatically use this remote repo when use git pull
+		git push --all --set-upstream origin
+	+working on existing remote branch: 
+		git checkout --track origin/devgit 
+	+Change tracking relationship current head branch:
+		git branch -u origin/branch_name
+
+
+	
+
 
 Pushing changes: 
 - change code
@@ -210,12 +228,14 @@ Common workflow:
 	branch: list all branch current directory
 		-*: current branch working on
 		-a: see all branches local + remote
+		-m <current> <new>: rename branch
 	checkout <name>: change currently working b ranch
 
 	
   After commit push branch to remote:
 	 + push -u origin calc-divide: 
 		-u associate local branch with remote branch for shortcut
+		track newly created branch	
 		
 	 + git push/ pull: don't require name anymore
 
