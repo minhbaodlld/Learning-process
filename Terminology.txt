@@ -34,13 +34,23 @@
 - npmjs.com
 
 - API: application programming interface(sets of classes and objects) serves data to customers
+	+ set of programming instructions + standard accessing Web-based software
+	app.
+	+ Software-to-software interface not user interface. Apps talk each other
+		E.g: Buy movie ticket online, enter credit card info, movie site 
+		uses API send credit info -> another app verifies if info correct
+		-> correct/incorrect sends info back to movie site OK/ not OK to buy
+ 
 
 - Xcode: Apple IDE(integrated development environment) bring language and library together in lively
 	and dynamic way
 	+SDK software development kit
+
 - Django web framework on Python
 - Stackoverflow: go for debug help
+
 - git: version control
+
 - Slack: chat service, provide shorterm institutional memory
 
 - tuple: finite ordered list of elements

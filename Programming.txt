@@ -95,3 +95,9 @@ When you are planning to create a computer program you should:
         Release under GPL GNU General Public License
         Take advantage of Free Software to create more Free Software
         Make your code readable and efficient
+
+
+*Design Pattern
+- General method + technique to do something
+- Singleton: restrict instatiation class -> "single" instance
+- Decorator: OOP, added behaviors of individual object dynamically without affecting other behaviors

@@ -1,0 +1,6 @@
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\bin\Release\Engine.dll
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\bin\Release\Engine.pdb
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\obj\Release\Engine.csprojAssemblyReference.cache
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\obj\Release\Engine.csproj.CoreCompileInputs.cache
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\obj\Release\Engine.dll
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\obj\Release\Engine.pdb

@@ -9,60 +9,247 @@
 	-delete: accounts
 		+DELETE 
 
+* T_SQL
+-Types of T-SQL functions include:
+
+	+ Aggregate functions, which operate on a collection of values, but return one summary value.
+	+ Ranking functions, which return a ranking value for every row within a partition.
+	+ Rowset functions, which return an object that can be used as a table reference in SQL statements.
+	+ Scalar functions, which operate on a single value and return a single value.
+- Difference between T-SQL and SQL
+There are three distinct differences between the two.
+
+	+ While T-SQL is an extension to SQL, SQL is a programming language.
+	+ T-SQL contains procedural programming and local variable, while SQL does not.
+	+ T-SQL is proprietary, while SQL is an open format.
+
+
 *DATA TYPE
 - INT: whole number
 - DECIMAL(M,N): decimal number - exact value (M: total digit stores, N: no digit stores after decimal point)
-- VARCHAR(L): string of text of length l
+- VARCHAR(L): string of text of length L
 - BLOB: binary large objec, stores large data
 - DATE: 'YYYY-MM-DD'
 - TIMESTAMP: 'YYY-MM-DD HH:MM:SS' - used for recording
 
 
-*CONSTRAIN
-- rule for data in table
-- NOT NULL: 
-- UNIQUE: value unique each row table/ rejected
-- DEFAULT:
-- AUTO_INCREMENT:
+
+*CREATE TABLE
+- CREATE TABLE <table name> (
+	<Attributes name> <Data type> (PRIMARY KEY), 
+	... ,	
+	...  
+	(PRIMARY KEY (<Attribute name>, etc))
+);
+
+- CONSTRAIN: rule for data in table
+ + NOT NULL: error if empty entry
+ + UNIQUE: error if duplicate entry
+ + DEFAULT 'string': if not specify insert 'string' instead
+ + AUTO_INCREMENT: data auto incremented everytime new data is add into table
+useful for number list	
+
+
+	E.g:
+	CREATE TABLE student(
+    	student_id INT,
+    	name VARCHAR(20),
+    	major VARCHAR(20) DEFAULT 'undecided', 
+    	PRIMARY KEY (student_id)
+	);
+
+- Create FOREIGN KEY:
+	FOREIGN KEY <column name>
+	REFERENCES <table(column name)>
+	ON DELETE SET NULL;
+	
+	E.g:
+	CREATE TABLE branch (
+  	  branch_id INT PRIMARY KEY,
+  	  branch_name VARCHAR(40),
+  	  mgr_id INT,
+  	  mgr_start_date DATE,
+  	  FOREIGN KEY(mgr_id) REFERENCES employee(emp_id) ON DELETE SET NULL
+	);
+
+1. CREATE TABLE1
+2. CREATE TABLE2 contains FOREIGN KEY REFERENCE to table1
+3. ALTER TABLE table1 
+   ADD FOREIGN KEY(column name)
+   REFERENCE table name(column name)
+   ON DELETE SET NULL;
+4. Continue
+	E.g:
+	ALTER TABLE employee
+	ADD FOREIGN KEY(branch_id)
+	REFERENCES branch(branch_id)
+	ON DELETE SET NULL;
+
+
+
+
+*DESCIRBE
+- Describe table
+
+
+
+*DROP TABLE
+- DROP TABLE <table name>;
+- delete table
+
+
+
+*ALTER TABLE
+- ALTER TABLE <table name> ADD/ DROP <column name>;
+ 	
+
+
+*INSERT
+- Insert data into table
+/- INSERT INTO <table name> VALUES(1st col, 2nd col, 3rd col, ...);
+
+- INSERT INTO <table name>(1st col, 2nd col) VALUES(1st col, 2nd col);
+	choose specific column to add info to
+- When inserting value into table with FOREIGN KEY, insert in a specific order depend on
+relationships between tables
+
+
+*CONDITION
+- WHERE <condition>
+	+ <, >, <=, >=, = , <>, AND, OR
+	+ IN: <column name> IN (value1, value2, ...): pick data within <value>
+	WHERE major IN ('Biology', 'Chemistry') AND student_id >2;
+
 
 
 *UPDATE AND DELETE
 -UPDATE tbl_name;
-	SET	 
-	WHERE	
+	SET column = 'String'
+	WHERE condition( column = 'string')
+- SET multiple columns: (,) between columns
+- Without WHERE update all rows
 
+	
+	E.g
+	UPDATE student
+	SET major = 'Comp Sci'
+	WHERE major = 'Computer Science'
+	WHERE student_id = 4;		
+		
 -DELETE FROM tbl_name;
 	WHERE
+- without WHERE delete all
 
 
 
+*QUERIES (SELECT)
+- Block SQL code Grab info from table, display on console
+- SELECT <subject> 
+	+ <subject>: column name, table.name
+  FROM <table name>
+  LIMIT <number>;
+  ORDER BY: ...  ASC/ DESC = ascending/ descending
+  LIMIT: no of result
+  WHERE: condition
+	+ <, >, <=, >=, = , <>, AND, OR
+	+ IN: <column name> IN (value1, value2, ...): pick data within value
 
+	E.g:
+	SELECT *
+	FROM student
+	WHERE major IN ('Biology', 'Chemistry') AND student_id >2;
 
-
-*QUERIES
-- Block SQL ask system for info
-- SELECT: get info
+- *: grab all data
+- SELECT 
 	+SELECT first_name AS forename, last_name AS surname
-	+SELECT DISTINCT: n.o distinct value from table
+	+SELECT DISTINCT:  distinct value from table
 	+SELECT COUNT:
 	+SELECT AVG()/SUM(): average/ sum
-- *: grab all data
-- ORDER BY: ...  ASC/ DESC = ascending/ descending
-- LIMIT: no of result
-- WHERE: condition
-	+ <, >, <=, >=, = , <>, AND, OR
-	+ IN (value): pick data within value
+
+- Sub queries: nested inside query, enclose in parentheses follow comparison operators
+	SELECT	select_list
+	FROM	table
+	WHERE	expression  operator(<,>,=,...)
+		(SELECT select_list
+		FROM	table)
+
+
+*CTE (Common Table Expression)
+- Temporary named result set can be referenced within SELECT, INSERT, UPDATE, DELETE, MERGE
+- Prefer over Subqueries: more readable
+- Defined using:
+	WITH name [(col name,...)]
+	AS
+	  (CTE_definition)
+- Non-recursive CTE:
+	+ Follow single SELECT, INSERT, UPDATE, DELETE statement reference 1/all CTE columns
+	+ Multiple CTE can be defined, combined with: UNION ALL, UNIOn, INTERSECT or EXCEPT
+	+ CTE can reference itself and previously defined CTE in the same WITH clause
+	+ Nested WITH is not allow
+	+ Clause cannot be used: ORDER BY(if TOP is not specified), INTO, OPTION, FOR BROWSE
+	+ When CTE used in statement part of batch, statement before followed by semicolon
+	+ Query referencing CTE can be used defined a cursor
+	+ Tables on remote server referenced in CTE
+	+ When executing CTE, hints reference CTE may conflict other hints dicovered when
+	CTE accesses its underlying tables, same as hints reference views in query 
+	When this occurs, query returns an error.
+https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15
+- Recursive CTE
+https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15
+
+
+
+*FUNCTION
+- Special block of code performs action
+- COUNT(column_name), column name: count how many entries, display by column name
+	E.g
+	SELECT COUNT(sex), sex	
+	FROM employee
+	GROUP BY sex;
+	+group information by the column	
+- AVG/SUM(column):  find average/sum  
+	E.g:
+	SELECT ABG/SUM(salary),
+	FROM employee
+	WHERE sex = 'M';
+- Aggregate function: performs calculation on set values return single value
+- Metadata function: T-SQL
+	+return OBJECT_ID()
+	OBJECT_ID('database_name. schema_name. object_name')
+	  	E.g: SELECT OBJECT_ID('Company_Database.cod.Employee')
+			OBJECT_ID = 1077578877
+		ID of Employee table in Company_Database database
+		
+	+return table name from OBJECT_ID
+		E.g: SELECT * FROM sys.objects 
+		     WHERE object_id = 1077578877
+	
+	+return database id
+	DB_ID(('database_name'))
+		return current database if empty
+	
+	+FILE_ID/ FILE_IDEX()
+
 
 
 *WILDCARDS
+- Defining different pattern that match specific data to
 - subtitute one/ more character in string
 - % = any #(number) characters
 - _ = one character
 - h[oa]t character within brackets {h[oa]t finds hot and hat, but not hit}
 - h[^oa]t character not brackets {h[^oa]t finds hit, but not hot and hat}
 - c[a-b] range of characters {c[a-b]t finds cat and cbt}
+- LIKE: special keyword use with WILDCARD
+if data match pattern from LIKE return that data 
+	E.g:
+	SELECT *
+	FROM client
+	WHERE client_name LIKE '%LLC';  --any number of character before LLC
+	WHERE birth_date LIKE '____-10%';  -- any four character before '-10' and any
+						character after '-10'
 
-
+*SET OPERATIONS include *UNION *INTERSECT AND *EXCEPT
 
 *UNION
 -combine multiple SELECT statements
@@ -75,6 +262,14 @@
 -Rules: +same # column
 	+same data type
 
+	E.g:
+	SELECT client_name, client.branch_id
+	FROM client
+	UNION
+	SELECT supplier_name, branch_supplier.branch_id
+	FROM branch_supplier;
+	
+
 
 *JOIN
 - Combine rows 2/ more tables based on realted column
@@ -82,51 +277,97 @@
 - LEFT JOIN: include all rows left table
 - RIGHT JOIN: include all rows right table
 - FULL OUTER JOIN: LEFT + RIGHT
+- ON: join on specific column
 
-
+	E.g:
+	SELECT employee.emp_id, employee.first_name, branch.branch_name
+	FROM employee
+	JOIN branch
+	ON employee.emp_id = branch.mgr_id
 
 
 *NESTED QUERY
-- multiple SELECT
+- multiple SELECT to get specific piece of info
 
+	E.g: find names of all employees who have sold over 30k to a single client
+	SELECT employee.first_name, employ.last_name
+	FROM emploee
+	WHERE employee.emp_id IN (
+		SELECT works_with.emp_id
+		FROM works_with
+		WHERE works_woth.total_sales > 30000
+	);
+	+Result from 2nd query feed into IN of 1st query	
 
 
 *ON DELETE
-- ON DELETE SET NULL: value -> NULL, can't be used for PRIMARY KEY	
+- ON DELETE SET NULL: value -> NULL, PRIMARY KEY can't be null
 - ON DELETE CASCADE: delete row entire db, used for PRIMARY KEY
-
-
 
 
 
 
 *TRIGGER
 - Must used on MySQL command line client due to changing DELIMITED 
+	mysql -u root -p
 - Block SQL code defines certain action when certain operation performed on db
-- DELIMITER: change SQL delimiter(;)
-- NEW: row getting inserted
-- DROP: discard trigger 
+- DELIMITER: change SQL default delimiter(;)
+- BEFORE/ AFTER:
+- INSERT/ DELETE/ UPDATE
+- NEW.col name: Access specific column from new row that being inserted
+- DROP <trigger name>: discard trigger 
+
+1. Change DELIMITER
+2. CREATE TRIGGER
+3. END with new DELITER
+4. Change DELIMITER back to ;
+	E.g:
+	DELIMITER $$
+	CREATE
+		TRIGGER my_trigger BEFORE INSERT
+		ON employee
+		FOR EACH ROW BEGIN
+			INSERT INTO trigger_test VALUES('added new employee');(*)
+			INSERT INTO trigger_test VALUES(NEW.first_name);
+		END$$
+	DELEIMITER ;
 
 
+- Change DELIMITER to end TRIGGER because of ; at (*) will tell sql that trigger has ended
+before all the trigger finish executing
 
-
-
-
+	E.g: Condition TRIGGER
+	DELIMITER $$
+	CREATE
+		TRIGGER my_trigger BEFORE INSERT
+		ON employee
+		FOR EACH ROW BEGIN
+			IF NEW.sex = 'M' THEN
+				INSERT INTO trigger_test VALUES('added male employee');(*)
+			ELSEIF NEW.sex = 'F' THEN
+				INSERT INTO trigger_test VALUES('added female');
+			ELSE
+				INSERT INTO trigger_test VALUES('added other employee');
+		END$$
+	DELEIMITER ;
+ 
+	
 *ER(Entity Relationship) DIAGRAM
-- Entity: object model & store info about 	R: square
-- Attributes: specific pieces info of entity	R: oval
+- Entity: object model & store info about 			R: square
+- Attributes: specific pieces info of entity			R: oval
 - Primary key: attribute uniquely identify entry in db table	R: oval, underlined
 - Composite Attribute: attribute broken up -> sub-attributes	R: oval
-- Multi-valued Attribute: attribute have more than 1 value	R: double oval
+- Multi-valued Attribute: attribute can have more than 1 value	R: double oval
 - Derived Attribute: derived other attributes			R: dotted oval
 - Multiple Entities	
 - Relationships: between 2 entities				R: diamond
-- Participation:+ single line: partial participation		R: single/double line
+- Participation:+ single line: partial participation		R: single/double line 
 		+ double line: total participation
+		all members must participate in relationship
 - Relationship Attribute: attribute about relationship
 - Relationship Cardinality: # instances entity associated with relation
-		+ M : N: many vs many 
-		+ 1 : 1: 1 vs 1
+		+ M : N: many vs many 	M, N: any number
+		+ 1 : 1: 1 vs 1		
 		+ 1 : N: 1 vs many
 - Weak Entity: relies other entities to be identified		R: double square
 	+ has total participation in identifying relationship
@@ -135,4 +376,152 @@
 +ER DESIGNING
 - 1:1 : PRIMARY KEY favor total participation
 - 1:N : 1 side PRIMARY KEY as FOREIGN KEY on N side 
-- M:N : New table with composite key
+- M:N : New table with composite key + relation attribute
+
+*CONVERT ER DESIGN TO DATABASE TABLE
+1. Mapping regular entity types: create relation table contains simple attributes of 
+each entity
+2. Mapping of weak entity types: relation table contains all simple attributes of weak entity
+3. Mapping of Binary 1:1 relationship: include one side of relationship as 
+FOREIGN KEY favor total participation, total participation receive FOREIGN KEY.
+Both partial/ total, place FOREIGN KEY at own discretion
+4. Mapping of Binary 1:N: 1 side PRIMARY KEY as FOREIGN KEY on N side
+5. Mapping of Binary M:N relationship: Create new relation table with PRIMARY KEY from
+both entities + relation attribute
+
+
+
+* SERVER FUNCTION
+- ASCII (character): return ASCII value
+- CHAR (code): return character based on ASCII code 
+- CHARINDEX (substring, string, (start)): returns position of a substring in a string
+	() = optional
+- CONCAT (string1, string2, ...) /'' + '': Add 2/ more strings together
+- CONCAT WS (separator, string1, string2, ...): add 2/ more strings with separator
+- DATALENGTH (expression): number of bytes
+	Expression = constant, variable, column
+- DIFFERENCE (expression, expression): compare SOUNDEX value, return interger
+- FORMAT (value, format, (culture)): formats value specified format
+	format: formated string
+	culture: language-country e.g: en-us US, en-gb British
+- LEFT (string, # chars): extracts number of chars from string from left
+- LEN (string): length of string
+- LOWER (text): convert lower case
+- LTRIM (string): removes leading space from string
+- NCHAR (number_code): returns unicode based on number code
+- PATINDEX (%pattern%, string) : returns position of pattern in a string
+- QUOTENAME (string, (quote_char)): returns unicode string with delimiters added -> string valid SQL
+server delimited identifier
+- REPLACE (string, old_substring, new_substring): replaces substring in string, case sensitive
+- REPLICATE (string, integer): repeats string number of times
+- REVERSE (string): reverses string return it
+- RIGHT (string, # chars): extract number string chars  from right
+- RTRIM (string): remove string trailing spaces
+- SOUNDEX (expression): returns 4-chars code, compare 2 strings similarity 
+- SPACE (number): returns string of specified # space chars
+- STR (number (, length, decimals)): numbers -> string
+- STUFF (string, start, length, new_string): delete + insert parts into string at specified position
+	start at: 1
+- SUBSTRING: extract chars stringe
+- TRANSLATE (string, characters, translation): "characters" from "string" -> "translation"
+then return new "string"
+- TRIM ((character FROM) string): remove leading + trailing spaces (or specified chars) from strings
+- UNICODE (character_expression): returns unicode value 1st char input expression
+- UPPER (text): upper-case
+
+
+
+*FORMATED STRING
+- Standard numeric format: convert # -> string
+	0-9 = precision
+	+C/c(0-9): Currency 
+	+D/d(0-9): Decimal
+	+E/e(0-9): Exponential
+		-> "-d.ddd...E/e+ddd"
+	 	decimal depend on digits (0-9)
+	+F/f(0-9): Fixed-point
+	+G/g(0-9): General
+	+N/n(0-9): Number
+	+P/p(0-9): Percent, multiply number by 100
+	+X/x: Hexadecimal, uper/lower case specifies hex upper/lower case	
+https://database.guide/standard-numeric-format-strings-supported-by-format-in-sql-server/
+
+- Custom numeric format strings
+https://database.guide/custom-numeric-format-strings-supported-by-format-in-sql-server/
+
+- Date/time format strings
+	+d/dd: day of month (1/01-31)
+	+ddd/dddd: abbreviated/ full name day of week
+	+f/F-7f/F: 10th-10^7 th of a seconds
+	+g/gg: period of era (A.D or B.C)
+	+h/hh or H/HH: 12-hour or 24-hour clock
+	+K: time zone
+	+m/mm: minute
+	+M/MM: month 1/01-12
+	+MMM/MMMM: abbreviated/ full name of month (Apr/ April)
+	+s/ss: second
+	+t/tt: first char/ full AM/PM
+	+y/yy: the year 0/00-99
+	+yyy/yyyy/yyyyy: the year minimum 3/4/5-digit number
+	+z/zz/zzzz: single-digit hours/ hours/ hours and minutes offset from UTC
+https://database.guide/list-of-the-custom-date-time-format-strings-supported-by-the-format-function-in-sql-server/
+
+
+
+
+*PIVOT and UNPIVOT
+- Relational operators to change table-valued expression into another table
+- PIVOT rotates a table-valued expression. It turns the unique values in one column 
+into multiple columns in the output and performs aggregations on any remaining column values.
+	PVIOT: aggregation + merges possible multiple rows into single row
+- UNPIVOT almost reverse operation PIVOT, rotating column into rows
+	UNPIVOT: isn't exact reverse of PIVOT, doesn't reproduce original table
+- PIVOTING:
+1.Select dataset for pivoting
+2.Create temporary result using derived table or CTE
+3.Apply PIVOT operator
+- PIVOT syntax:
+	PIVOT ( <aggregation function>
+	FOR <col_name>
+	  IN (<pivoted_col_1, pivoted_col_2,...)
+	  )AS <pivoted table name>
+
+
+
+*GROUPING SETS
+- Group of coloumns which you group. Single query with aggregate defines as single grouping set
+- GROUPING SETS syntax:
+	SELECT
+	  column1,
+	  column2,
+	  aggregate_function (coloumn3)
+	FROM
+	  table_name
+	GROUP BY
+	  GROUPING SETS (
+		(column1, column2),
+		(column1),
+		(column2),
+		()
+	);
+
+	E.g: https://www.sqlservertutorial.net/sql-server-basics/sql-server-grouping-sets/
+	SELECT
+  	  	GROUPING(brand) grouping_brand,
+    		GROUPING(category) grouping_category,
+    		brand,
+    		category,
+    		SUM (sales) sales
+	FROM
+    		sales.sales_summary
+	GROUP BY
+	    GROUPING SETS (
+        	(brand, category),
+        	(brand),
+        	(category),
+        	()
+    	)
+	ORDER BY
+    		brand,
+    		category;
+	+GROUPING function:  indicate whether column aggregated or not, 1 = yes, 0 = no

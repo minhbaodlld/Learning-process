@@ -1,0 +1,226 @@
+https://en.wikipedia.org/wiki/Web_application_development
+
+_WORDPRESS, Content Management System
+_FRONT END: HTML, CSS, JAVASCRIPT
+_BACK-END: C#, PYTHON, JAVA, PHP
+_SQL, MYSQL
+
+
+-Model, View, Control (MVC):Pattern for structuring files, project, split responsibilities
+	+Model(data): central component, dynamic data structure, independent of UI
+	directly manage data and rules of app
+	
+	+View(UI): representation of information
+
+	+Controller(request handler): accept -> convert input for model of view
++model responsible managing data, receives user input controller
++view presentation of model in partucular method
++controller: responds user input, performs tnteractions data model objects
+
+-Advantages: 
+	+Simultaneous development
+	+High cohesion: 
+	+Loose coupling: 
+	+Ease of Modification: 
+	+Multiple views for a model:
+	+Testability:
+
+-Disadvantages:
+	+Code navigability: complex, layers of indirection -> adapt decomposition criteria
+	+Multi-artifact consistency: scattering, maintance consitency multiple representation at once
+	+Undermined by inevitable clustering: computation + state clustered -> 3 program parts
+	+Excessinve boilerplate:
+	+Pronounced learning curve:
+	+Lack of incremental benefit: 
+
+-Multi Page Application: every request lead to a new page
+-Advantages:
+	+SEO is simple
+	+Loads of existing frameworks, solution and best practices
+
+-Disadvantages:
+	+Slower, constantly needs to load pages
+	+Tightly coupled frontend and backend
+
+	+support more legacy browsers
+
+-Adopted by: Node express, laravel for PHP, Vue and React can also be used on MPA
+
+
+-Single-Page Application(SPA): rewrite current page with new data from server -> faster transitions
+more mobile experience
+perform most UI logic web browser
+	+Adopted by: AngularJS, React and Vue.js ...
+
+-Advantages:
+	+Highly reactive
+	+Decoupled frontend
+-Disadvantages:
+	+SEO is challenging, hard to crawl content
+	+JavaScript strictly required
+
+	+Favor modern browser
+
+
+-https://www.reddit.com/r/learncsharp/comments/74h3j0/mvc_vs_spa_and_related_frameworks_advice_for/
+
+-https://vuejs.org/v2/guide/
+
+
+I. ANGULAR, REACT and VUE
+-Philosophy: core: building UI from reusable component
+
+	Angular: one stop shop
+	- feature-rich, everything built-in
+	- platform than framework
+	- Beyond code: Command line interface(CLI), Progressive Web App(PWA),...
+
+
+	+Angular JS:
+		+ Built by Google
+		+ Well supported
+		+ Huge number of features
+		+ Unit testing ready
+		+ MVC data binding -> fast app dev
+		+ HTML = declarative language -> intuitive
+		+ No required frameworks/plugins => solution to rapid front-end dev 
+		+ run every program + advanced cells including IOS, Android-based phone + tablets
+		- Difficult to debug
+		- Steep learning curve
+		- Big + complicated - multiple ways of doing the same
+		- if JS disabled, only basic page visible
+		- Implementations scale poorly
+		- Lagging UI if >200 watchers
+
+
+	+Angular 2: instead of javascript use typescript, subset of ECMAScript 6
+		+ Code optimization using OOPS concept
+		+ Mobile-oriented
+		+ Improved dependency injection + modularity
+		+ More languages choice (Dart, TypeScript, ES5, ES6)
+		+ Simple routing
+		- More complicated to AngularJS
+		- Inefficient to create simple small web apps 
+		
+	+Angular 4: 
+		+ Fast dev process
+		+ Ideal for single-page web apps + extended interface
+		+ Full TypeScript support helps build bulky apps
+		+ Tests easy to wriite
+		+ Improved View Engine -> less code AOT mode
+		+ Modularized animation package
+		- Slow displaying enormous amounts of data
+
+
+	React:
+	+Minmalistic, focus UI-building
+	+Library than framework
+	+Community needed for routing, http,...
+
+	Vue:
+	+Berwwen Angular and React
+	+Framework, focused on code
+	+Code + CLI 
+	
+
+
+II. BACK-END
+- Ruby + Rail framework: tight integration javascript, Ajax heavy sites, include
+prototype JS library -> integrate directly
+	Framewoek: +Ruby on Rails
+	+Nitro		+Merb
+
+- Python + Django framework: large newspaper website, fantastic auto-generated site 
+admistration section -> users create, edit, update content. Built-in tools for caching
+data + flexible URLs
+	Framework: +Django		+Pylons
+	+TurboGears
+
+- PHP + cakePHP framework: borrow conceptual ideas Ruby Rails, applies to PHP, most
+widely usable framework.
+	Framework: +Symfony
+	+Zend		+Cold Igniter
+
+
+
+III. FRONT-END
+*USER INTERFACE FRAMEWORK: helps create stylized/ professional web app	
+- Include grid system, color schemes
+
+- Framework:
+	+Bootstrap:- Built by Twitter
+		- Easy to learn + looks professional
+		- Easy to spot "Bootstrap sites"
+		- Difficult customize components
+
+	+Materialize: - Clean looking
+		- More "fun" than Bootstrap
+		- lots of styling + color option
+		- Follow Google's Material  style guide
+	
+	+Foundation: -Lots of examples
+		-Professional looking
+	
+	+Semantic UI: -Lots built-in
+		- Built-in themes, customizable
+
+	+Grommet: - Has a huge focus on accessibility
+		- Looks clean
+		- Not as used as others
+		- Made for React JS
+
+*FRONTEND FRAMEWORKS: written in JS, for organizing functionality, interactivity
+	+Vue: - Easy to learn
+		-Very fast
+		- Associated tools are packaged well
+		- Takes part + optimize Angular + React
+		- Less widely adopted
+		- Flexible -- use it in multiple way
+	
+	+Angular 2+: - Built by Google
+		- Well supported
+		- Encourages reusability
+		- Improves app scalability
+		- Large learning curve
+	
+	+ React: -Built by Facebook
+		- Bundles frontend code into components
+		- Organizes code + data => code reusable
+		- Large learning curve
+
+	+ Ember: - Large amount of functionality 
+		- Opinionated( use its formatting)
+		- Steep learning curve
+	
+*BACKEND FRAMEWORKS: 
+	+Spring MVC: - Java
+			- Very fast
+			- Less opinionated
+	
+	+Django:- Python
+		- Medium between opinionated + less structured
+		- Lots of functionality out of the box(authentication, database,
+		 connections, view rendering)
+		- Difficult integrating functy front-end
+		- Python amazing data handling		
+
+	+Flask:	- Python
+		- Less opinionated + more customizable than Django
+		- Give less at first(build more)
+		
+	+Ruby on Rails:	- Ruby
+			- Opinionated
+			- Great tools (e.g scaffolding) build things fast
+			- Lots of functionality	at first
+			- Asset pipeline		
+			- Ruby longer programs run time
+
+	+Meteor:- Javascript
+		- Lots of functionality at first
+		- Integrates well mordern front-ends
+
+	+Express:- JavaScript
+		 - Customizable
+		 - Lightweight
+		 - Less built-in features
+		 - Node is fast

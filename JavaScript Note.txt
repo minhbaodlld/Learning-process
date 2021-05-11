@@ -1,35 +1,36 @@
 
-I. VARIABLE		VIII. CONDITION		XV. CANVAS
-						  *TERNARY OPERATOR
-			  *SWITCH
-II. MATH		IX. ERROR		XVI. TEST DRIVEN DEVELOPMENT (TDD)
+I. VARIABLE			VIII. CONDITION			XV. CANVAS
+				  *SWITCH		  	 
+				  *TERNARY OPERATOR
+			  
+II. MATH			IX. ERROR			XVI. TEST DRIVEN DEVELOPMENT (TDD)
   *FUNCTION
   *ROUND NUMBER
-III. OBJECT		X. GLOBAL		XVII. REGULAR EXPRESSION
+III. OBJECT			X. GLOBAL			XVII. REGULAR EXPRESSION
   *ARRAY
   *DESTRUCTURING
-ASSIGNMENT
+  *ASSIGNMENT
   *FREQUENT METHOD
   
-IV. METHOD		XI. LOOP  	
-*AUDIO/VIDEO METHOD	*RECURSION
-V. CLASS OBJECT		XII. TYPE
-VI. FUNCTION		XIII. EVENT
-  *INFINITE ARGUEMENT 	  *HTML EVENTS
-  *FUNC DECLARATION	  *KEYCODE
+IV. METHOD			XI. LOOP  	
+*AUDIO/VIDEO METHOD		  *RECURSION
+V. CLASS OBJECT			XII. TYPE
+VI. FUNCTION			XIII. EVENT
+  *INFINITE ARGUEMENT 		  *HTML EVENTS
+  *FUNC DECLARATION		  *KEYCODE
   *ARROW FUNCTION
-VII. STRING		XIV. JAVASCRIPT DOM
-			  *HTML DOM
-			  *DOM METHOD
-			  *DOM DOCUMENT
-			  *DOM NAVIGATIONz
-			  *DOM NODES
-			  *NODELIST
-			  *DOM WINDOWS
+VII. STRING			XIV. JAVASCRIPT DOM
+				  *HTML DOM
+				  *DOM METHOD
+				  *DOM DOCUMENT
+				  *DOM NAVIGATION
+				  *DOM NODES
+				  *NODELIST
+				  *DOM WINDOWS
 
 
 *OPERATOR
--new operator: 	+ create an empty object
+- new operator: 	+ create an empty object
 		+ set "this" to point to that object
 		+ return object from function
 	
@@ -96,18 +97,18 @@ new Date()
 .getUTC Date/Day/FullYear/Houts/Milliseconds/Minutes/Month/Seconds()
 .set ... similar to get
 
+
+
 *CAPTURE PROPAGTION AND BUBBLING
 - When you click an element:
 +CAPTURE: click ripple from top element down capture all events
 +BUBBLING: triggering event from bottom up
-+Option  objec :	
++Option  object :	
 	E.g: divs.forEach(div => div.addEventListener('click', logText, {
 		capture: true/false
 	}	
-	capture: true - run function on the way down
-default capture: false - 
+	capture: true - run function on the way downdefault capture: false - 
 	once: true 	-listen to click then unbind its self
-
 - e.stopPropagation(): stop bubbling event up.
 
 
@@ -144,6 +145,8 @@ strict mode: cannot use undeclared variable, prevent typing error that create an
 
 
 
+
+
 II. MATH
 - % - remainder operator
 - ** - exponentiation
@@ -156,13 +159,10 @@ II. MATH
 - == convert both value to the same type
 - === strict equality operator don't convert	
 - && - and operator
-- || - or operator
-
-
-								
+- || - or operator						
 - var r = Math.random();
 
-*FUNCTION: MATH							Pickup 
+*FUNCTION: MATH					
 - .random(): 	random number between 0 and 1 without 1
 - .round():	round to nearest integer
 - .sqrt():	square root
@@ -207,7 +207,7 @@ III. OBJECT
 user.name = "Pete"; 
 alert(user.name); 	=>Pete
 
-+ Dot Notation
+*Dot Notation
 - person.name = 'John';
 
 + Bracket Notation: 	+good for dynamically access a property name
@@ -570,9 +570,10 @@ after executing function
 		var numbers = [4, 9, 16, 25];
 		var x = numbers.map(Math.sqrt)
 		-> 2,3,4,5
+		var x = numbers.map(x => x) //clone original array
+		-> [4, 9, 16, 25] 
 
-
-- .prototype: constructor allows new properties + method be added to Array() obejct
+- .prototype: constructor allows new properties + method be added to Array() object
 	+Constructing property: all arrays given the property + its value as default
 	+Constructing method: all arrays have this method available
 		Array.prototype.myUcase = function() {
@@ -750,14 +751,244 @@ currentValue = second element
 
 
 V. CLASS OBJECT
-- class ...
-	constructor()
-	class Car {
+- CONSTRUCTOR: defined capitalized name 
+use keyword "this" set properties of object created
+	function Constructor() {
+		this.name = "";
+		this.age = ;
+	}
+	E.g: function Bird (){
+	    	this.name = "swan";
+		this.color = "white";
+		this.numLegs = 2
+	     }	
+
+
+	+ OWN PROPERTY: name, color and numLegs are own properties. every instance
+of Bird have its own copy of its properties. defined directly on object instance itself
+
+	E.g: add own property of duck to array ownProps 
+	let ownProps = [];
+	for (let property in duck){
+	  if(duck.hasOwnProperty(property)){
+	    ownProps.push(property)
+	  }
+	}
+		
+
+	+ Give constructor parameter for easier adding/ editing large amount of data
+	
+	E.g: function Bird(name, color){
+	   this.name = name;
+	   this.color = color;
+	   this.numLegs = 2;
+	}
+	=> let cardinal = new Bird("Bruce", "red");
+
+
+	+ PROTOTYPE PROPERTY: all instances of object share property, defined on prototype
+
+	E.g: Add numLegs to Bird prototype 
+	let duck = new Bird("Donald");
+	let canary = new Bird("Tweety");
+	Bird.prototype.numLegs = 2
+	-> now all instances of Bird has "numLegs" property
+	  duck and carnary part Bird constructor as Bird.prototype. 
+	  Nearly every object in JavaScript has prototype property part of constructor
+	function created it
+
+
+	E.g: add duck's own properties to ownProps array and prototype properties 
+to prototypeProps:
+	function Dog(name) {
+	  this.name = name;
+	}
+	let ownProps = [];
+	let prototypeProps = [];
+	for (let property in duck){
+	  if (duck.hasOwnProperty(property)){
+	    ownProps.push(property);
+	  } else {
+	    prototypeProps.push(property);
+	  }
+	}
+
+
+	+ CONSTRUCTOR PROPERTY ( object.constructor ): reference constructor function of instance. Possible check what kind object. 
+	Can be easily overwritten, generally better to use “instanceof” method to check type
+	   
+	E.g: check a property what kind object
+	function joinDogFraternity(candidate){
+	  if (candidate.constructor === Dog) {
+ 	    return true;
+	  } else {
+	    return false;
+	  }
+	}
+
+
+	ADDING MULTIPLE PROPERTIES TO PROTOTYPE: side effect: overwrite constructor property. Remember to set constructor proterty when changing prototype
+	E.g: 
+	Dog.prototype = {
+	  constructor: Dog,
+	  numLegs: 4,
+	  eat: function(){
+	    console.log("nom nom nom");
+	  },
+	  describe: function(){
+	    console.log("My name is " + this.name);
+	  }
+	};
+
+- CLOSURE: 
+prevent modification properties externally
+ +Add variable in constructor func -> changes scope of variable within constructor
+instead global
+	E.g: function Bird(){
+		let hatchedEgg = 10; //private variable
+	//publicly available method bird object can use
+		this.getHatchedEggCount = function(){
+		  return hatchedEgg;
+		};
+	     }
+	     let ducky = new Bird();
+	     ducky.getHatchedEggCount(); // return 10
+	getHatchedEggCount: priviledge method
+	
+
+
+- All objects have prototype, prototype itself object
+-> prototype has own prototype.
+	E.g: prototype of Bird.prototype is Object.prototype
+
+
+
+- Accessing JavaScript Properties:
+	objectName.property	// person.age
+OR	objecName["property"]	// person["age"]
+OR	objectName[epxression]	// x = "age"; person[x]
+
+
+
+
+
+* INHERITANCE
+-DRY - don't repeat yourself: 
+	subtypes has same methods
+	use supertype to remove these methods
+	Bird.prototype = {
+	  constructor: Bird,
+	  describe: function(){
+	    console.log("My name is " + this.name);
+	  }
+	};
+
+	Dog.prototype = {
+	  constructor: Dog,
+	  describe: function(){
+	    console.log("My name is" + this.name);
+	  }
+	}
+
+	+Use supertype(or parent) Animal to DRY:
+	function Animal() {};
+	
+	Animal.prototype = {
+	  constructor: Animal,
+	  describe: function() {
+	    console.log("My name is " + this.name);
+	  }
+	}
+	
+
+- Inherit behaviors from  Supertype
+	let animal = Object.create(Animal.prototype);
+	Object.create(obj): create new object, sets obj as new object's prototype
+	
+	E.g: reuse Animal's method inside duck and beagle
+	function Animal(){
+	  constructor: Animal,
+	  eat: function(){
+	    console.log("nom nom nom");
+	  }
+	};
+
+	let duck = Object.create(Animal.prototype);
+	let beagle = Object.create(Animal.prototype);
+
+
+- Reset inherited constructor property: when object inherit prototype another object
+also inherits supertype's constructor property
+	E.g: 
+	function Bird(){
+	  Bird.prototype = Object.createAnimal.protoype);
+	  let duck = new Bird();
+	  duck.constructor  //function Animal(){...}  
+	}
+
+	Bird.prototype.constructor = Bird;
+	duck.constructor  //function Bird(){...}
+
+
+- Add methods after inheritance:	 
+	E.g: Bird.prototype.fly = function(){
+		console.log("I'm flying!");
+	};
+
+	Dog.prototype = Object.create(Animal.prototype);
+	Dog.prototype.constructor = Dog;
+	Dog.prototype.bark = function(){
+	  console.log('Woof!')
+	};
+
+- Inherited methods can be override using:
+	childObject.prototype.methodName = function(){...}
+- When calling method JavaScript will look up the prototype chain till the method
+is defined
+	1. duck => Is eat() defined here? No
+	2. Bird => 	    ''		? Yes. Execute and stop searching
+	3. Animal => 	    '' 		? Yes but JS already stopped
+	etc.
+
+- Use mixin for unrelated object instead of inheritance, mixin allows other objects
+use collection functions
+	E.g: let flyMixin = function(obj){
+	       obj.fly = function(){
+		console.log("Flying, woosoh!");
+	  }
+	};
+
+	flyMixin give objects fly method
+
+	let bird = {			let plane = {
+	  name: "Donald",		  model: "777",
+	  numLegs: 2			  numPassengers: 524
+	};				};
+	
+	flyMixin(bird);	//takes object gives it fly method
+	bird.fly(); //prints "Flying, wooosh!"
+	flyMixin(plane);	plane.fly(); // prints "Flying, wooosh!"
+
+
+
+* PROTOTYPE: 
++ Prototype chain: Bird supertype duck, duck subtype. Object supertype all object
+JavaScript. Any object can use hasOwnProperty() method.
+hasOwnProperty() method defined Object.prototype
+
++ Declaring method on construtor, create it again on other instances,
+declaring methods on prototype happens once since it shared
+-> memory efficient
+
+
+- class: ...
+class Car {
  	  constructor(brand) {  // Constructor
     	     this.carname = brand;
   	  }
 	}
 	mycar = new Car("Ford");
+
 - extend: create child class of parent class
 
 	class Model extends Car {
@@ -779,8 +1010,10 @@ without creating instance/object(mycar)
 - super keyword: refers to parents class, calls constructor of parent class to access 
 parent's properties and methods
 	
-- "new" keyword: instantiate / represent an object 
-- obtain value from object set a value of a property within an object
+- "new" keyword: instantiate / represent a new instance of an object 
+obtain value from object and set its value to the newly created object
+without "new", "this" inside the constructor would not point to newly created object
+
 
 
 - getter function return object private varible 
@@ -792,6 +1025,50 @@ parent's properties and methods
 	
 	}
 
+*METHOD
+ - instanceof(): check if an object creates using a constructor
+	E.g: let crow = new Bird("Alexis", "black");
+	     crow instanceof Bird; 
+	     => true
+
+- hasOwnProperty(): return boolean if object has specified property as own property
+defined in Object.prototype, can be accessed by Bird.prototype
+	
+	E.g: obj.hasOwnProperty(prop)
+		-prop: string/symbol test
+
+- isPrototypeOf: check an object exists another object prototype chain
+
+	E.g: constructor.prototype.isPrototypeOf(object);
+
+
+*IMMIDIATELY INVOKED FUNCTION EXPRESSION(IIFE):
+  - Execute function as soon as it declared
+	E.g: (function () {
+		console.log("Chirp, chirp!");
+	     })();
+	- no name, not stored in variable function
+	Parentheses () at the end -> immediately executed/ invoked
+	
+  - Used to group related functionality -> single object/ module
+	E.g:  Group glide and fly function from Mixin section
+	      let motionModule = (function () {
+		return {
+		  glideMixin: function(obj) {
+		    obj.glide = function () {
+		      console.log("Gliding on the water");
+		    };
+		  },
+		  flyMixin: function(obj) {
+		    obj.fly = function() {
+		      console.log("Flying, wooosh!")'
+		    };
+		  }
+	        }
+	     })();
+
+	motionModule.glideMixin(duck);
+	duck.glide();
 
 
 
@@ -811,6 +1088,7 @@ split it into smaller ones
 	Or	text = 'empty message';
 
 - e/evt/event parameter: represent element affected by event handler
+
 
 *INFINITE ARGUMENT FUNCTION
 - Arguments object (ES5): arguments local JS object variable available all non-arrow functions
@@ -935,6 +1213,28 @@ Even shorter version than function expression
 		return "hello world";			
 	}
 
+*FUNCTIONAL PROGRAMMING:
+- Style of programming, simple isolated functions without 
+side effects outside func scope
+	INPUT -> PROCESS -> OUTPUT
+
+- Functional programming is about
+1. Isolated function: no dependence state program, includes global var subjected to change
+2. Pure function - same input -> same output
+3. Function with limited side effects - changes/ mutations to program state outside
+function are carefully controlled
+	Functional Programming Principle:
+	- Avoid mutating variable/ object creates new variables + objects
+	- Declare dependencies explicity = if function depends on variable/ object, pass
+	it into as argument -> function easy testing, what input it takes, won't depend
+	on anything else.
+
+
+- Callbacks: function that are slipped/ passed into another function decide invocation
+of that function
+- First Class Function: can be assigned to variable + passed into another function
+ + returned another function like normal value. All JS function are first class.
+
 
 
 
@@ -985,9 +1285,6 @@ VIII. CONDITION
 		alert(voteble);
 
 
-
-
-
 *SWITCH
 - E.g: SWITCH statement that will alert "hello" if fruits is "banana" and "welcome" if fruits is "apple", alert "neither" if fruits is neither "banana" nor "apple"
 	+ Switch(fruits) {
@@ -1000,9 +1297,6 @@ VIII. CONDITION
 		default:
 		  alert("neither);
 	 }
-
-
-
 
 
 
@@ -1520,6 +1814,9 @@ almost the same as HTMLCollection
 - .length property define number of item in the list
 - Both provide index to access each item like array
 
+
+
+
 		HTMLCollection				NodeList
 -Collection of HTML elements			-Collection of document nodes
 -can be access by name, id, index number		-can only be access by index number
@@ -1662,6 +1959,7 @@ XVII. REGULAR EXPRESSION
 a.k.a check form field to try and match valid email address
 	must have '@' symbol or end with extension like .com, .org, .uk etc
 
+
 - Creating regular expression: 
 	+Using regexp literal (/.../)
 	E.g: 	let re = /ab+c/;
@@ -1701,6 +1999,8 @@ a.k.a check form field to try and match valid email address
 		E.g: [a-z]{5, 8}
 	+At least 5 repeats:
 		E.g: [a-z] {5,}		
+
+
 
 - Character set [...]: matches different characters in the same position in a word
 	e.g: [ng]inja
@@ -1753,7 +2053,5 @@ if substr = string: only 1 instances
 	console.log(splits);
 	=> ['Hello ', '1', ' word . Sentence number ', '2', '.']
 	\d any digits in 0-9 -> split at any number 
-
-
 
 

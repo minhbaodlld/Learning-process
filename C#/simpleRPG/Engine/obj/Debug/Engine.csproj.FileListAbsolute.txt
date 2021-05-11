@@ -1,0 +1,12 @@
+C:\Users\rubib\Documents\Programming\Learning-process\C++\Simple RPG\Engine\bin\Debug\Engine.dll
+C:\Users\rubib\Documents\Programming\Learning-process\C++\Simple RPG\Engine\bin\Debug\Engine.pdb
+C:\Users\rubib\Documents\Programming\Learning-process\C++\Simple RPG\Engine\obj\Debug\Engine.csprojAssemblyReference.cache
+C:\Users\rubib\Documents\Programming\Learning-process\C++\Simple RPG\Engine\obj\Debug\Engine.csproj.CoreCompileInputs.cache
+C:\Users\rubib\Documents\Programming\Learning-process\C++\Simple RPG\Engine\obj\Debug\Engine.dll
+C:\Users\rubib\Documents\Programming\Learning-process\C++\Simple RPG\Engine\obj\Debug\Engine.pdb
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\bin\Debug\Engine.dll
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\bin\Debug\Engine.pdb
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\obj\Debug\Engine.csproj.CoreCompileInputs.cache
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\obj\Debug\Engine.dll
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\obj\Debug\Engine.pdb
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\Engine\obj\Debug\Engine.csprojAssemblyReference.cache

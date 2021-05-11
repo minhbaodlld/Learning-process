@@ -1,3 +1,9 @@
+* Windows repair
+- SFC/ scannow
+- DISM /Online /Cleanup-Image /RestoreHealth
+
+
+
 - $ command: $ enter following command into command line
 - ~: home directory
 - pwd: list "logical" current working directory, meaning treats symlinked paths as if actual paths
@@ -57,7 +63,6 @@ xfconf-query -c xfce4-keyboard-shortcuts -l -v
 - cd: back to home directory
 
 
-
 *Creating Directories (mkdir)
 - mkdir [name of directory]: creat directory
 	-p: nested directories
@@ -73,19 +78,13 @@ xfconf-query -c xfce4-keyboard-shortcuts -l -v
 	-f: force overwriting of a file, when file belong to different users
 	-i: confirm overwriting of a file, copying multiple file, some already exists
 	 	
-
-
-
 *Deleting files (rm)
 - rm: support same flag as cp
 	-v -R -f -i
 
-
 *Moving file (mv)
 - $ mv: combine cp + rm, support same flag as cp
 	-v -R -f -i
-
-
 
 *Input/Output (|,>)
 - redirecting output(|, pipe): "pipe" output of a command as input for another one
@@ -99,20 +98,44 @@ xfconf-query -c xfce4-keyboard-shortcuts -l -v
 -Reading from a file (<): read data from a file
 
 
--Update
+
+
+*APP-GET COMMAND
+- Update + Upgrade
 	+1st time set up
 		sudo add-apt-repository -y "deb https://packages.microsoft.com/repos/vscode stable main"
 		sudo apt update
 		sudo apt -y install code
 
 	+After 1st time
-		sudo apt-get update
-		sudo apt-get dist-upgrade
+		sudo apt-get update		update package database
+		sudo apt-get upgrade		upgrade installed packages without removing
+sudo apt-get update && sudo apt-get upgrade -y	Fastest most convenient 
+		sudo apt-get dist-upgrade	Proactive upgrade, auto install/ remove	
 	or	sudo apt-get full-upgrade
 
+- Clean up 
+Get rid of packages that no longer required
+	sudo apt-get clean		clear apt cache
+	sudo apt-get autoclean		only removes files that have new version
+	sudo apt-get autoremove		remove package no longer need dependencies
 
--Jasmine: jasmine <.spec file path>
-  	
+- Uninstall
+  +Find out package name first
+	dpkg --list
+  +Then uninstall
+	sudo apt-get --purge remove <package_name>
+	sudo apt-get purge --auto-remove <package_name>		remove program + dependencies
+	sudo apt-get remove <package_name>	don't remove config files
+  +Clean up afterward
+	sudo apt-get autoremove		remove unused package
+	auto apt-get clean		
+remove aptitude cache in "/var/cache/apt/archives"-used to store downloaded package files-
+if deleted have to be downloaded again to install.
+
+
+
+
 *GIT
 - git 
 	init: place a .git directory in current directory to track project 
@@ -222,6 +245,16 @@ Pushing changes:
 	push <remotename> <name of local branch>: push changes to master branch of remote repository 
 	pull <remotename> <name of local branch>: any changes been made since last time pull	
 
+
+add file to staging area:
+	add .[file name]: add file to staging area
+		-A: add everything
+
+commit to repository
+	commit: commit changes to repository
+		-m "": message other about changes made
+
+
 Common workflow:
    Create a branch for desired feature:
 	branch <name>:	create branch with name
@@ -262,3 +295,5 @@ Common workflow:
 	+.git directory(Repository): check out project -> working directory
 
 
+*FDD TEST
+-Jasmine: jasmine <.spec file path>

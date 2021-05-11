@@ -1,0 +1,13 @@
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\bin\Release\SuperAdventure.exe.config
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\bin\Release\SuperAdventure.exe
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\bin\Release\SuperAdventure.pdb
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\bin\Release\Engine.dll
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\bin\Release\Engine.pdb
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\obj\Release\SuperAdventure.csprojAssemblyReference.cache
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\obj\Release\SuperAdventure.Properties.Resources.resources
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\obj\Release\SuperAdventure.SuperAdventure.resources
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\obj\Release\SuperAdventure.csproj.GenerateResource.cache
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\obj\Release\SuperAdventure.csproj.CoreCompileInputs.cache
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\obj\Release\SuperAdventure.csproj.CopyComplete
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\obj\Release\SuperAdventure.exe
+C:\Users\rubib\Documents\Programming\Learning-process\C#\simpleRPG\SuperAdventure\obj\Release\SuperAdventure.pdb

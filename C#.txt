@@ -1,0 +1,1512 @@
+I. VARIABLE			VII. EXCEPTION HANDLING	
+II. STRING			VIII. CLASSES AND OBJECT
+				  *NESTED CLASS
+				  *FIELD
+				  *CONSTRUCTOR
+				  *OBJECT METHOD
+				  *GETTER AND SETTER
+				  *INHERITANCE
+III. ARRAY			IX. EVENTS
+				  *Delegate
+				  *INotifyPropertyChanged
+IV. METHOD			X. GENERICS
+V. IF STATEMENT			XI. XML
+VI. LOOP			
+
+*LIBRARY
+- event:	using System.IO; 
+- XML:		using System.Xml
+
+
+
+
+*CONSOLE
+.Writeline: print on screen then move to new line
+.Write: print on screen, continue that line
+.ReadLine: pause execution of program wait for user input
+
+- Get user input
+	Console.Write("Enter your name: ");
+	string name = Console.ReadLine();
+	Console.Write("Enter your age: ");
+	string age = Console.ReadLine();
+	Console.WriteLine("Hello " + name + " you are " + age);
+	Console.ReadLine();			
+
+
+*CONVERSION
+- Convert string to number:
+	integer: int num = Convert.ToInt32("45");
+	decimal: double num = Convert.ToDouble("4.5");
+
+
+*OPERATOR
+- And = &&
+- Or = ||
+- Lambda = =>
+- colon(:) = inherit from a class
+- '' = character literal
+- "" = string literal;
+
+*COMMENT
+- //
+- /**/
+
+
+
+*MODIFIER
+- ACCESS MODIFIERS: accessibility of method in a class
+  +Public: 
+  +Private: accessible within same class
+  +Protected: accessible same class/ class inherited from that class
+  +Internal: accessible within its own assembly
+  +Two combinations: 
+	protected internal
+	private protected
+
+
+- CLASS MODIFIERS: 
+  +void: don't return value
+  +Sealed: prevent inheritance from sealed class
+  +Static: can't be instantiated, object not required to access static member
+  +Abstract: incomplete class
+  +Override: extend/ modify abstract/virtual inherited method/ property/ indexer/ event
+  +Extern: -> External, implement language != C#
+  +Partial: only declared memebers of partial types
+  
+
+
+
+*ATTRIBUTES
+- New kinds of declarative information about entities inside program
+
+
+* DateTime method:
+  +Create new DateTime object: var date = DateTime.znow
+  +Get day/ time: date:d/ date:t
+
+
+*ALIAS AND TYPE NAME
+- lowercase = alias for System.xxx CTS(common type system) type name/ 
+	string = System.String
+	int = System.Int32
+- Use alias for consistency, don't have to import "System" namespace to use them
+
+
+
+*MAIN() + COMMAND-LINE ARGUEMENTS
+- Must be static + need not be public
+- can have Void/ int/... or Task/ Task<int> return type
+	+if returns Task/ Task<int> may include async modifier
+- May include string[] parameter containing command-line parameters, using in command line
+when executing program.
+	E.g:
+	public static long Factorial (int n)
+	{	factorial method
+	};
+
+ 	static int Main(string [] args)
+	{
+		Example code
+	}
+
+	-Enter command
+		Factorial 3
+	=> The factorial of 3 is 6
+
+
+- Async specify method/ lambda expression/ anonymous method is asynchronous
+read Asynchronous programming
+
+
+
+
+
+I. VARIABLE
+- Declare variable using type:
+	string characterName = "John";
+	   int age = 30;
+	or int age; 
+	   age = 30;
+
+	E.g: Mad Libs game
+	string color, pluralNoun, celebrity;
+	Console.Write("Enter a color: ");
+	color = Console.ReadLine();
+	
+	Console.Write("Enter a pluralNoun: ");
+	pluralNoun = Console.ReadLine();
+
+	Console.Write("Enter a celebrity: ");
+	celebrity= Console.ReadLine();
+
+	Console.WriteLine("Roses are " + color);
+	Console.WriteLine( pluralNoun + " are blue");
+	Console.WriteLine("I love " + celebrity);
+
+	Console.ReadLine();
+
+
+*DATA TYPE
+- string
+- char: single character
+- float, double, decimal: less accurate decimal -> most accurate decimal 
+- bool: boolean
+
+
+
+
+II. STRING
+- \n: new line char
+- string.Length: find length of string
+- string = System.String
+	
+
+
+
+*STRING METHOD
+	string phrase = "Giraffe Academy";
+- toUpper()/ toLower()
+
+- Contains(char/string [, comparison]): find if a string contain "char/string"
+
+- "Giraff"[index]: Give char at index positione
+
+- phrase.indexOf("..."):
+
+- phrase.Substring(startIndex, noOfCharacters)
+
+- String/str
+  .Remove(int startIndex[, int count]): return new string with specified character deleted
+without [count] continue to end of string
+
+  .Substring(int startIndex[, int length]): retrieve substring starts at specified positon
+	[length]: # chars in substring
+
+
+  .Split(Char[]/ String[] [, Int32, option]): array of chars/ strings as parameter
+  .Split(Char / String [, Int32, option]): chars/ Strings as parameter
+   Split: return array substring after spliting original string separated by delimiter passed as parameter
+delimiter == character, array of characters/ strings
+	[Int32]: maximum # substrings
+	[option]: include empty elements/ not
+   
+  .Equal(object [a, object b]): string/str equal to current object
+	[a, object b]: compare object a and object b, if both null return true 
+
+  .Count: Counting using LINQ
+return number elements satisfy condition
+Required:  System.LINQ
+	E.g:
+	using System.LINQ;
+ 
+	Console.Write("input a string (contains at least one 'w' character: ");
+	string str - Console.ReadLine();
+
+	var count = str.count(s => s == 'w');
+
+	Console.WriteLine("test string contains 'w' character between 1 and 3 times");
+	Conosle.WriteLine(count>=1 && count <=3);
+
+	=>input a string (contains at least one 'w' character: 
+	test string contains 'w' character between 1 and 3 times
+	True
+
+	E.g: Count elements in array
+	int[] nums = {1, 2, 2, 3, 3, 4, 5, 6, 5 ,7 ,7 ,7, 8, 8, 9};
+	Console.WriteLine("Number of " + 
+
+
+
+	E.g: Count using other methods
+	string source = "/once/upon/a/time
+	int count = source.Length - source.Replace("/", "").Length;
+OR 	int count = source.Split('/').Length - 1;	 
+
+
+  .Join(Char/String seperator, String[]/ Object[]/ IEnumerable<String>): 
+	Concatenate array of string/object with specified seperator
+	IEnumerable<String>: collection type string, only separated by String
+
+  .Join(separator, string/object, Int start,Int count): Concatenate element at startIndex
+number of elements (count)
+
+  .Join<T>(Char/String, IEnumerable<T>): concatenates member of a collection
+	<T>: type of members
+value =	IEnumerable<T>: Collection 
+	
+	E.g:
+	int maxPrime = 100;
+	List<int> primes = GetPrimes(maxPrime);
+	Console.writeLine("Primes less than {0}: ", maxPrime);
+	Console.WriteLine("	{0}", String.Join(" ", primes));
+
+	GetPrimes constructor: etc	
+
+
+
+- Command line arguments: used to pass info to app at runtime
+(string[] arg) 
+	E.g
+	static void Main(string[] args)
+	  {
+		foreach (var arg in args)
+		  {
+			console.WriteLine(arg);
+		  }
+	  }
+	Command line: MyApp.exe Arg1 Arg2 Arg3 
+		      MyApp.exe "Arg 1" "Arg 2" "Arg 3"  - argument contains space wrap in quote	
+- Pass array contains three string "Arg1", "Arg2", "Arg3" into Main method
+- String interpolations: $"{string1} + {string2}"
+
+
+
+
+
+III. ARRAY
+- Declare arry: start with type and []
+	int array: int[] luckyNumber = {4, 8 , 15, 16, 23, 44};
+- Access array:
+	luckyNumber[index];
+- Change array element:
+	luckyNumber[2] = 5;
+- Limited element array:
+	string [] friends = new string[5];
+	friends[0] = "Jim";
+- Two Dimensional array: 
+	int[,] arrayName = {};
+	or	int[,] myArray = new int [2,3]  specify 2 rows, 3 columns 
+	E.g: 
+	int[,] numberGrid = {
+	  {1,2},
+	  {3,4},
+	  {5,6}
+	};
+	Console.WriteLine(numberGrid[1,1]);
+
+*ARRAY METHOD
+- Sort(Array,[Array], startIndex, length, Comparer)
+	+Array: 1-dimensional array
+	+Array, [Array]: pair 1D array, one contains keys, other contains corresponding items)
+	+startIndex: starting index  
+	+length: number of elements in range to sort
+	+Comparer: method compares two objects
+
+
+IV. METHOD
+- Method: container to put code do specific task
+
+- static <return type> <method name> (parameter)
+	static void SayHi(string name)
+	{
+	  Console.WriteLine("Hello " + name);
+	}
+
+	Main()
+	{
+	  SayHi("Mike");
+	}
+	name is variable contain "Mike"					
+- Only code inside Main() method is automatically run, other method 
+has to be called to execute
+
+- return type: 
+	+ void don't return
+	+ return any data type:
+	int -> string -> double -> double[]
+
+	static int cube(int num)
+	{
+ 	  int result = num*num*num;
+	  return result;
+	}
+ 
+	Main()
+	{
+	  int cubNumber = cube(5);
+	  Console.WriteLine(cubeNumber);
+	}	
+
+- DIFFERENT TYPE OF METHOD:
+  +Static and instance methods: static modifier : static method ? instance method
+static members belong to class, instance members belong to object
+
+  +Virtual methods: virtual modifier: virtual method ? non-virtual method by default
+virtual can be override in derived class; can't override non-virtual method
+  
+
+
+*MATH METHOD
+- Math.Max/Min(x, y): return larger of the two x, y
+
+
+
+
+*INT32.PARSE METHOD
+- Convert string representation of number -> 32-bit signed interger equivalent
+- SYNTAX:
+	.Parse(String [, NumberStyles, IFormatProvider]):
+ 	  +[NumberStyles]: convert to specific style
+	  +[IFormatProvider]: convert to culture-specific format
+	E.g: Convert Hexadecimal to Decimal number
+	using System.Collections.Generic;
+	public class Exercise30 {
+	   public static void Main() {
+	 	
+		string hexval = "480";
+		Console.Writeline("Hexadecimal number: " +hexval);
+		int decValue = int.Parse( hexal, System.Globalization.NumberStyles.HexNumber);
+		Console.WriteLine("Convert to-");
+		Console.WriteLine("Decimal number: " +decValue);
+	   }
+	}
+
+*FUM (Frequently used method)
+  1. SORTING
+- OrderBy/ OrderByDescending/ ThenBy/ ThenByDescending/ Reverse: 
+  +only OrderBy valid in both queries + method syntax, sort by Asc/Desc based on specified
+  +ThenBy[Descending]: 2nd level sorting in Asc/Desc order
+  +Reverse: sort in reverse order
+	  
+  +METHOD SYNTAX
+- 
+	E.g:
+	Ilist<Student> studentList = new List<Student>() {
+	  new Student() { StudentID = 1, StudentName = "John", Age = 18 },
+	  new Student() { StudentID = 2, StudentName = "Steve", Age = 15 },
+	  ...
+	};
+
+	var studentsInAscOrder = studentList.OrderBy( s => s.StudentName);
+
+  +QUERY SYNTAX: Using System.LINQ
+	E.g:
+	Ilist<Student> studentList = new List<Student>() {
+	  new Student() { StudentID = 1, StudentName = "John", Age = 18 },
+	  new Student() { StudentID = 2, StudentName = "Steve", Age = 15 },
+	  ...
+	};
+
+	var orderByResult = from s in studentList
+			orderby s.StudentName descending
+			select s;
+	var orderByDescendingResult = from s in studentList
+				orderby s.StudentName descending
+				select s;
+
+	E.g Multiple sorting
+-sort by 1st field, if similar sort by 2nd field.
+	Ilist<Student> studentList = new List<Student>() {
+	  new Student() { StudentID = 1, StudentName = "Ram", Age = 18 },
+	  new Student() { StudentID = 2, StudentName = "Ram", Age = 20 },
+	  ...
+	};
+
+	var orderByResult = from s in studentList
+			orderby s.StudentName, s.Age
+			select new {s.StudentName, s.Age};
+
+
+
+V. IF STATEMENT
+- E.g:
+	bool isMale = true;
+	if (isMale)
+	{
+	   Console.WriteLine("You are male"); 
+	}else
+	{
+	  Console.WriteLine("you are not male");
+	}
+	Console.ReadLine();
+
+-Ternary operator: variable = (condition) ? expressionTrue : expressionFalse
+	E.g:
+	int time = 20;
+	string result = (time < 18) ? "Good day." : "Good evening.";
+	Console.WriteLine(result);
+
+- Switch:
+	switch(expression)
+	{
+	  case x:
+		//code block
+		break;
+	  case y:
+		//code block
+	  	break;
+	  default:
+		//code block
+		break;
+	}
+
+
+VI. LOOP
+- WHILE loop
+- DO... WHILE loop
+- FOR loop
+	E.g: Exponent method
+	static int GetPow (int baseNum, int powNum)
+	{
+	  int result = 1;
+	  for (int i = 0; i < powNum; i++)
+	  {
+	    result = result * baseNum; 
+	  }
+	  return result;
+	}
+
+
+VII. EXCEPTION HANDLING
+- try 
+  {
+
+  }
+  catch(Exception e)   // Exception parameter call it "e"
+  {
+    Console.WriteLine(e.message)
+  }
+
+- catch (DivideByZeroExceoption)
+- catch (FormatException)
+- finally {}: Code will be executed no matter what
+
+
+
+
+VIII. CLASSES AND OBJECT
+- blueprint for new data type
+- Creating Classes:
+1/ Create C# Class item file
+2/ create code block
+  class className
+  {
+    <Series of attributes>
+  }
+	E.g: book
+	class Book
+	{
+	  public string title;
+	  public string author;
+	  public int pages;
+	}
+3/ Back to "Main" code block
+	{
+	  Book book1 = new Book();
+	  book1.title = "Harray Potter";
+	  book1.author = "JK Rowling";
+	  book1.pages = 400;
+		
+	  Book book1 = new Book();
+	  book1.title = "Lord of The Rings";
+	  book1.author = "Tolkien";
+	  book1.pages = 700;
+
+	  Console.WriteLine(book1.pages);
+	  Console.ReadLine();
+	}
+==> Create book1 object and instance of Book class/ data type
+- Class: container for data and methods or attributes
+- Namespace: is container for related classes
+- Assembly(DLL or EXE): container for related Namespace 
+(Dynamicly link library or Executable)
+
+- Using classes as datatypes: adding properties with custom datatypes
+  +store complex data
+	E.g: simple RPG
+    public class Location 
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public Item ItemRequiredToEnter { get; set; }
+        public Quest QuestAvailableHere { get; set; }
+        public Monster MonsterLivingHere { get; set; }
+        public Location LocationToNorth { get; set; }
+        public Location LocationToEast { get; set; }
+        public Location LocationToSouth { get; set; }
+        public Location LocationToWest { get; set; }
+
+
+        public Location (int id, string name, string description, 
+            Item itemRequiredToEnter = null, Quest questAvailableHere = null, Monster monsterLivingHere = null)
+        { 
+            ID = id;
+            Name = name;
+            Description = description;
+            ItemRequiredToEnter = itemRequiredToEnter;
+            QuestAvailableHere = questAvailableHere;
+            MonsterLivingHere = monsterLivingHere;
+
+        }
+    }
+	
+
+
+
+*FIELD
+- variables inside class = fields
+- acccess using dot syntax(.)
+
+- Field + method inside class = Class members
+	E.g:
+	public class Outer_class { 
+  
+  	  // Method of outer class 
+   	  public void method1() 
+    	  { 
+  	  	Console.WriteLine("Outer class method"); 
+    	  } 
+  
+  	  // Inner class 
+  	  public class Inner_class { 
+  
+  	      // Method of inner class 
+	  	public void method2() 
+        	{ 
+        	  Console.WriteLine("Inner class Method"); 
+        	} 
+    	  } 
+	} 
+
+	public class GFG { 
+  
+    // Main method 
+    static public void Main() 
+    { 
+  
+        // Create the instance of outer class 
+        Outer_class obj1 = new Outer_class(); 
+        obj1.method1(); 
+  
+        // Creating an instance of inner class 
+        Outer_class.Inner_class obj2 =  new Outer_class.Inner_class(); 
+        obj2.method2(); 
+
+
+
+*CONSTRUCTOR 
+- Special method inside class, called when new object of that class is created
+- new <constructor> in main = calling constructor
+	public <name>(parameter)
+	{  <command>  }
+
+	E.g:
+	public Book(string aTitle, string aAuthor, int aPages)
+	{
+	  title = aTitle;
+	  author = aAuthor;
+	  pages = aPages;
+	{
+
+	[class Program][Main]
+	Book book1 = new Book("Harray Potter", "JK Rowling", 400);
+	Book book2 = new Book("Lord of The Rings", "Tolkien", 700);
+	book2.title = "The Hobbit"	// CAN BE MODIFIED
+
+
+	E.g: use constructor in derived class from base class(Inheritance)
+
+	+Base/ Parent class
+	public class Item
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string NamePlural { get; set; }
+
+        public Item(int id, string name, string namePlural)
+        {
+            ID = id;
+            Name = name;
+            NamePlural = namePlural;
+        }
+    }
+
+	
+	+Derived/ Child class	
+	public class HealingPotion : Item
+    {
+        public int AmountToHeal { get; set; }
+
+        public HealingPotion(int id, string name, string namePlural, int amountToHeal) : base (id, name, namePlural)
+        {
+            AmountToHeal = amountToHeal;
+        }
+    }
+
+	+base (id, name, namePlural): takes value parameters in HealingPotion constructor
+	(id, name, namePlural) passes -> constructor base (Item) class
+
+
+*ANONYMOUS TYPE
+- Encapsulate set of read-only properties into single object without defining a type 1st
+- Create using: new {}
+	E.g:
+	var v = new  {Amount = 100, Message = "Hello"};
+- Used in select clause of query expression to return subset properties each object in
+source sequence
+- Anonymous type contain >= 1 public read-only properties no methods/events.
+
+
+
+
+*NESTED CLASS
+- Encapsulation
+- Logically group classes only used in one place -> readable maintainable code
+
+
+	
+*OBJECT METHOD
+- Method defined inside class, object can use to manipulate data
+	E.g:
+	class Student
+	{
+	  public string name;
+	  public string major;
+	  public double gpa;
+
+ 	  public Student(string aName, string aMajor, dobule aGpa);
+	  {
+	    name = aName;
+	    major = aMajor;
+	    gpa = aGpa;
+	  }
+		
+	  public bool HasHornors()
+	  {
+	    if(gpa >= 3.5)
+	    {
+	      return true;
+	    }
+	    return false;
+	  }  
+	}
+
+	[class Program][Main]
+	Console.WriteLine(student1.HasHonors());
+	Console.WriteLine(student2.HasHonors());
+
+
+
+*GETTER AND SETTER
+- Property enable class to expose way of getting + setting value while hide implementation
+of code
+- get = read-only, set = write-only
+- Special methods, control access people has to attribute of that class
+- Getter + Setter: allow method outside of class to return property value
+and assign new value
+- Contextual keyword "value" used to define value being assigned by set accessor 
++ indexer declarations
+	E.g:
+	class Movie
+	{
+	  public string title;
+	  public string director;
+	  private string rating;	//private to allow only method inside class
+					//to modify variable
+	  
+	  public Movie(string aTitle, string aDirector, string aRating)
+	  {
+	  	title = aTitle;
+		director = aDirector;
+		rating = aRating;	//use Rating constructor to get value from setter
+		Rating = aRating	//otherwise it will take any value given
+	  }
+	
+	  public string Rating
+ 	  {
+		get {return rating;} 	//get attribute
+		set {			//set attribute
+		  if(value == "G" || value ==  "PG" || value ==  "PG-13"
+			|| value ==  "R" || value ==  "NR");	//value represent whatever value is pass in 
+		  {
+			rating = value					
+		  }
+		  else
+		  {
+			rating = "NR";	
+		  }
+		}
+	  }   
+	}
+	
+	[class Program][Main]
+	Console.WriteLine(avengers.Rating); //Rating insted of rating since setter constructor
+
+*STATIC CLASS ATTRIBUTE
+- Share by all object and every instances of that class, contains in class itself
+- Method belong to class shareable in all object
+- Math = static class: can't create an instace of it
+	static class UserfulTools
+- Attribute about class instead of object
+- public static <type> <variable>
+	E.g
+	class Song
+	{
+	  public string title;
+	  public string artist;
+	  public int duration;
+	  public static int songCount = 0;	  
+
+	  public Song(string aTitle, string aArtist, int aDuration)
+	  {
+		title = aTitle;
+		artist = aArtist;
+		duration = aDuration;
+		songCount++;
+	  }
+	  
+	  public int getSongCount() 	//Constructor method for object to access song count
+					//instead of using class
+	  {
+		return songCount;
+	  }
+	}
+
+	[class Program][Main]
+	Console.WriteLine(Song.songCount);
+	Console.WriteLI	ne(Holiday.getSongCount());
+
+
+1. Add class
+2. Modify it
+	E.g
+	class UsefulTools
+	{
+	  public static void SayHi(string name)
+	  {
+	 	Console.WriteLIne("Hello " + name);
+	  }
+	}
+
+	[class Program][Main]
+	Console.WriteLine(UsefulTool.SayHi()
+
+
+* ABSTRACT MODIFIER
+- Restricted class Indicate class incomplete, used as base class.
+	+Abstract class can't be instatiated directly
+	+	'' 	can contain abstract members
+ 	+ 	''    	can't be sealed
+- Abstract method: only used in abstract class, does not have body provided by derived class
+
+- INTERFACE: completely abstract class, only abstract methods and properties(empty bodies)
+ -abstract and public by default
+ -contain properties + methods not field	
+ -TO access interface method use :(colon) symbol4-Body of interace method provided by "implement" class
+ -Don't have to use "override" keyword 
+ -Put "I" before name to remind interface
+ -Override all interface methods on implementation
+
+Use interface to:
+-Achivve security
+-C# doesn't support "multiple inheritance"
+	E.g: 
+	interface IAnimal
+	{
+	  void animalSound();
+	}	
+	
+	class Pig: IAnimal
+	{
+	  public void animalSOund()
+	  {
+	  Console.WriteLine("the pig says: wee wee");
+	  }
+	}
+
+	class Program
+	{
+	  static void Main(string[] args)
+ 	  {
+	  	Pig myPig = new Pig()
+		myPig.animalSound();
+	  }
+	}
+
+	Multiple interface
+	class Demo : IFirstInterface, ISecondInterface
+
+
+*INHERITANCE
+
+- virtual <constructor>: declare constructor from superclass can be overwritten in any subclass
+- override <constructor>: override superclass method
+	class Chef
+	{
+	  public void MakeChicken()
+	  {
+		Console.WriteLine("The Chef makes chicken");
+	  }
+	  public void MakeSalad()
+	  {
+		Console.WriteLine("The Chef makes salad");
+	  }	 
+	  public virtual void MakeSpecialDish()
+	  {
+		Console.WriteLine("The Chef makes bbq ribs");
+	  }
+	}
+	
+	class ItalinaChef: Chef		//ItalianChef inherit every method Chef class has
+	{
+	  public void MakePasta()
+	  {
+		Console.WriteLine("the Chef makes pasta");
+	  }
+	  public override void MakeSpecialDish()
+	  {
+		Console.WriteLine("The Chef makes chicken parm");
+	  }
+	}
+
+
+*FILEINFO CLASS
+- Provide properties + instance methods -> creation, copying, deletion, moving, opening of files
+- cannot be inherited
+- SYNTAX:
+	FileInfo <variable> = new FileInfo("<file path>");
+- METHOD
+	.Length: file size
+	
+
+
+IX. EVENTS
+- Late binding mechanism = create algorithm -> caller supplies >=1 method implements part of algorithm
+- Member enable object/class provide notifications. Client attach executable code
+by Event Handlers
+  + PUBLISER/ sender: class sends event, when event raised
+  + SUBSCRIBER/receiver: class receives event, determine what action taken
+  + Event multiple subscribers, subscribers handle multiple events from multiple publishers
+  + Events without subscribers never raised
+  + Events used to signal button clicks/ menu selection in GUI etc(graphical user interface)
+  + Event multiple subs, event handlers invoked synchronously when event is raised
+  + Events based on EventHandler delegate + EventArgs
+- Events by convention has 2 parameters: source raised event + event data
+
+- SYNTAX:<access mod> event <...Handler> <eventName>
+	E.g
+namespace SimpleEvent
+{
+    public delegate void OnFiveHandler(object sender, EventArgs e);
+
+    class FEvent
+    {
+        public event OnFiveHandler FiveEvent;
+
+        public void OnFiveEvent()
+        {
+            if (FiveEvent != null)
+            {
+                FiveEvent(this, EventArgs.Empty);
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            var fe = new FEvent();
+            fe.FiveEvent += new OnFiveHandler(Callback);
+
+            var random = new Random();
+
+            for (int i = 0; i < 10; i++)
+            {
+                int rn = random.Next(6);
+
+                Console.WriteLine(rn);
+
+                if (rn == 5)
+                {
+                    fe.OnFiveEvent();
+                }
+            }
+        }
+
+        public static void Callback(object sender, EventArgs e)
+        {
+            Console.WriteLine("Five Event occurred");
+        }
+    }
+}
+
+http://zetcode.com/lang/csharp/delegates/
+
+	E.g: More complex event
+namespace ComplexEvent
+{
+    public delegate void OnFiveHandler(object sender, FiveEventArgs e);
+
+    public class FiveEventArgs : EventArgs		carries data inside event object
+    {
+        public int count;
+        public DateTime time;
+
+        public FiveEventArgs(int count, DateTime time)
+        {
+            this.count = count;
+            this.time = time;
+        }
+    }
+
+    public class FEvent					encapsulates event object
+    {
+        public event OnFiveHandler FiveEvent;
+
+        public void OnFiveEvent(FiveEventArgs e)
+        {
+            FiveEvent(this, e);
+        }
+    }
+
+    public class RandomEventGenerator
+    {
+        public void Generate()
+        {
+            int count = 0;
+            FiveEventArgs args;
+
+            var fe = new FEvent();
+            fe.FiveEvent += new OnFiveHandler(Callback);
+
+            var random = new Random();
+
+            for (int i = 0; i < 10; i++)
+            {
+                int rn = random.Next(6);
+
+                Console.WriteLine(rn);
+
+                if (rn == 5)
+                {
+                    count++;
+                    args = new FiveEventArgs(count, DateTime.Now);
+                    fe.OnFiveEvent(args);
+                }
+            }
+        }
+
+        public void Callback(object sender, FiveEventArgs e)
+        {
+            Console.WriteLine("Five event {0} occurred at {1}",
+                e.count, e.time);
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            var reg = new RandomEventGenerator();
+            reg.Generate();
+        }
+    }
+}
+
+
+
+
+*DELEGATE 
+- Delegate is a form of type-safe function pointer used by .NET Framework.
+- Often used to implement callbacks and event listeners.
+- Reference type, reference method instead of object
+- Delegate used in:
+	+Event Handlers
+	+Callbacks
+	+LINQ
+	+Implementation of design patterns
+
+- Late binding = create algorithm -> caller supplies >=1 method implements part algorithm
+
+- data structure refore one/more methods can reference both static + instance methods
+whereas function pointer can only reference static functions
+
+- Syntax: delegate <access> <delegateName>([parameter]);
+	[]: optional
+	E.g:
+	delegate void MyDelegate();			create + invoke instance of delegate
+
+	class Program
+	{
+
+	  static void Main(string[] args)
+	  {
+		var md = new MyDelegate(MyCallback);	delegate declaration, returns no value, takes no parameters
+	(or)	(MyDelegate md = MyCallback;)		short version
+		md();					invoke static Callback() method
+	  }
+	
+	  static void MyCallback()
+	  {
+		Console.WriteLIne("Calling callback");
+	  }
+	}
+
+	E.g: delegate pointing to different methods
+
+namespace DifferentMethods
+{
+  public delegate void NameDelegate(string msg);
+  public class Person
+  {
+	public string firstName;
+	public string secondName;
+	
+	public Person(string firstName, string secondName)
+	{
+ 	  this.firstName- firstName;
+	  this.secondName = secondName;
+	}
+	
+	public void ShowFirstName(string msg)
+	{
+	  Console.WriteLine(msg +this.firstName);
+	}
+	
+	public void ShowSecondName(string msg)
+	{
+	  Console.riteLine(msg + tis.secondName);
+	}
+  }
+
+  class Program
+  {
+	public static void Main()
+	{
+	  var per - new Person("Fabius", "Maximus");
+	  
+   	  var nDelegate = new NameDelegate(per.ShowFirstName);
+	  ndelegate("Call 1: ");
+	  
+	  nDelegate = new NameDelegate(per.ShowSeconName);
+	  nDelegate("Call 2: ");
+	}
+  }
+}
+
+ 
+- MULTICAST DELEGATE: holds reference to more than one method. Must contain only methods
+return void, else there is run-time exception
+	
+	E.g:
+namespace MulticastDelegate
+{
+    delegate void MyDelegate(int x, int y);
+
+    public class Oper
+    {
+        public static void Add(int x, int y)
+        {
+            Console.WriteLine("{0} + {1} = {2}", x, y, x + y);	--"{0} +{1} = {2}" = placeholder
+        }							x, y, x + y = arguements 
+
+        public static void Sub(int x, int y)
+        {
+            Console.WriteLine("{0} - {1} = {2}", x, y, x - y);
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            var del = new MyDelegate(Oper.Add);		delegate point to Add method
+
+            del += new MyDelegate(Oper.Sub);		+= add another method to delegate
+            del(6, 4);					now it points to Add + Sub method
+
+            del -= new MyDelegate(Oper.Sub);		-= remove one method from delegate
+            del(2, 8);					target is Sub method
+        }
+    }
+}
+
+	$dotnet run
+	6 + 4 - 10
+	6 - 4 = 2
+	2 + 8 = 10
+
+- ANONYMOUS METHOD: possible to use with delegates
+	E.g
+namespace Anonymous
+{
+    delegate void MyDelegate();
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MyDelegate del = delegate
+            {
+                Console.WriteLine("Anonymous method");
+            };
+
+            del();
+        }
+    }
+}
+- Omit method declaration when using an anonymous method with a delegate. 
+The method has no name and can be invoked only via the delegate.
+
+- PREDEFINED DELEGATE: .NET built in delegates, simplified programming, no need declare delegate type
+ + ACTION DELEGATE: encapsulates method that has no parameters + does not return value
+	E.g:
+using System;
+
+namespace ActionDelegate
+{
+    class Program
+    {
+        static void Main()
+        {
+            Action act = ShowMessage;	
+            act();
+        }
+
+        static void ShowMessage()
+        {
+            Console.WriteLine("C# language");
+        }
+    }
+}
+- instantiate action delegate, delegate point to ShowMeassage() method
+	Action act = showMessage;
+	act();
+- Multiple type of action delegate:
+	Action<T> delegate 
+
+- PREDICTATE delegate: returns true/ false, useful for filtering lists of values
+	E.g:
+
+using System;
+using System.Collections.Generic;
+
+namespace PredicateDelegate
+{
+    class Program
+    {
+        static void Main()
+        {
+            List<int> vals = new List<int> { 4, 2, 3, 0, 6, 7, 1, 9 };
+
+            Predicate<int> myPred = greaterThanThree; 	create instance of predicate delegate	
+
+            List<int> vals2 = vals.FindAll(myPred);	FindAll() method retireves all elements match condition
+
+            foreach (int i in vals2)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        static bool greaterThanThree(int x)		predictate return true for values>3
+        {
+            return x > 3;
+        }
+    }
+}
+
+
+*DISTINGUISHING DELEGATES + EVENTS
+		DELEGATES				EVENTS
+-Call code, need implement feedback		-Code works without calling subscribers
+-All have void return type			-Listening to events optional
+-Return values from method			-Idioms pass info not as natural as 
+						return values from methos
+-Often pass as parameters, stored as		-Only class containing event can invoke it
+private class members if at all			-Public class members	
+-Not used after method returns			-Longer lifetimes	
+
+
+
+*INotifyPropertyChanged
+- Interface .Net uses for databinding notification, when property value changes
+- PropertyChangedEventHandler
+
+using System.ComponentModel
+
+public event PropertyChangedEventHandler PropertyChanged;
+ 
+protected void OnPropertyChanged(string name)
+{
+    if(PropertyChanged != null)
+    {
+        PropertyChanged(this, new PropertyChangedEventArgs(name));
+    }
+}
+	+subcribe UI to PropertyChanged event
+
+lblHitPoints.DataBIndings.Add("Text", _player, "CurrentHitPoints");
+public System.Windows.Forms.Binding Add (string propertyName, object dataSource, string dataMember);
+
+
+X. GENERICS
+- Class allows users define classes + methods with type parameter
+- type parameter: placeholder for specific data type when in
+- Allow type (int, string, etc) to be parameter to methods, classes, interfaces
+	-> put any objects into collection -> collection increase performance 
+- Used to create type-safe collections for both reference and values types
+- Declare generics type:
+	TypeName<T>  T: type parameter
+
+	
+
+* LIST<T>: 
+- Generic version of ArrayList
+- It comes under: System.Collection.Generic namespace
+- Element can be added: Add(), AddRange() methods/ collection-initializer syntax
+	
+
+- Accessing a list: by an index, for/foreach loop, LINQ querries
+	E.g: 
+	List<int> numbers = new List<int>() {1, 2, 5, 7, 8, 10};
+	Console.WriteLine(numbers[0]);	//Print 1	
+	Console.WriteLine(numbers[1]);	//Print 2
+	
+	//Using LINQ method
+	numbers.ForEach(num => Console.WriteLine(num + ", ")); // prints 1
+	
+	//Using for loop
+	for(int 1 =0; 1 < numbers.Count; i++)
+	   Console.WriteLine(numbers[i]);
+
+	+LINQ 
+	Var students = new List<Students>(){
+	   new Student() { Id = 1, Name = "Bill"},
+	   new Student() { Id = 2, Name = "Steve"),
+	   new Student() { Id = 3, Name = "Ram"},
+	   new Student() { Id = 4, Name = "Abdul"},
+	};
+
+	//Get all studentes whose name is Bill
+	var result = 	from s in students
+			where s.Name == "Bill"
+			select s;
+
+	foreach(var student in result)
+		Console.WriteLine(student.Id + ", " + student.Name;
+
+*METHOD
+- void Insert(int index, T item): insert elemeent into List<T> collection at specific index
+  InsertRange(int index, IEnumerable (string array)): 
+	E.g
+	var numbers = new List<int>(){ 10, 20, 30, 40 };
+	numbers.Insert(1, 11); 	//insert 11 at 1st index
+	foreach(var num in numbers);
+	   Console.Write(num);
+
+	
+- +Add(int index): add individual value at the end
+  +AddRange(int index, IEnumerable): add elements from array/ collection 
+	E.g:
+	using System
+	using System.Collections.Generic;
+
+	var numbers = new List<int>();
+	numbers.Add(2); numbers.Add(3);
+OR
+	var numbers2 = new List<int>() {2, 3}	
+
+dotnetperis.com/list
+
+- bool Remove(T item): remove 1st occurrence specified element in List<T>
+  void RemoveAt( int index): remove element from specified index. no element throws 
+ArguementOurOfRangeException
+	E.g:
+	var numbers = new List<int>(){ 10, 20, 30, 40, 10 };
+	numbers.Remove(10);
+	numbers.RemoveAt(2);
+	foreach (var el in intList)
+	   Console.Write(el);	//prints 20 30
+	
+- Check elements in list
+  Contains(): check elements in List<T> or not.
+	E.g
+	var numbers = new List<int>(){ 10, 20, 30, 40 };
+	numbers.Contains(10);	//true
+	numbers.Contains(11);	//false	
+
+- Class Hierachy: tutorialsteacher.com/csharp/csharp-list
+
+
+
+
+* GENERIC CLASS
+- define by type parameter in angle bracker after class name
+- Create instance by specifying actual type in angle brackets
+	GFG<string> = new GFG<string>();
+- Cons:
++Increase reusability
++Base class to generic/non-generic/ abstract classes
++Can be derrived from other generics/non-generic interfaces/classes/abstract classes
+
+	E.g
+	public class GFG<T> { 
+      
+	    // private data members 
+	    private T data; 
+	      
+	    // using properties 
+	    public T value 
+	    { 
+          
+	        // using accessors 
+	        get
+	        { 
+	            return this.data; 
+	        } 
+	        set
+	        { 
+	            this.data = value; 
+	        } 
+	    } 
+	} 
+  
+	// Driver class 
+	class Test { 
+      
+    	// Main method 
+    	static void Main(string[] args) 
+    	{ 
+          
+    	    // instance of string type 
+    	    GFG<string> name = new GFG<string>(); 
+        	name.value = "GeeksforGeeks"; 
+          
+        	// instance of float type 
+        	GFG<float> version = new GFG<float>(); 
+        	version.value = 5.0F; 
+          
+        	// display GeeksforGeeks 
+        	Console.WriteLine(name.value);  
+          
+        	// display 5 
+        	Console.WriteLine(version.value);  
+  	  } 
+	} 
+
+
+*GENERIC FIELDS	
+- Generic class can include generic field, can't be initialized
+	E.g:
+	class DataStore<T>:
+	{
+	  public T data;
+	  public T[] data = new T[10];	[10]: array size of 10
+	}
+
+*GENERIC METHOD
+- Method declared with type parameter as return type/ parameters
+	E.g
+	class DataStore<T>;
+	{
+	  private t[] _data = new T[10];
+	  public void AddOrUpdate(int index, T item)
+	  {
+		if(index >= 0 && index < 10)
+		  _data[index] = item;
+	  }
+
+	  public T GetData(int index)
+	  {
+	  	if(index >= 0 && index < 10)
+		  return _data[index];
+		else
+		  return default(T);
+	  }
+	}
+
+	DataStore<string> cities = new DataStore<string>();
+	cities.AddOrUpdate(0, "Mumbai");
+
+
+XI. XML
+- XML file similar layout as HTML file
+<Player>
+    <Stats>
+       	<CurrentHitPoints>7</CurrentHitPoints>
+       	<MaximumHitPoints>10</MaximumHitPoints>
+       	<Gold>123</Gold>
+       	<ExperiencePoints>275</ExperiencePoints>
+       	<CurrentLocation>2</CurrentLocation>
+    </Stats>
+    <InventoryItems>
+       	<InventoryItem ID="1" Quantity="1" />
+        <InventoryItem ID="2" Quantity="5" />
+        <InventoryItem ID="7" Quantity="2" />
+    </InventoryItems>
+    <PlayerQuests>
+        <PlayerQuest ID="1" IsCompleted="true" />
+        <PlayerQuest ID="2" IsCompleted="false" />
+    </PlayerQuests>
+</Player>
+
+- Create Xml file
+	E.g:
+	public string ToXmlString()
+	{
+  +Call XmlDocument class: create new Xml document
+	   XmlDocument playerData = new XmlDocument();
+
+  +XmlNode: class
+	.CreateElement: create node	   
+	   //Create top level XML node
+	   XmlNode player = playerData.CreateElement("Player");
+
+  +parentNode.Appenchild(childNode): append node -> child node
+	   //Create "Stats" child node to hold player statist
+	   XmlNode stats = playerData.CreateElement("Stats");
+	   player.AppendChild(stats);
+
+	   //Create child nodes for "stats" node
+	   XmlNode currentHitPoints = playerData.CreateElement("CurrentHitPoint");
+	   currentHitPoints.AppendChild(playerData.CreateTextNode(this.CurrentHitPoints.ToString()));
+	   stats.AppendChild(currentHitPoints);
+
+  +XmlAttribute: add values to node
+	.CreateAttribute
+	   //Create an "InventoryItem" node for each item in player's inventory
+	   foreach(InventoryItem item in this.Inventory)
+	   {
+	   	XmlNode inventoryItem = playerData.CreateElement("InventoryItem");
+
+		XmlAttribute idAttribute = playerData.CreateAttribute("ID");
+		idAttribute.Value = item.Details.ID.ToString();
+		inventoryItem.Attributes.Append(idAttribute);
+	   }
+	}
+
+
+public static Player CreatePlayerFromXmlString(string xmlPlayerData)
+{
+    try
+    {
+        XmlDocument playerData = new XmlDocument();
+
+  +.LoadXml(xml_file_name): load xml file 
+        playerData.LoadXml(xmlPlayerData);
+
+  +.SelectSingleNode("XPath"): get data with single value 
+        int currentHitPoints = Convert.ToInt32(playerData.SelectSingleNode
+		("/Player/Stats/CurrentHitPoints").InnerText);
+  +.InnerText: get value
+
+  +.SelectNodes: get nodes matches XPath
+	foreach(XmlNode node in playerData.SelectNodes("/Player/InventoryItems/InventoryItem"))
+	{
+	   int id = Convert.ToInt32(node.Attributes["ID"].Value);
+	   int quantity = Convert.ToInt32(node.Attributes["Quantity"].Value);
+	   
+   	   for(int i = 0; i < quantity; i++)
+	   {
+	   	player.AddItemToInventory(World.ItemByID(id));
+	   }
+	}
+
+
+
+
+
